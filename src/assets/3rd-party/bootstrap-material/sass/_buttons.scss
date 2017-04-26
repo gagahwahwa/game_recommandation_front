@@ -108,7 +108,7 @@
         &:active {
           &,
           &:hover {
-            @include focus-shadow();
+            // @include focus-shadow();
           }
         }
       }

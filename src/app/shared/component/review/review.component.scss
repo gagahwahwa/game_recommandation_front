@@ -1,0 +1,10 @@
+.material-icons {
+    font-size: 72px;
+    &.good {
+        color: #673AB7;
+    }
+
+    &.bad {
+        color: #F44336;
+    }
+}
