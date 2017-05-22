@@ -1,12 +1,19 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-8">
-            <app-rank [gameList]="gameList$"></app-rank>
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <app-rank [rankList]="rankList$"></app-rank>
+                </div>
+            </div>
         </div>
         <div class="col-lg-4">
             <div class="panel panel-default">
                 <div class="panel-body">
-
+                    <app-search-bar (searchResultEmitter)="searchList$ = $event"></app-search-bar>
+                    <div *ngFor="let result of searchList$ | async">
+                        <div class="search-item"><a [routerLink]="['/game', result.url]">{{ result.title }}</a></div>
+                    </div>
                 </div>
             </div>
         </div>

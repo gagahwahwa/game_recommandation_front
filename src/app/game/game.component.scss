@@ -1,7 +1,6 @@
 .game-info {
     .left-side {
         img {
-            max-height: 100%;
             max-width: 100%;
             margin: 0;
         }
@@ -17,4 +16,10 @@
 .predicted-score {
     font-size: 30px;
     margin: 0;
+    .good {
+        color: #673AB7;
+    }
+    .bad {
+        color: #F44336;
+    }
 }

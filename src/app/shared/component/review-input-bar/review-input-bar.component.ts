@@ -1,32 +1,18 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
     selector: 'app-review-input-bar',
     templateUrl: './review-input-bar.component.html',
     styleUrls: [ './review-input-bar.component.scss' ]
 })
-export class ReviewInputBarComponent implements OnInit, OnDestroy {
+export class ReviewInputBarComponent implements OnInit {
     @Input() isComment: boolean;
-    isGood: boolean;
+    rate: number;
 
     constructor () {
     }
 
     ngOnInit () {
-        this.isGood = null;
-    }
-
-    ngOnDestroy () {
-        console.log( 'now' );
-    }
-
-    public clickReviewButton( state: boolean ) {
-        if ( this.isGood === state ) {
-            this.isGood = null;
-            // todo :: delete game rate
-        } else {
-            this.isGood = state;
-            // todo :: post game rate
-        }
+        this.rate = 0;
     }
 }

@@ -1,24 +1,10 @@
 <div class="panel panel-default">
     <div class="panel-body">
-        <h3 class="title pull-left">게임을 평가해 주세요</h3>
-        <div class="review-button-group pull-right">
-            <button type="button" class="btn btn-raised btn-primary" (click)="clickReviewButton( true )">
-                <div *ngIf="isGood; then CheckedGoodButton else NotCheckedGoodButton"></div>
-                <ng-template #NotCheckedGoodButton><i class="material-icons">thumb_up</i></ng-template>
-                <ng-template #CheckedGoodButton><i class="material-icons">check</i></ng-template>
-                Good
-            </button>
-            <button type="button" class="btn btn-raised btn-danger"  (click)="clickReviewButton( false )">
-                <div *ngIf="!isGood && isGood !== null; then CheckedBadButton else NotCheckedBadButton"></div>
-                <ng-template #NotCheckedBadButton><i class="material-icons">thumb_down</i></ng-template>
-                <ng-template #CheckedBadButton><i class="material-icons">check</i></ng-template>
-                Bad
-            </button>
-        </div>
         <div class="comment" *ngIf="isComment">
-            <textarea rows="5" class="form-control" placeholder="여기에 코멘트를 작성해주세요"></textarea>
+            <textarea rows="5" class="form-control" placeholder="별점만 입력하셔도 되지만, 코멘트를 입력하시면 다른 사람들에게 더 유익한 SourGrape가 됩니다."></textarea>
+            <app-star-rate-bar [rate]="rate" (starRateEmitter)="rate = +($event)"></app-star-rate-bar>
             <div class="review-button-group pull-right">
-                <button class="btn btn-raised btn-primary">
+                <button class="btn btn-raised btn-primary" [disabled]="rate === 0">
                     <i class="material-icons">mode_edit</i> 코멘트 작성
                 </button>
             </div>

@@ -8,12 +8,16 @@ import { Observable } from "rxjs/Observable";
     styleUrls: [ './main.component.scss' ]
 })
 export class MainComponent implements OnInit {
-    gameList$: Observable<any>;
+    rankList$: Observable<any>;
+    searchList$: Observable<any>;
+
+    private limit: number;
 
     constructor (private gameService: GameService) {
+        this.limit = 20;
     }
 
     ngOnInit () {
-        this.gameList$ = this.gameService.getGameListAll();
+        this.rankList$ = this.gameService.getRankWithLimit( this.limit );
     }
 }

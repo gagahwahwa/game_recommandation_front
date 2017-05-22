@@ -6,6 +6,7 @@ import { GameComponent } from "./game.component";
 import { GameService } from "../shared/service/game.service";
 import { ReviewInputBarModule } from "../shared/component/review-input-bar/review-input-bar.module";
 import { ReviewModule } from "../shared/component/review/review.module";
+import { TagBarModule } from './tag-bar/tag-bar.module';
 
 @NgModule({
     imports: [
@@ -13,7 +14,8 @@ import { ReviewModule } from "../shared/component/review/review.module";
         GameRoutingModule,
 
         ReviewInputBarModule,
-        ReviewModule
+        ReviewModule,
+        TagBarModule
     ],
     declarations: [ GameComponent ],
     providers: [ GameService ]

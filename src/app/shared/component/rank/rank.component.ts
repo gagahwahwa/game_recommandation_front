@@ -7,7 +7,7 @@ import { Observable } from "rxjs/Observable";
     styleUrls: [ './rank.component.scss' ]
 })
 export class RankComponent implements OnInit {
-    @Input() gameList: Observable<any>;
+    @Input() rankList: Observable<any>;
 
     constructor () {
     }
