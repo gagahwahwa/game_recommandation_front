@@ -27,18 +27,18 @@
             </div>
         </div>
     </div>
-    <div class="row">
+    <div class="row" *ngIf="gameRateAVG$ | async as gameRateAVG">
         <div class="col-lg-4">
             <div class="panel panel-default">
                 <div class="panel-body">
                     <h3 class="title">지난 3개월 간 평가</h3>
                     <p class="predicted-score">
                         <i class="material-icons good"
-                           *ngIf="gameRateAVG?.rate_avg === 0 || gameRateAVG?.rate_avg > 2.5; else badGame">thumb_up</i>
+                           *ngIf="gameRateAVG.rate_avg === 0 || gameRateAVG.rate_avg > 2.5; else badGame">thumb_up</i>
                         <ng-template #badGame><i class="material-icons bad">thumb_down</i></ng-template>
-                        <span>{{ gameRateAVG?.rate_avg_3_month | number:'.2-2' }}</span>
+                        <span>{{ gameRateAVG.rate_avg_3_month | number:'.2-2' }}</span>
 
-                        <span *ngIf="gameRateAVG?.rate_count_3_month < 10000;else muchPeople">({{ gameRateAVG?.rate_count_3_month | number }}명)</span>
+                        <span *ngIf="gameRateAVG.rate_count_3_month < 10000;else muchPeople">({{ gameRateAVG.rate_count_3_month | number }}명)</span>
                         <ng-template #muchPeople>(10000명 이상)</ng-template>
                     </p>
                 </div>
@@ -50,11 +50,11 @@
                     <h3 class="title">전체 기간 평가</h3>
                     <p class="predicted-score">
                         <i class="material-icons good"
-                           *ngIf="gameRateAVG?.rate_avg === 0 || gameRateAVG?.rate_avg > 2.5; else badGame">thumb_up</i>
+                           *ngIf="gameRateAVG.rate_avg === 0 || gameRateAVG.rate_avg > 2.5; else badGame">thumb_up</i>
                         <ng-template #badGame><i class="material-icons bad">thumb_down</i></ng-template>
-                        <span>{{ gameRateAVG?.rate_avg | number:'.2-2' }}</span>
+                        <span>{{ gameRateAVG.rate_avg | number:'.2-2' }}</span>
 
-                        <span *ngIf="gameRateAVG?.rate_count_3_month < 10000;else muchPeople">({{ gameRateAVG?.rate_count | number }}명)</span>
+                        <span *ngIf="gameRateAVG.rate_count_3_month < 10000;else muchPeople">({{ gameRateAVG.rate_count | number }}명)</span>
                         <ng-template #muchPeople>(10000명 이상)</ng-template>
                     </p>
                 </div>
@@ -64,12 +64,14 @@
             <div class="panel panel-default">
                 <div class="panel-body">
                     <h3 class="title">당신의 별점 예상</h3>
-                    <div class="predicted-score" *ngIf="collaborateFilterRate !== -1; else notYetPredictScore">
-                        <div *ngIf="collaborateFilterRate === null;else noPredictScore">
+                    <div class="predicted-score"
+                         *ngIf="collaborateFilterRate$ | async as collaborateFilterRate; else notYetPredictScore">
+                        <div *ngIf="collaborateFilterRate === null; else noPredictScore">
                             <span> 정보가 부족합니다. </span>
                         </div>
                         <ng-template #noPredictScore>
-                            <i class="material-icons good" *ngIf="collaborateFilterRate === 0 || collaborateFilterRate > 2.5; else badGame">thumb_up</i>
+                            <i class="material-icons good"
+                               *ngIf="collaborateFilterRate === 0 || collaborateFilterRate > 2.5; else badGame">thumb_up</i>
                             <ng-template #badGame><i class="material-icons bad">thumb_down</i></ng-template>
                             <span>{{ collaborateFilterRate | number:'.2-2' }}</span>
                         </ng-template>
