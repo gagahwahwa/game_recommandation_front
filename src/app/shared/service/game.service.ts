@@ -8,7 +8,8 @@ export class GameService {
     private url: string;
 
     constructor (private http: Http) {
-        this.url = 'http://teamsf.co.kr:9999';
+        this.url = 'http://52.78.156.169:9999';
+        //this.url = 'http://teamsf.co.kr:9999';
     }
 
     // 게임리스트 요청, limit만큼 전달 받음. limit이 0이면 전체
@@ -64,7 +65,7 @@ export class GameService {
 
     // 게임에 대한 평점 리스트를 가져옴
     public getGameRateById (game_id: number): Observable<any> {
-        return this.http.get(this.url + `/game-rate?game_id=${game_id}`)
+        return this.http.get(this.url + `/game-rate?game_i=${game_id}`)
             .map(res => res.json().data);
     }
 }

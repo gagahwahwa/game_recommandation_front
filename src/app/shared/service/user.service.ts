@@ -7,7 +7,8 @@ export class UserService {
     private url: string;
 
     constructor (private http: Http) {
-        this.url = 'http://teamsf.co.kr:9999';
+        this.url = 'http://52.78.156.169:9999';
+        //this.url = 'http://teamsf.co.kr:9999';
     }
 
     public signUp (user: any): Observable<any> {
