@@ -1,13 +1,14 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { BrowserModule } from '@angular/platform-browser';
+import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
-import { AppRoutingModule } from "./app-routing.module";
-import { MainModule } from "./main/main.module";
-import { NavbarModule } from "./shared/component/navbar/navbar.module";
-import { GameModule } from "./game/game.module";
+import { GameModule } from './game/game.module';
+import { MainModule } from './main/main.module';
+import { NavbarModule } from './shared/component/navbar/navbar.module';
+import { PrepareModule } from './prepare/prepare.module';
 
 @NgModule({
     declarations: [
@@ -23,7 +24,8 @@ import { GameModule } from "./game/game.module";
         NavbarModule,
 
         MainModule,
-        GameModule
+        GameModule,
+        PrepareModule
     ],
     providers: [],
     bootstrap: [ AppComponent ]

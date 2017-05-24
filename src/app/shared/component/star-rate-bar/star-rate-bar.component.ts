@@ -47,7 +47,11 @@ export class StarRateBarComponent implements OnInit {
     }
 
     public submitStarRate (rate: number) {
-        this.rate = rate;
+        if ( rate !== this.rate ) {
+            this.rate = rate;
+        } else {
+            this.rate = 0;
+        }
         this.starRateEmitter.emit(this.rate);
     }
 

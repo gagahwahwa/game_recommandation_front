@@ -1,0 +1,55 @@
+<div class="form" [formGroup]="signUpFormGroup">
+    <div class="form-group label-floating"
+         [ngClass]="{'has-error': signUpFormGroup.get('email').invalid || isExistEmail }">
+        <label class="control-label" for="email">이메일 *</label>
+        <input class="form-control" #emailForm id="email" type="text" formControlName="email">
+        <span class="help-block"
+              *ngIf="signUpFormGroup.get('email').hasError('required') &&
+               signUpFormGroup.get('email').touched && signUpFormGroup.get('email').value === ''"
+        >이메일을 입력해주세요</span>
+        <span class="help-block"
+              *ngIf="signUpFormGroup.get('email').hasError('email') &&
+               signUpFormGroup.get('email').dirty && signUpFormGroup.get('email').value !== ''"
+        >이메일 형식으로 작성해주세요</span>
+        <span class="help-block" *ngIf="isExistEmail">이미 존재하는 이메일입니다.</span>
+    </div>
+    <div class="row" formGroupName="passwordMatch">
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+            <div class="form-group label-floating"
+                 [ngClass]="{'has-error': signUpFormGroup.get('passwordMatch').get('password').invalid}">
+                <label class="control-label" for="password">비밀번호 *</label>
+                <input class="form-control" id="password" type="password" formControlName="password">
+                <span class="help-block"
+                      *ngIf="signUpFormGroup.get('passwordMatch').get('password').hasError('required') &&
+                       signUpFormGroup.get('passwordMatch').get('password').touched &&
+                        signUpFormGroup.get('passwordMatch').get('password').value === ''"
+                >비밀번호를 입력해주세요</span>
+            </div>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+            <div class="form-group label-floating"
+                 [ngClass]="{'has-error': signUpFormGroup.get('passwordMatch').get('passwordRepeat').invalid || signUpFormGroup.get('passwordMatch').invalid }">
+                <label class="control-label" for="password-repeat">비밀번호 확인 *</label>
+                <input class="form-control" id="password-repeat" type="password" formControlName="passwordRepeat">
+                <span class="help-block"
+                      *ngIf="signUpFormGroup.get('passwordMatch').get('passwordRepeat').hasError('required') &&
+                       signUpFormGroup.get('passwordMatch').get('passwordRepeat').touched &&
+                        signUpFormGroup.get('passwordMatch').get('passwordRepeat').value === ''"
+                >비밀번호를 입력해주세요</span>
+                <span class="help-block"
+                      *ngIf="signUpFormGroup.get('passwordMatch').hasError('isEqual') &&
+                       signUpFormGroup.get('passwordMatch').get('passwordRepeat').dirty &&
+                        signUpFormGroup.get('passwordMatch').get('passwordRepeat').value !== ''"
+                >비밀번호가 다릅니다.</span>
+            </div>
+        </div>
+    </div>
+    <div class="form-group label-floating" [ngClass]="{'has-error': signUpFormGroup.get('nickname').invalid}">
+        <label class="control-label" for="nickname">닉네임 *</label>
+        <input class="form-control" id="nickname" type="text" formControlName="nickname">
+    </div>
+
+    <button type="submit" class="btn btn-raised btn-primary btn-block" [disabled]="signUpFormGroup.invalid"
+            (click)="signUp()">회원 가입
+    </button>
+</div>

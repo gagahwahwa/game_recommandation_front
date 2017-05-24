@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import * as moment from 'moment';
 import { Observable } from 'rxjs/Observable';
 import { isUndefined } from 'util';
 import { GameService } from '../shared/service/game.service';
-import 'rxjs/add/observable/never';
 
 @Component({
     selector: 'app-game',
@@ -12,14 +12,24 @@ import 'rxjs/add/observable/never';
 })
 export class GameComponent implements OnInit {
     game: any;
+
     tagList$: Observable<any>;
-    gameRateAVG$: Observable<any>; gameRateAVG: any;
-    collaborateFilterRate$: Observable<number>; collaborateFilterRate: number;
+    gameRateList$: Observable<any>;
+
+    gameRateAVG$: Observable<any>;
+    gameRateAVG: any;
+    collaborateFilterRate$: Observable<number>;
+    collaborateFilterRate: number;
+
+
+    private user_id: number;
 
     constructor (private gameService: GameService, private route: ActivatedRoute) {
     }
 
     ngOnInit () {
+        this.user_id = +sessionStorage.getItem('user_id');
+
         this.route.params.subscribe(params => {
             this.gameService.getGameByParameter('url', params[ 'url' ])
                 .subscribe(data => {
@@ -44,9 +54,29 @@ export class GameComponent implements OnInit {
                                 return data;
                             }
                         });
-                    this.collaborateFilterRate$ = this.gameService.getCollaborateFilter(this.game.id, 30)
+                    this.collaborateFilterRate$ = this.gameService.getCollaborateFilter(this.game.id, this.user_id)
                         .map(data => data < 5 ? data : 5);
+
+                    this.gameRateList$ = this.gameService.getGameRateById(this.game.id)
+                        .map(list => list.filter(data => data.comment !== '' && data.comment !== null));
                 });
+        });
+    }
+
+    public enrollGameRate (data: any) {
+        let temp = {
+            game_id: this.game.id,
+            user_id: sessionStorage.getItem('user_id'),
+            rate: data.rate,
+            regi_date: moment().format('YYYY-MM-DD'),
+            comment: data.comment
+        };
+
+        this.gameService.setGameRateById(temp).subscribe(res => {
+            if ( res.result === 'success' ) {
+                this.gameRateList$ = this.gameService.getGameRateById(this.game.id)
+                    .map(list => list.filter(data => data.comment !== '' && data.comment !== null));
+            }
         });
     }
 }

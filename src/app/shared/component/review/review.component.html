@@ -2,14 +2,14 @@
     <div class="panel-body">
         <div class="row">
             <div class="col-lg-12">
-                <p class="pull-left">닉네임</p>
-                <p class="pull-right">2017. 04. 26</p>
+                <p class="pull-left">{{ gameRate.nickname }}</p>
+                <p class="pull-right">{{ gameRate.regi_date }}</p>
             </div>
             <div class="col-lg-2">
-                <p class="rate">3점</p>
+                <p class="rate">{{ gameRate.rate }}점</p>
             </div>
             <div class="col-lg-10">
-                코멘트 내용
+                {{ gameRate.comment }}
             </div>
         </div>
     </div>

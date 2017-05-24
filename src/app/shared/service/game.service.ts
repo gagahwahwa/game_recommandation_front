@@ -8,7 +8,7 @@ export class GameService {
     private url: string;
 
     constructor (private http: Http) {
-        this.url = 'http://teamsf.co.kr:9999'
+        this.url = 'http://teamsf.co.kr:9999';
     }
 
     // 게임리스트 요청, limit만큼 전달 받음. limit이 0이면 전체
@@ -51,8 +51,20 @@ export class GameService {
     }
 
     // 게임에 대한 예상 평점을 가져옴
-    public getCollaborateFilter (game_id: number, user_id: number) {
+    public getCollaborateFilter (game_id: number, user_id: number): Observable<any> {
         return this.http.get(this.url + `/predict-score?game_id=${game_id}&user_id=${user_id}`)
+            .map(res => res.json().data);
+    }
+
+    // 게임에 대한 평점 등록
+    public setGameRateById (data: any): Observable<any> {
+        return this.http.post(this.url + `/enroll-game-rate`, data)
+            .map(res => res.json());
+    }
+
+    // 게임에 대한 평점 리스트를 가져옴
+    public getGameRateById (game_id: number): Observable<any> {
+        return this.http.get(this.url + `/game-rate?game_id=${game_id}`)
             .map(res => res.json().data);
     }
 }

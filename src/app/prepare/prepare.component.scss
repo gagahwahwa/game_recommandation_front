@@ -1,0 +1,28 @@
+.container {
+    padding: 5% 15%;
+
+    .btn-group {
+        .btn {
+            font-size: 24px;
+            font-weight: bold;
+            &.not-selected {
+                background-color: rgba(#673AB7, .25)
+            }
+        }
+    }
+}
+
+.form {
+    margin-top: 50px;
+
+    #forgotten-password {
+        display: inline-block;
+        margin-top: 30px;
+    }
+
+    .btn {
+        margin-top: 50px;
+        font-size: 36px;
+        font-weight: bold;
+    }
+}

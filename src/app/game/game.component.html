@@ -3,7 +3,7 @@
         <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12 left-side">
             <div class="panel panel-default">
                 <div class="panel-body">
-                    <img class="game-thumbnail" src="../../assets/img/header.jpg">
+                    <img class="game-thumbnail" [attr.src]="'../../assets/img/header/' + game?.url + '-header.jpg'">
                 </div>
             </div>
         </div>
@@ -66,7 +66,7 @@
                     <h3 class="title">당신의 별점 예상</h3>
                     <div class="predicted-score"
                          *ngIf="collaborateFilterRate$ | async as collaborateFilterRate; else notYetPredictScore">
-                        <div *ngIf="collaborateFilterRate === null; else noPredictScore">
+                        <div *ngIf="collaborateFilterRate === -1; else noPredictScore">
                             <span> 정보가 부족합니다. </span>
                         </div>
                         <ng-template #noPredictScore>
@@ -90,6 +90,6 @@
             <app-tag-bar [tagList]="tagList$"></app-tag-bar>
         </div>
     </div>
-    <app-review-input-bar [isComment]="true"></app-review-input-bar>
-    <app-review></app-review>
+    <app-review-input-bar [isComment]="true" (rateOutput)="enrollGameRate($event)"></app-review-input-bar>
+    <app-review *ngFor="let gameRate of gameRateList$ | async" [gameRate]="gameRate"></app-review>
 </div>

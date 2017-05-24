@@ -22,7 +22,7 @@ export class SearchBarComponent implements OnInit {
     ngOnInit () {
         this.searchResultEmitter.emit(
             this.keyword.valueChanges
-                .debounceTime(200)
+                .debounceTime(700)
                 .distinctUntilChanged()
                 .filter(keyword => keyword !== '')
                 .switchMap(keyword => {
