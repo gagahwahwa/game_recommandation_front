@@ -7,12 +7,14 @@ import { GameService } from "../shared/service/game.service";
 import { ReviewInputBarModule } from "../shared/component/review-input-bar/review-input-bar.module";
 import { ReviewModule } from "../shared/component/review/review.module";
 import { TagBarModule } from './tag-bar/tag-bar.module';
+import { NavbarModule } from '../shared/component/navbar/navbar.module';
 
 @NgModule({
     imports: [
         CommonModule,
         GameRoutingModule,
 
+        NavbarModule,
         ReviewInputBarModule,
         ReviewModule,
         TagBarModule

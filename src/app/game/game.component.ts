@@ -21,14 +21,16 @@ export class GameComponent implements OnInit {
     collaborateFilterRate$: Observable<number>;
     collaborateFilterRate: number;
 
+    // 예상 점수를 낼 수 없을 때 오는 점수.
+    CAN_NOT_COMPUTE: number;
 
     private user_id: number;
-
     constructor (private gameService: GameService, private route: ActivatedRoute) {
     }
 
     ngOnInit () {
         this.user_id = +sessionStorage.getItem('user_id');
+        this.CAN_NOT_COMPUTE = -999;
 
         this.route.params.subscribe(params => {
             this.gameService.getGameByParameter('url', params[ 'url' ])
@@ -55,7 +57,7 @@ export class GameComponent implements OnInit {
                             }
                         });
                     this.collaborateFilterRate$ = this.gameService.getCollaborateFilter(this.game.id, this.user_id)
-                        .map(data => data < 5 ? data : 5);
+                        .map(data => data !== -999 && data < 0 ? 0 : data ).map(data => data < 5 ? data : 5);
 
                     this.gameRateList$ = this.gameService.getGameRateById(this.game.id)
                         .map(list => list.filter(data => data.comment !== '' && data.comment !== null));

@@ -5,12 +5,14 @@ import { GameService } from "../shared/service/game.service";
 import { RankModule } from "../shared/component/rank/rank.module";
 import { SearchBarModule } from '../shared/component/search-bar/search-bar.module';
 import { RouterModule } from '@angular/router';
+import { NavbarModule } from '../shared/component/navbar/navbar.module';
 
 @NgModule({
     imports: [
         CommonModule,
         RouterModule,
 
+        NavbarModule,
         RankModule,
 
         SearchBarModule

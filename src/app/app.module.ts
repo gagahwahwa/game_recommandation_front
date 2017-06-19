@@ -7,7 +7,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { GameModule } from './game/game.module';
 import { MainModule } from './main/main.module';
-import { NavbarModule } from './shared/component/navbar/navbar.module';
 import { PrepareModule } from './prepare/prepare.module';
 
 @NgModule({
@@ -20,8 +19,6 @@ import { PrepareModule } from './prepare/prepare.module';
         HttpModule,
 
         AppRoutingModule,
-
-        NavbarModule,
 
         MainModule,
         GameModule,

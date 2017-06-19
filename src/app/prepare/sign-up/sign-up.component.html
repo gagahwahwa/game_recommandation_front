@@ -1,4 +1,4 @@
-<div class="form" [formGroup]="signUpFormGroup">
+<form class="form" [formGroup]="signUpFormGroup">
     <div class="form-group label-floating"
          [ngClass]="{'has-error': signUpFormGroup.get('email').invalid || isExistEmail }">
         <label class="control-label" for="email">이메일 *</label>
@@ -52,4 +52,4 @@
     <button type="submit" class="btn btn-raised btn-primary btn-block" [disabled]="signUpFormGroup.invalid"
             (click)="signUp()">회원 가입
     </button>
-</div>
+</form>

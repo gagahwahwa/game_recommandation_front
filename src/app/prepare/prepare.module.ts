@@ -3,13 +3,12 @@ import { NgModule } from '@angular/core';
 import { LogInModule } from './log-in/log-in.module';
 import { PrepareComponent } from './prepare.component';
 import { SignUpModule } from './sign-up/sign-up.module';
-import { PrepareRoutingModule } from './prepare-routing.module';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
     imports: [
         CommonModule,
-
-        PrepareRoutingModule,
+        RouterModule,
 
         LogInModule,
         SignUpModule

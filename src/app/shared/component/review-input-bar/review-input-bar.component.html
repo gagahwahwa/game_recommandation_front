@@ -5,7 +5,7 @@
             <app-star-rate-bar [rate]="rate" (starRateEmitter)="rate = +($event)"></app-star-rate-bar>
             <div class="review-button-group pull-right">
                 <button class="btn btn-raised btn-primary" [disabled]="rate === 0" (click)="emitRateData()">
-                    <i class="material-icons">mode_edit</i> 코멘트 작성
+                    <i class="material-icons">mode_edit</i> 별점 주기
                 </button>
             </div>
         </div>

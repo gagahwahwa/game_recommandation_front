@@ -26,7 +26,7 @@ export class SearchBarComponent implements OnInit {
                 .distinctUntilChanged()
                 .filter(keyword => keyword !== '')
                 .switchMap(keyword => {
-                    return this.gameService.getGameByParameter('title', keyword)
+                    return this.gameService.searchGameByKeyword(keyword)
                 })
         );
     }

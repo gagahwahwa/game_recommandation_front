@@ -8,7 +8,8 @@ export class GameService {
     private url: string;
 
     constructor (private http: Http) {
-        this.url = 'http://52.78.156.169:9999';
+        this.url = 'http://localhost:9999';
+        //this.url = 'http://52.78.156.169:9999';
         //this.url = 'http://teamsf.co.kr:9999';
     }
 
@@ -28,8 +29,14 @@ export class GameService {
                 .map(res => res.json().data[ 0 ]);
         } else if ( type === 'title' ) {
             return this.http.get(this.url + `/game?title=${param}`)
-                .map(res => res.json().data);
+                .map(res => res.json().data[ 0 ]);
         }
+    }
+
+    // 게임 검색
+    public searchGameByKeyword (keyword: string): Observable<any> {
+        return this.http.get(this.url + `/search?keyword=${keyword}`)
+            .map(res => res.json().data);
     }
 
     // 랭킹 가져오기 3개월 이내 5개 이상 평점이 기록된 게임을 오름차순으로 정렬한 뷰
@@ -42,6 +49,12 @@ export class GameService {
     // 게임의 id로 해당 게임에 대한 태그 정보를 가져옴
     public getTagByGameId (id: number): Observable<any> {
         return this.http.get(this.url + `/game-tag?game_id=${id}`)
+            .map(res => res.json().data);
+    }
+    
+    // 유저의 id에 대해 유저가 선택한 게임의 Distinc 한 tag 정보와 얼만큼 선택 되었는지 count를 가져옴
+    public getTagByUserId (user_id: number): Observable<any> {
+        return this.http.get(this.url + `/game-tag?user_id=${user_id}`)
             .map(res => res.json().data);
     }
 

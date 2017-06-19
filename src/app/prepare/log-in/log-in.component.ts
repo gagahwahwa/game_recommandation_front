@@ -32,7 +32,6 @@ export class LogInComponent implements OnInit {
 
     public logIn () {
         let value = this.logInForm.value;
-
         this.userService.logIn(value).subscribe(res => {
             if ( res.result === 'success' ) {
                 sessionStorage.setItem('user_id', res.data.id);

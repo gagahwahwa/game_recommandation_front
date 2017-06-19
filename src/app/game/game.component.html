@@ -1,3 +1,5 @@
+<app-navbar></app-navbar>
+
 <div class="container">
     <div class="row game-info">
         <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12 left-side">
@@ -38,7 +40,7 @@
                         <ng-template #badGame><i class="material-icons bad">thumb_down</i></ng-template>
                         <span>{{ gameRateAVG.rate_avg_3_month | number:'.2-2' }}</span>
 
-                        <span *ngIf="gameRateAVG.rate_count_3_month < 10000;else muchPeople">({{ gameRateAVG.rate_count_3_month | number }}명)</span>
+                        <span *ngIf="gameRateAVG.rate_count_3_month < 10000; else muchPeople">({{ gameRateAVG.rate_count_3_month | number }}명)</span>
                         <ng-template #muchPeople>(10000명 이상)</ng-template>
                     </p>
                 </div>
@@ -66,7 +68,7 @@
                     <h3 class="title">당신의 별점 예상</h3>
                     <div class="predicted-score"
                          *ngIf="collaborateFilterRate$ | async as collaborateFilterRate; else notYetPredictScore">
-                        <div *ngIf="collaborateFilterRate === -1; else noPredictScore">
+                        <div *ngIf="collaborateFilterRate === CAN_NOT_COMPUTE; else noPredictScore">
                             <span> 정보가 부족합니다. </span>
                         </div>
                         <ng-template #noPredictScore>

@@ -1,7 +1,6 @@
 <nav class="navbar navbar-default">
     <div class="container">
-        <div class="navbar-header">
-            <a [routerLink]="['/']" class="navbar-brand">Sourgrape</a>
-        </div>
+        <a [routerLink]="['/main']" class="navbar-brand">Sourgrape</a>
+        <a [routerLink]="['/my-page']" class="navbar-brand navbar-right">{{ userNickName }}</a>
     </div>
 </nav>
