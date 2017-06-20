@@ -8,9 +8,9 @@ export class GameService {
     private url: string;
 
     constructor (private http: Http) {
-        this.url = 'http://localhost:9999';
+        //this.url = 'http://localhost:9999';
         //this.url = 'http://52.78.156.169:9999';
-        //this.url = 'http://teamsf.co.kr:9999';
+        this.url = 'http://teamsf.co.kr:9999';
     }
 
     // 게임리스트 요청, limit만큼 전달 받음. limit이 0이면 전체
