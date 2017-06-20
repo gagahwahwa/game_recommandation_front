@@ -1,6 +1,13 @@
 <app-navbar></app-navbar>
 <div class="container">
-    <div class="row">
+    <div class="row" *ngIf="gameRateList$ | async as gameRateList">
+        <div class="col-lg-12">
+            <div class="panel panel-default">
+                <div class="panel-body">
+
+                </div>
+            </div>
+        </div>
         <div class="col-lg-8">
             <div class="panel panel-default">
                 <div class="panel-body">
@@ -11,13 +18,13 @@
         <div class="col-lg-4">
             <div class="panel panel-default">
                 <div class="panel-body">
-                    <h4>최근 평가한 게임</h4>
-                    <table class="table table-striped">
-                        <tr *ngFor="let i = index; let gameRate of gameRateList$ | async | slice:0:5">
-                            <td><a [routerLink]="['/game', gameRate.url]">{{ gameRate.title }}</a></td>
-                            <td class="text-right">{{ gameRate.rate | number:'.2-2'}}</td>
-                        </tr>
-                    </table>
+                    <h4>게임 평가 현황</h4>
+                    <h2 class="text-center">{{ gameRateList?.length }}</h2>
+                    <div class="progress">
+                        <div class="progress-bar" [ngStyle]="{width: (gameRateList?.length % 100) + '%'}"></div>
+                    </div>
+                    <p class="pull-left">{{ (gameRateList?.length / 100) | number:'.0-0' }}</p>
+                    <p class="pull-right">{{ (gameRateList?.length / 100) + 100 | number:'.0-0' }}</p>
                 </div>
             </div>
             <div class="panel panel-default">
@@ -26,7 +33,18 @@
                     <table class="table table-striped">
                         <tr *ngFor="let i = index; let tag of tagList$ | async | slice:0:5">
                             <td><p>{{ tag.name }}</p></td>
-                            <td  class="text-right">{{ tag.game_count }}개</td>
+                            <td  class="text-right">{{ (tag.tag_rate / tag.game_count) | number: '.2-2' }}</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <h4>최근 평가한 게임</h4>
+                    <table class="table table-striped">
+                        <tr *ngFor="let i = index; let gameRate of gameRateList | slice:0:5">
+                            <td><a [routerLink]="['/game', gameRate.url]">{{ gameRate.title }}</a></td>
+                            <td class="text-right">{{ gameRate.rate | number:'.2-2'}}</td>
                         </tr>
                     </table>
                 </div>

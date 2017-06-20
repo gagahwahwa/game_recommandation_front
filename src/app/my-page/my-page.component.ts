@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import 'rxjs/add/observable/from';
-import 'rxjs/add/operator/distinct';
-import 'rxjs/add/operator/do';
-import 'rxjs/add/operator/mergeMap';
+import 'rxjs/add/operator/count';
 import 'rxjs/add/operator/share';
+import 'rxjs/add/operator/mergeMap';
+import 'rxjs/add/observable/from';
 import { Observable } from 'rxjs/Observable';
 import { GameService } from '../shared/service/game.service';
 import { UserService } from '../shared/service/user.service';
@@ -15,7 +14,7 @@ import { UserService } from '../shared/service/user.service';
 })
 export class MyPageComponent implements OnInit {
     myUserId: number;
-    gameRateList$: Observable<any>;
+    gameRateList$: Observable<any>; gameRateList: Array<any>;
     tagList$: Observable<any>;
 
     constructor (private userService: UserService, private gameService: GameService) {
