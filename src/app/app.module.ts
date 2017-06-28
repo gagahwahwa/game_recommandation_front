@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { GameModule } from './game/game.module';
 import { MainModule } from './main/main.module';
 import { PrepareModule } from './prepare/prepare.module';
+import { GameListModule } from './game-list/game-list.module';
 
 @NgModule({
     declarations: [
@@ -22,7 +23,8 @@ import { PrepareModule } from './prepare/prepare.module';
 
         MainModule,
         GameModule,
-        PrepareModule
+        PrepareModule,
+        GameListModule
     ],
     providers: [],
     bootstrap: [ AppComponent ]

@@ -1,7 +1,7 @@
 <div class="card">
     <div class="card-height-indicator"></div>
     <div class="card-content">
-        <div class="card-image withoutripple">
+        <div class="card-image" [ngClass]="{withoutripple: !canClick}" (click)="navigate( game.url )">
             <img [src]="'assets/img/header.jpg'">
             <h3 class="card-image-headline">{{ game.title }}</h3>
         </div>

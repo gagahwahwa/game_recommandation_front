@@ -30,6 +30,9 @@ export class GameService {
         } else if ( type === 'title' ) {
             return this.http.get(this.url + `/game?title=${param}`)
                 .map(res => res.json().data[ 0 ]);
+        } else if ( type === 'tag_name' ) {
+            return this.http.get(this.url + `/game?tag_name=${param}`)
+                .map(res => res.json().data);
         }
     }
 
