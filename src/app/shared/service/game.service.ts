@@ -8,9 +8,9 @@ export class GameService {
     private url: string;
 
     constructor (private http: Http) {
-        //this.url = 'http://localhost:9999';
+        this.url = 'http://localhost:9999';
         //this.url = 'http://52.78.156.169:9999';
-        this.url = 'http://teamsf.co.kr:9999';
+        //this.url = 'http://teamsf.co.kr:9999';
     }
 
     // 게임리스트 요청, limit만큼 전달 받음. limit이 0이면 전체
@@ -51,7 +51,7 @@ export class GameService {
         return this.http.get(this.url + `/game-tag?game_id=${id}`)
             .map(res => res.json().data);
     }
-    
+
     // 유저의 id에 대해 유저가 선택한 게임의 Distinc 한 tag 정보와 얼만큼 선택 되었는지 count를 가져옴
     public getTagByUserId (user_id: number): Observable<any> {
         return this.http.get(this.url + `/game-tag?user_id=${user_id}`)
@@ -79,6 +79,24 @@ export class GameService {
     // 게임에 대한 평점 리스트를 가져옴
     public getGameRateById (game_id: number): Observable<any> {
         return this.http.get(this.url + `/game-rate?game_id=${game_id}`)
+            .map(res => res.json().data);
+    }
+
+    // 태그에 대한 게임 리스트 가져옴
+    public getGameByTagId (tag_id: number): Observable<any> {
+        return this.http.get(this.url + `/gamelist-tag?tag_id=${tag_id}`)
+            .map(res => res.json().data);
+    }
+
+    // 태그 정보 가져옴
+    public getTagList (): Observable<any> {
+        return this.http.get(this.url + `/taglist`)
+            .map(res => res.json().data);
+    }
+
+    // 유저가 평가한 게임에 대해 2개 이상의 게임이 평가된 Distinct한 게임사를 들고옴
+    public getGameDeveloperByUserId (user_id: number): Observable<any> {
+        return this.http.get(this.url + `/game-developer?user_id=${user_id}`)
             .map(res => res.json().data);
     }
 }

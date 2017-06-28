@@ -1,14 +1,13 @@
 <div class="container">
-    <div class="panel panel-primary">
+    <div class="panel panel-default">
         <div class="panel-body">
             <div class="btn-group btn-group-justified">
                 <a id="log-in" class="btn btn-raised btn-primary"
-                   [ngClass]="{'not-selected': selectedType !== '/log-in'}" [routerLink]="['/log-in']">로그인</a>
+                   [ngClass]="{'not-selected': selectedType !== '/prepare/log-in'}" [routerLink]="['/prepare/log-in']">로그인</a>
                 <a id="register" class="btn btn-raised btn-primary"
-                   [ngClass]="{'not-selected': selectedType !== '/sign-up'}" [routerLink]="['/sign-up']">회원가입</a>
+                   [ngClass]="{'not-selected': selectedType !== '/prepare/sign-up'}" [routerLink]="['/prepare/sign-up']">회원가입</a>
             </div>
-
-            <div *ngIf="selectedType === '/log-in';else signUpForm">
+            <div *ngIf="selectedType === '/prepare/log-in';else signUpForm">
                 <app-log-in></app-log-in>
             </div>
             <ng-template #signUpForm>

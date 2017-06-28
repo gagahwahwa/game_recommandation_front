@@ -28,6 +28,7 @@ export class LogInComponent implements OnInit {
     ngOnInit () {
         this.isEmailFault = false;
         this.isPasswordFault = false;
+        sessionStorage.clear();
     }
 
     public logIn () {

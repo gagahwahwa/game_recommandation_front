@@ -4,6 +4,7 @@ import * as moment from 'moment';
 import { Observable } from 'rxjs/Observable';
 import { isUndefined } from 'util';
 import { GameService } from '../shared/service/game.service';
+import 'rxjs/add/operator/share';
 
 @Component({
     selector: 'app-game',
@@ -57,7 +58,8 @@ export class GameComponent implements OnInit {
                             }
                         });
                     this.collaborateFilterRate$ = this.gameService.getCollaborateFilter(this.game.id, this.user_id)
-                        .map(data => data !== -999 && data < 0 ? 0 : data ).map(data => data < 5 ? data : 5);
+                        .map(data => data !== -999 && data < 0 ? 0 : data ) // -999는 예상 점수를 낼 수 없는 상태, 나머지 음수는 0으로 처리
+                        .map(data => data < 5 ? data : 5); // 5점 이상은 5점으로 처리
 
                     this.gameRateList$ = this.gameService.getGameRateById(this.game.id)
                         .map(list => list.filter(data => data.comment !== '' && data.comment !== null));

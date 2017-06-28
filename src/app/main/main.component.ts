@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { GameService } from "../shared/service/game.service";
 import { Observable } from "rxjs/Observable";
 

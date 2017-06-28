@@ -2,7 +2,7 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserService } from '../../shared/service/user.service';
-import { PasswordRepeatValidator } from './shared/password-repeat-validator';
+import { PasswordRepeatValidator } from './validator/password-repeat-validator';
 
 @Component({
     selector: 'app-sign-up',
@@ -44,7 +44,10 @@ export class SignUpComponent implements OnInit {
             nickname: value.nickname
         }).subscribe(res => {
             if ( res.result === 'success' ) {
-                this.router.navigate([ '/log-in' ]);
+                sessionStorage.setItem('user_id', value.email);
+                sessionStorage.setItem('email', value.passwordMatch.password);
+                sessionStorage.setItem('nickname', value.nickname);
+                this.router.navigate([ '/prepare/init-data' ]);
             } else if ( res.result === 'fail' ) {
                 if ( res.msg === 'email is already exist' ) {
                     this.isExistEmail = true;
