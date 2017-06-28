@@ -1,0 +1,17 @@
+.card {
+    margin: 10px 0;
+    background-color: #EEEEEE;
+    box-shadow: none;
+    .card-height-indicator {
+        margin-top: 67%;
+    }
+
+    .card-image {
+        height: 70%;
+    }
+
+    .card-body {
+        height: 30%;
+        padding: 5px 15px;
+    }
+}
