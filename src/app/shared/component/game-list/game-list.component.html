@@ -3,7 +3,7 @@
     <div class="panel-body">
         <div class="row" *ngIf="gameList$ | async as gameList; else loading">
             <div class="col-lg-4" *ngFor="let game of gameList | slice:0:end">
-                <app-game-card [game]="game"></app-game-card>
+                <app-game-card [game]="game" [canClick]="canClick"></app-game-card>
             </div>
         </div>
         <ng-template #loading>

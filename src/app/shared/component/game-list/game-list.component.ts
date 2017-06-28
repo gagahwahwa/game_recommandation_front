@@ -8,6 +8,7 @@ import { Observable } from 'rxjs/Observable';
 })
 export class GameListComponent implements OnInit {
     @Input() gameList$: Observable<any>;
+    @Input() canClick: boolean;
     end: number;
 
     constructor () {
