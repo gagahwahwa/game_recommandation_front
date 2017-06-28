@@ -21,8 +21,6 @@ export class InitDataComponent implements OnInit {
 
     isShowGameList: boolean;
     gameList$: Observable<any>;
-    end: number;
-
     selectedGameCount: number;
 
     constructor (private gameService: GameService, private router: Router) {
@@ -31,7 +29,6 @@ export class InitDataComponent implements OnInit {
 
     ngOnInit () {
         this.tagList$ = this.gameService.getTagList();
-        this.end = 21;
         this.selectedGameCount = 0;
     }
 
@@ -51,10 +48,6 @@ export class InitDataComponent implements OnInit {
                 .toArray();
             this.isShowGameList = true;
         }
-    }
-
-    public loadMore () {
-        this.end = this.end + 21;
     }
 
     public submitStarRate (game: any, rate: number) {

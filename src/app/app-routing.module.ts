@@ -9,7 +9,11 @@ const routes: Routes = [
     { path: 'main', component: MainComponent, canActivate: [ AuthGuard ] },
     { path: 'game', loadChildren: 'app/game/game.module#GameModule', canActivate: [ AuthGuard ] },
     { path: 'my-page', loadChildren: 'app/my-page/my-page.module#MyPageModule', canActivate: [ AuthGuard ] },
-    { path: 'game-list', loadChildren: 'app/game-list/game-list.module#GameListModule', canActivate: [ AuthGuard ] }
+    {
+        path: 'game-list',
+        loadChildren: 'app/filtered-game-list/filtered-game-list.module#FilteredGameListModule',
+        canActivate: [ AuthGuard ]
+    },
 ];
 
 @NgModule({

@@ -7,7 +7,8 @@ import { InitDataComponent } from './init-data.component';
 import { PaginationModule } from 'ngx-bootstrap';
 import { RouterModule } from '@angular/router';
 import { GamerateCounterModule } from '../../shared/component/gamerate-counter/gamerate-counter.module';
-import { GameCardModule } from '../../shared/component/game-card/game-card.module';
+import { GameCardModule } from '../../shared/component/game-list/game-card/game-card.module';
+import { GameListModule } from '../../shared/component/game-list/game-list.module';
 
 @NgModule({
     imports: [
@@ -15,7 +16,7 @@ import { GameCardModule } from '../../shared/component/game-card/game-card.modul
         NavbarModule,
         RouterModule,
 
-        GameCardModule,
+        GameListModule,
         GamerateCounterModule
     ],
     declarations: [ InitDataComponent ],

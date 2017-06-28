@@ -29,25 +29,8 @@
                 <app-gamerate-counter [count]="selectedGameCount" [limit]="20"></app-gamerate-counter>
             </div>
         </div>
-        <!--게임 선택-->
-        <div class="panel panel-default" >
-            <div class="panel-body">
-                <div class="row" *ngIf="gameList$ | async as gameList; else loading">
-                    <div class="col-lg-4" *ngFor="let game of gameList | slice:0:end">
-                        <app-game-card [game]="game"></app-game-card>
-                    </div>
-                </div>
-                <ng-template #loading>
-                    <h2 class="text-center">잠시만 기다려주세요, 태그를 분석하는 중입니다.</h2>
-                </ng-template>
-            </div>
-        </div>
 
-        <div class="panel panel-default">
-            <div class="panel-body">
-                <button class="btn btn-raised btn-primary btn-block" (click)="loadMore()">더 보기</button>
-                <button class="btn btn-danger btn-block" [routerLink]="'/main'">그만하고 싶어요</button>
-            </div>
-        </div>
+        <app-game-list [gameList$]="gameList$"></app-game-list>
+        <button class="btn btn-danger btn-block" [routerLink]="'/main'">그만하고 싶어요</button>
     </ng-template>
 </div>
