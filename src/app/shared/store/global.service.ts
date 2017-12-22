@@ -6,7 +6,7 @@ export class GlobalService {
 
   constructor() {
     // this._url = 'http://localhost:9999';
-    this._url = '52.79.187.160:9999';
+    this._url = 'http://52.79.187.160:9999';
   }
 
   get url(): string {
