@@ -23,4 +23,8 @@ export class GameCardComponent implements OnInit {
             this.router.navigate(['/game', url]);
         }
     }
+
+    submitStarRate(game, $event) {
+
+    }
 }
