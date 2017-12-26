@@ -62,7 +62,7 @@ export class GameComponent implements OnInit {
                         .map(data => data < 5 ? data : 5); // 5점 이상은 5점으로 처리
 
                     this.gameRateList$ = this.gameService.getGameRateById(this.game.id)
-                        .map(list => list.filter(data => data.comment !== '' && data.comment !== null));
+                        .map(list => list.filter(data => data.is_metacritic !== 1));
                 });
         });
     }

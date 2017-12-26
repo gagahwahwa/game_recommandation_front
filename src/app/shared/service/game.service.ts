@@ -54,7 +54,7 @@ export class GameService {
       .map((res: any) => res.data);
   }
 
-  // 유저의 id에 대해 유저가 선택한 게임의 Distinc 한 tag 정보와 얼만큼 선택 되었는지 count를 가져옴
+  // 유저의 id에 대해 유저가 선택한 게임의 Distinct 한 tag 정보와 얼만큼 선택 되었는지 count를 가져옴
   public getTagByUserId(user_id: number): Observable<any> {
     return this.http.get(this.url + `/game-tag?user_id=${user_id}`)
       .map((res: any) => res.data);

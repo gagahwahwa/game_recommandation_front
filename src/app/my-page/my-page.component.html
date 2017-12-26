@@ -46,7 +46,7 @@
                 <div class="panel-body">
                     <h4>최근 평가한 게임</h4>
                     <table class="table table-striped">
-                        <tr *ngFor="let gameRate of gameRateList | slice:0:5">
+                        <tr *ngFor="let gameRate of gameRateList">
                             <td><a [routerLink]="['/game', gameRate.url]">{{ gameRate.title }}</a></td>
                             <td class="text-right">{{ gameRate.rate | number:'.2-2'}}</td>
                         </tr>
