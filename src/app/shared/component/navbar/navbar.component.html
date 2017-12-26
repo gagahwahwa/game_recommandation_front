@@ -1,6 +1,4 @@
-<nav class="navbar navbar-default">
-    <div class="container">
-        <a [routerLink]="['/main']" class="navbar-brand">Sourgrape</a>
-        <a [routerLink]="['/my-page']" class="navbar-brand navbar-right">{{ userNickName }}</a>
-    </div>
-</nav>
+<div fxLayout="row" fxLayoutAlign="space-between center" class="container shadow-bottom">
+  <a class="title" routerLink="main">Sour Grape</a>
+  <a class="nickname" routerLink="my-page/1">그랩그랩</a>
+</div>

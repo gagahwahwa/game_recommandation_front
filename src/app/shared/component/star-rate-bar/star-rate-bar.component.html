@@ -1,6 +1,0 @@
-<div class="review-rate-group pull-left">
-    <div class="star" *ngFor="let i = index; let item of rateIterator;">
-        <i class="material-icons" (mouseover)="changeStarRate(i + 1)" (mouseout)="resetStarRate()" (click)="submitStarRate(i + 1)"> {{ starType[ checked[i] ] }} </i>
-    </div>
-    <div class="message">{{ starRateMessage }}</div>
-</div>

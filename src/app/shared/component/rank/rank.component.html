@@ -1,7 +1,0 @@
-<table class="table table-striped">
-    <tr *ngFor="let i = index; let rank of rankList | async | slice:0:20">
-        <td>{{ i + 1 }}</td>
-        <td><a [routerLink]="['/game', rank.url]" >{{ rank.title }}</a></td>
-        <td>{{ rank.rate_avg | number: '.2-2' }}</td>
-    </tr>
-</table>

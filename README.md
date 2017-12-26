@@ -1,23 +1,27 @@
 # Sourgrape
 
-This project is game recommand web application.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.6.0.
 
-### Using Tech
-- **Front-end**
-  - Angular 4.x
-    - Rxjs
-    - Typescript
-  - SCSS
-  - PWA (*may be*)
-  
-- **Back-end**
-  - Nodejs + Express
-  - Mysql
-  - Hadoop (*may be*)
-  - Elastic Search (*may be*)
-  
-### Using Algo
-- CF ( Collaboration Filtering )
-  - It compute predicting rate.
-- CBF ( Context Based Filtering )
-  - It filter user interest.
+## Development server
+
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+
+## Code scaffolding
+
+Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+
+## Build
+
+Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+
+## Running unit tests
+
+Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+
+## Running end-to-end tests
+
+Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+
+## Further help
+
+To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).

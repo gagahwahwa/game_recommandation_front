@@ -1,23 +1,15 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { GameService } from "../shared/service/game.service";
-import { Observable } from "rxjs/Observable";
+import { Component, OnInit } from '@angular/core';
 
 @Component({
-    selector: 'app-main',
-    templateUrl: './main.component.html',
-    styleUrls: [ './main.component.scss' ]
+  selector: 'app-main',
+  templateUrl: './main.component.html',
+  styleUrls: ['./main.component.scss']
 })
 export class MainComponent implements OnInit {
-    rankList$: Observable<any>;
-    searchList$: Observable<any>;
 
-    private limit: number;
+  constructor() { }
 
-    constructor (private gameService: GameService) {
-        this.limit = 20;
-    }
+  ngOnInit() {
+  }
 
-    ngOnInit () {
-        this.rankList$ = this.gameService.getRankWithLimit( this.limit );
-    }
 }

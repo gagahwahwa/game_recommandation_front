@@ -1,3 +1,36 @@
-html, body {
+// https://material.io/color/#!/?view.left=0&view.right=1
+
+html, body, app-root {
+  display: flex;
+  flex-direction: column;
   height: 100%;
+  background-color: #E1E2E1;
+}
+
+@media screen and (max-width: 959px) {
+  .container {
+    padding: 0 5%;
+  }
+}
+
+@media screen and (min-width: 960px) {
+  .container {
+    padding: 0 15%;
+  }
+}
+
+.shadow-bottom {
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,.1);
+}
+
+.card {
+  padding: .5em 1em;
+  box-shadow: 4px 4px 8px -2px rgba(0, 0, 0, 0.2), 0 0 4px 2px rgba(0, 0, 0, 0.1);
+  background-color: #F5F5F6;
+}
+
+a[routerLink] {
+  color: inherit;
+  text-decoration: none;
+  margin: 1em 0;
 }

@@ -1,58 +1,26 @@
-<app-navbar></app-navbar>
-<div class="container">
-    <div class="row" *ngIf="gameRateList$ | async as gameRateList">
-        <div class="col-lg-12">
-            <div class="panel panel-default">
-                <div class="panel-body">
-                    <h4>게임 평가 현황</h4>
-                    <app-gamerate-counter [count]="gameRateList?.length" [limit]="100"></app-gamerate-counter>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-8">
-            <div class="panel panel-default">
-                <div class="panel-body">
-
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-4">
-            <div class="panel panel-default">
-                <div class="panel-body">
-                    <h4>좋아하는 태그</h4>
-                    <table class="table table-striped">
-                        <tr *ngFor="let tag of tagList$ | async | slice:0:5">
-                            <td>
-                                <a [routerLink]="['/tag', tag.name]">{{tag.name}}</a>
-                            </td>
-                            <td class="text-right">{{ (tag.tag_rate / tag.game_count) | number: '.2-2' }}</td>
-                        </tr>
-                    </table>
-                </div>
-            </div>
-            <div class="panel panel-default">
-                <div class="panel-body">
-                    <h4>좋아하는 개발사</h4>
-                    <table class="table table-striped">
-                        <tr *ngFor="let gameDeveloper of gameDeveloperList$ | async | slice:0:5">
-                            <td><p>{{ gameDeveloper.developer }}</p></td>
-                            <td class="text-right">{{ (gameDeveloper.rate / gameDeveloper.count) | number: '.2-2' }}
-                            </td>
-                        </tr>
-                    </table>
-                </div>
-            </div>
-            <div class="panel panel-default">
-                <div class="panel-body">
-                    <h4>최근 평가한 게임</h4>
-                    <table class="table table-striped">
-                        <tr *ngFor="let gameRate of gameRateList">
-                            <td><a [routerLink]="['/game', gameRate.url]">{{ gameRate.title }}</a></td>
-                            <td class="text-right">{{ gameRate.rate | number:'.2-2'}}</td>
-                        </tr>
-                    </table>
-                </div>
-            </div>
-        </div>
+<div class="container" fxLayout="column" fxLayoutGap=".5em">
+  <div class="card">
+    <p>게임평가현황</p>
+  </div>
+  <div class="contents" fxLayout.gt-sm="row" fxLayout.lt-md="column" fxLayoutGap=".5em">
+    <div class="left" fxLayout="column" fxLayoutGap=".5em" fxFlex="3 0 auto">
+      <div class="card">
+        <p>찜한 게임</p>
+      </div>
+      <div class="card">
+        <p>평가한 게임</p>
+      </div>
     </div>
+    <div class="right" fxLayout="column" fxLayoutGap=".5em" fxFlex="1 0 auto">
+      <div class="card">
+        <p>선호하는 장르</p>
+      </div>
+      <div class="card">
+        <p>선호하는 개발사</p>
+      </div>
+      <div class="card">
+        <p>평가 그래프</p>
+      </div>
+    </div>
+  </div>
 </div>

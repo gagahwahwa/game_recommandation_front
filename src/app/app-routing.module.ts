@@ -1,25 +1,21 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { MainComponent } from './main/main.component';
-import { AuthGuard } from './shared/guard/auth.guard';
+import { AuthGuard } from './shared/guard/canActive/auth.guard';
 
 const routes: Routes = [
-    { path: '', pathMatch: 'full', redirectTo: 'main' },
-    { path: 'prepare', loadChildren: 'app/prepare/prepare.module#PrepareModule' },
-    { path: 'main', component: MainComponent, canActivate: [ AuthGuard ] },
-    { path: 'game', loadChildren: 'app/game/game.module#GameModule', canActivate: [ AuthGuard ] },
-    { path: 'my-page', loadChildren: 'app/my-page/my-page.module#MyPageModule', canActivate: [ AuthGuard ] },
-    {
-        path: 'game-list',
-        loadChildren: 'app/filtered-game-list/filtered-game-list.module#FilteredGameListModule',
-        canActivate: [ AuthGuard ]
-    },
+  {path: '', pathMatch: 'full', redirectTo: 'main'},
+  {path: 'main', component: MainComponent, canActivate: [AuthGuard]},
+  {path: 'login', loadChildren: 'app/login/login.module#LoginModule'},
+  {path: 'sign-in', loadChildren: 'app/sign-in/sign-in.module#SignInModule'},
+  {path: 'game-detail/:gameId', loadChildren: 'app/game-detail/game-detail.module#GameDetailModule', canActivate: [AuthGuard]},
+  {path: 'my-page/:userId', loadChildren: 'app/my-page/my-page.module#MyPageModule', canActivate: [AuthGuard]},
 ];
 
 @NgModule({
-    imports: [ RouterModule.forRoot(routes) ],
-    exports: [ RouterModule ],
-    providers: [ AuthGuard ]
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule],
+  providers: [AuthGuard]
 })
 export class AppRoutingModule {
 }

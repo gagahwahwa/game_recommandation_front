@@ -1,6 +1,0 @@
-<h2 class="text-center">{{ count }}</h2>
-<div class="progress">
-    <div class="progress-bar" [ngStyle]="{width: (count % limit) / limit * 100 + '%'}"></div>
-</div>
-<p class="pull-left">{{ count - (count % limit) | number:'.0-0' }}</p>
-<p class="pull-right">{{ count - (count % limit) + limit | number:'.0-0' }}</p>
