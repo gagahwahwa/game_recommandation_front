@@ -1,13 +1,22 @@
 <div class="container" fxLayout="row" fxLayoutAlign="center center">
   <div class="card" fxFlex.gt-sm="500px" fxLayout="column">
     <p>Sign up</p>
-    <form [formGroup]="signUpFormGroup" class="form-group" fxLayout="column" fxLayoutGap="1rem" (submit)="signup()">
-      <label for="email" class="form-label">Email
+    <form [formGroup]="signUpFormGroup" class="form-group" fxLayout="column" fxLayoutGap="1rem" (submit)="signup(signUpFormGroup)">
+      <div class="form-control-group">
+        <label for="email" class="form-label">Email</label>
         <input formControlName="email" id="email" class="form-control" type="text">
-      </label>
-      <label for="password" class="form-label">Password
+        <p class="validation-message">Email is blank</p>
+      </div>
+      <div class="form-control-group">
+        <label for="nickname" class="form-label">Nickname</label>
+        <input formControlName="nickname" id="nickname" class="form-control" type="text">
+        <p class="validation-message">Nickname is blank</p>
+      </div>
+      <div class="form-control-group">
+        <label for="password" class="form-label">Password</label>
         <input formControlName="password" id="password" class="form-control" type="password">
-      </label>
+        <p class="validation-message">Password is blank</p>
+      </div>
       <div class="btn-group" fxLayout="column" fxLayoutGap=".2rem">
         <button class="btn raise primary" type="submit">Sign up</button>
       </div>

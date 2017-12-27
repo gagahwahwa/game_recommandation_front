@@ -1,5 +1,4 @@
 // https://codepen.io/grapgrap/pen/rpjOEg
-
 // font import
 @import url(//fonts.googleapis.com/earlyaccess/nanumgothic.css);
 
@@ -16,21 +15,26 @@ $background-light: #F5F5F6;
 .default {
   border: 1px solid $background-dark;
 }
+
 .raise.default {
   background-color: $background-dark;
 }
+
 .primary {
   background-color: inherit;
   color: $primary-dark;
 }
+
 .raise.primary {
   background-color: $primary;
   color: #000000;
 }
+
 .secondary {
   background-color: inherit;
   color: $secondary-dark;
 }
+
 .raise.secondary {
   background-color: $secondary;
   color: #000000;
@@ -49,7 +53,7 @@ html, body, app-root {
 }
 
 .shadow-bottom {
-  box-shadow: 0 2px 4px 0 rgba(0,0,0,.1);
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .1);
 }
 
 .card {
@@ -80,6 +84,14 @@ a[routerLink] {
     border-color: #C3C3C3;
     outline: none;
     font-size: 1rem;
+    &.ng-invalid:not(.ng-untouched) {
+      border-color: $primary;
+    }
+  }
+  .validation-message {
+    margin: .25rem 0;
+    font-size: .8rem;
+    color: $primary;
   }
 }
 
