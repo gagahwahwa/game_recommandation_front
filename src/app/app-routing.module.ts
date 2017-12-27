@@ -4,7 +4,7 @@ import { MainComponent } from './main/main.component';
 import { AuthGuard } from './shared/guard/canActive/auth.guard';
 
 const routes: Routes = [
-  {path: '', pathMatch: 'full', redirectTo: 'main'},
+  {path: '', pathMatch: 'full', redirectTo: 'login'},
   {path: 'main', component: MainComponent, canActivate: [AuthGuard]},
   {path: 'login', loadChildren: 'app/login/login.module#LoginModule'},
   {path: 'sign-up', loadChildren: 'app/sign-up/sign-up.module#SignUpModule'},
