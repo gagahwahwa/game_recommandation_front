@@ -21,16 +21,8 @@ html, body, app-root {
   font-family: 'Nanum Gothic', sans-serif;
 }
 
-@media screen and (max-width: 959px) {
-  .container {
-    padding: 0 5%;
-  }
-}
-
-@media screen and (min-width: 960px) {
-  .container {
-    padding: 0 15%;
-  }
+.container {
+  padding: 0 1rem;
 }
 
 .shadow-bottom {
