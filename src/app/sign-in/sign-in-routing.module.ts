@@ -4,7 +4,7 @@ import { SignInComponent } from './sign-in.component';
 
 const routes: Routes = [
   {path: '', component: SignInComponent},
-  {path: 'init-data', loadChildren: 'app/sign-in/init-data/init-data-routing.module#InitDataModule'},
+  {path: 'init-data', loadChildren: 'app/sign-in/init-data/init-data.module#InitDataModule'},
 ];
 
 @NgModule({
