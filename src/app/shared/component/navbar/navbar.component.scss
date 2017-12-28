@@ -1,5 +1,8 @@
+@import "../../../../styles.scss";
+
 .container {
-  background-color: #F06868;
+  background-color: $primary;
+  color: #FFFFFF;
   margin-bottom: 1rem;
 }
 
