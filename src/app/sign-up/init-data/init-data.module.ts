@@ -7,12 +7,14 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { GameCardContainerModule } from '../../shared/component/game-card-container/game-card-container.module';
 import { InitDataStep1Module } from './init-data-step-1/init-data-step-1.module';
 import { InitDataStep2Module } from './init-data-step-2/init-data-step-2.module';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   imports: [
     CommonModule,
     FlexLayoutModule,
     InitDataRoutingModule,
+    RouterModule,
 
     InitDataStep1Module,
     InitDataStep2Module
