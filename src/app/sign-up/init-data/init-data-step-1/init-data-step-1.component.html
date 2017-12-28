@@ -1,14 +1,18 @@
 <div class="container" fxLayout="column" fxLayoutGap=".5rem">
   <div id="selected" class="card">
-    <p>선택한 게임 장르</p>
+    <p>선택한 게임 장르 ({{ selectedTagList.length}} / {{ MAX_COUNT }})</p>
     <div class="label-group">
-      <label class="label raise primary">tag</label>
+      <label *ngFor="let tag of selectedTagList" class="label raise primary" (click)="unselect(tag)">{{ tag.name }}</label>
     </div>
   </div>
   <div id="whole" class="card">
     <p>전체 게임 장르</p>
-    <div class="label-group">
-      <label class="label raise primary">tag</label>
+    <input id="tag" type="text" class="form-control" [formControl]="searchKeyword" placeholder="태그 검색">
+    <div *ngIf="searchedTagList$ | async as tagList" class="label-group">
+      <label *ngFor="let tag of tagList" class="label primary" (click)="select(tag)">{{ tag.name }}</label>
     </div>
+  </div>
+  <div *ngIf="selectedTagList.length >= MAX_COUNT" class="card" fxLayout="row" fxLayoutAlign="end">
+    <button class="btn raise primary" routerLink="/sign-up/init-data/2">다음 단계</button>
   </div>
 </div>

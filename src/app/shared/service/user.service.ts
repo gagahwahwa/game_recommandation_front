@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
 import { GlobalService } from '../store/global.service';
 
 @Injectable()
@@ -10,7 +11,7 @@ export class UserService {
     this.url = global.url;
   }
 
-  signUp(id: string, password: string, nickname: string) {
+  signUp(id: string, password: string, nickname: string): Observable<any> {
     const encoded = btoa(`${id}:${password}:${nickname}`);
     return this.http.post(this.url + '/sign-up', null, {headers: {Authorization: `Beare ${encoded}`}});
   }
