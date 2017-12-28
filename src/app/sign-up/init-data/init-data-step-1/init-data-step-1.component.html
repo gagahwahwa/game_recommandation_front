@@ -13,6 +13,6 @@
     </div>
   </div>
   <div *ngIf="selectedTagList.length >= MAX_COUNT" class="card" fxLayout="row" fxLayoutAlign="end">
-    <button class="btn raise primary" routerLink="/sign-up/init-data/2">다음 단계</button>
+    <button class="btn raise primary" (click)="next()">다음 단계</button>
   </div>
 </div>

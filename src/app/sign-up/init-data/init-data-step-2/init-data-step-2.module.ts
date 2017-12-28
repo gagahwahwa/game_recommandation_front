@@ -4,6 +4,7 @@ import { InitDataStep2Component } from './init-data-step-2.component';
 import { GameCardContainerModule } from '../../../shared/component/game-card-container/game-card-container.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { RouterModule } from '@angular/router';
+import { GameService } from '../../../shared/service/game.service';
 
 @NgModule({
   imports: [
@@ -13,7 +14,8 @@ import { RouterModule } from '@angular/router';
     GameCardContainerModule
   ],
   declarations: [InitDataStep2Component],
-  exports: [InitDataStep2Component]
+  exports: [InitDataStep2Component],
+  providers: [GameService]
 })
 export class InitDataStep2Module {
 }

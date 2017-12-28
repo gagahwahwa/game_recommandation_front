@@ -8,6 +8,7 @@ import { GameCardContainerModule } from '../../shared/component/game-card-contai
 import { InitDataStep1Module } from './init-data-step-1/init-data-step-1.module';
 import { InitDataStep2Module } from './init-data-step-2/init-data-step-2.module';
 import { RouterModule } from '@angular/router';
+import { InitDataStoreService } from './shared/store/init-data-store.service';
 
 @NgModule({
   imports: [
@@ -19,6 +20,7 @@ import { RouterModule } from '@angular/router';
     InitDataStep1Module,
     InitDataStep2Module
   ],
-  declarations: [InitDataComponent]
+  declarations: [InitDataComponent],
+  providers: [InitDataStoreService]
 })
 export class InitDataModule { }

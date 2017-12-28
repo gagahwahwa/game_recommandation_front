@@ -7,6 +7,8 @@ import 'rxjs/add/operator/shareReplay';
 import { Observable } from 'rxjs/Observable';
 
 import { TagService } from '../../../shared/service/tag.service';
+import { InitDataStoreService } from '../shared/store/init-data-store.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-init-data-step-1',
@@ -20,7 +22,7 @@ export class InitDataStep1Component implements OnInit {
   selectedTagList: Array<any>;
   MAX_COUNT: number;
 
-  constructor(private tagService: TagService) {
+  constructor(private initDataStore: InitDataStoreService, private tagService: TagService, private router: Router) {
   }
 
   ngOnInit() {
@@ -53,5 +55,10 @@ export class InitDataStep1Component implements OnInit {
     this.searchedTagList$ = this.searchedTagList$.map((list: Array<any>) => list.filter((item: any) =>
       this.selectedTagList.findIndex(selected => selected.name === item.name) === -1)
     );
+  }
+
+  next() {
+    this.initDataStore.selectedTagList = this.selectedTagList;
+    this.router.navigateByUrl('/sign-up/init-data/2');
   }
 }

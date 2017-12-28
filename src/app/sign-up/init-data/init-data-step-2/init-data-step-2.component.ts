@@ -1,4 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import 'rxjs/add/observable/from';
+import 'rxjs/add/operator/mergeMap';
+import { Observable } from 'rxjs/Observable';
+import { GameService } from '../../../shared/service/game.service';
+import { InitDataStoreService } from '../shared/store/init-data-store.service';
+import 'rxjs/add/operator/do';
+import 'rxjs/add/operator/distinct';
+import 'rxjs/add/operator/toArray';
 
 @Component({
   selector: 'app-init-data-step-2',
@@ -6,13 +14,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./init-data-step-2.component.scss']
 })
 export class InitDataStep2Component implements OnInit {
-  gameData: any;
+  gameList$: Observable<Array<any>>;
 
-  constructor() {
+  constructor(private initDataStore: InitDataStoreService, private gameService: GameService) {
   }
 
   ngOnInit() {
-    this.gameData = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25];
+    this.gameList$ = Observable.from(this.initDataStore.selectedTagList)
+      .mergeMap((tag: any) => this.gameService.getGameListByTagId(tag.id))
+      .mergeMap(gameList => Observable.from(gameList))
+      .distinct((game: any) => game.title)
+      .toArray();
   }
 
 }

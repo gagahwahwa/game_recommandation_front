@@ -32,7 +32,7 @@ export class SignUpComponent implements OnInit {
             this.isEmailDuplicate = true;
             form.controls.email.reset();
           } else if (res.result === 'success') {
-            sessionStorage.setItem('id', form.controls.email.value);
+            sessionStorage.setItem('email', form.controls.email.value);
             this.router.navigateByUrl('/sign-up/init-data');
           }
         });
