@@ -42,8 +42,10 @@ export class InitDataStep1Component implements OnInit {
   }
 
   select(tag: any) {
-    this.selectedTagList.push(tag);
-    this.reload();
+    if ( this.selectedTagList.length < this.MAX_COUNT ) {
+      this.selectedTagList.push(tag);
+      this.reload();
+    }
   }
 
   unselect(tag: any) {
