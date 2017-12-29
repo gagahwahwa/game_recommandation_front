@@ -7,7 +7,10 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class GameCardComponent implements OnInit {
   @Input() game: any;
-  constructor() { }
+
+  constructor() {
+  }
+
   ngOnInit() {
   }
 }

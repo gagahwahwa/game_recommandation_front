@@ -1,3 +1,8 @@
-<div class="card">
-  <p class="title">{{ game.title }}</p>
+<div class="card" fxLayout="column" fxLayoutAlign="space-between">
+  <div class="game-info">
+    <img class="thumbnail" src="../../../../../assets/header.jpg" alt="thumbnail">
+    <p class="title">{{ game.title }}</p>
+  </div>
+
+  <app-star-rate-bar></app-star-rate-bar>
 </div>
