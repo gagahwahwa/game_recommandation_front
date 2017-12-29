@@ -10,7 +10,8 @@ export class GameService {
     this.url = global.url;
   }
 
-  getGameListByTagId(tagId: string): Observable<Array<any>> {
-    return this.http.get(this.url + `/gamelist-tag/${tagId}`).map((res: any) => res.result === 'success' ? res.data : []);
+  getGameListByTagList(tagList: Array<any>): Observable<Array<any>> {
+    const tagIdList = tagList.map(tag => tag.id);
+    return this.http.get(this.url + `/gamelist-tag/${JSON.stringify(tagIdList)}`).map((res: any) => res.result === 'success' ? res.data : []);
   }
 }
