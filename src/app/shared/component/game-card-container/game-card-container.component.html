@@ -1,3 +1,3 @@
-<div *ngFor="let gameList of rowMaker; let row = index" fxFlex="auto" fxLayout="column" fxLayoutGap=".5rem">
+<div *ngFor="let gameList of rowMaker; let row = index" [fxFlex]="flex" fxLayout="column" fxLayoutGap=".5rem">
   <app-game-card *ngFor="let game of gameList" [game]="game"></app-game-card>
 </div>

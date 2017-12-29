@@ -4,7 +4,8 @@ import { Injectable } from '@angular/core';
 export class GlobalService {
   _url: string;
   constructor() {
-    this._url = 'http://localhost:9999';
+    this._url = 'http://localhost:9988';
+    // this._url = 'http://52.79.187.160:9988';
   }
 
   get url () {
