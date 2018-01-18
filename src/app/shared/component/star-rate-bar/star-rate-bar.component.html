@@ -1,0 +1,3 @@
+<div class="star-container" (mousemove)="onMouseMove($event)" (mouseout)="reset()" (click)="submitRate()">
+  <i class="material-icons" *ngFor="let empty of starArray; let i = index">{{ starTypeArray[i] }}</i>
+</div>

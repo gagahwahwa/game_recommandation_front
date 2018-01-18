@@ -48,6 +48,7 @@ a[routerLink] {
   font-size: .8rem;
   color: rgba(0, 0, 0, .5);
 }
+
 .form-control {
   width: 100%;
   max-width: 100%;
@@ -62,6 +63,7 @@ a[routerLink] {
     border-color: $primary;
   }
 }
+
 .validation-message {
   margin: .25rem 0;
   font-size: .8rem;
