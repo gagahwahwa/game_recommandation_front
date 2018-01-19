@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-star-rate-bar',
@@ -8,10 +8,12 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 })
 
 export class StarRateBarComponent implements OnInit {
+  @Output() rateChange = new EventEmitter<number>();
+  rate: number;
   starArray: Array<number>;
   starTypeArray: Array<string>;
   savedStarTypeArray: Array<string>;
-  rate: number;
+
   private ICON_HALF_WIDTH = 12;
 
   constructor() {
@@ -49,15 +51,16 @@ export class StarRateBarComponent implements OnInit {
   submitRate() {
     this.rate = 0;
     this.savedStarTypeArray = [...this.starTypeArray];
-    for ( let i = 0; i < this.savedStarTypeArray.length; i++ ) {
-      if ( this.savedStarTypeArray[i] === 'star_border') {
+    for (let i = 0; i < this.savedStarTypeArray.length; i++) {
+      if (this.savedStarTypeArray[i] === 'star_border') {
         break;
-      } else if ( this.savedStarTypeArray[i] === 'star') {
+      } else if (this.savedStarTypeArray[i] === 'star') {
         this.rate = this.rate + 1;
-      } else if ( this.savedStarTypeArray[i] === 'star_half') {
+      } else if (this.savedStarTypeArray[i] === 'star_half') {
         this.rate = this.rate + 0.5;
       }
     }
     console.log(this.rate);
+    this.rateChange.emit(this.rate);
   }
 }

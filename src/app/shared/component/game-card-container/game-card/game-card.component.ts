@@ -7,10 +7,17 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class GameCardComponent implements OnInit {
   @Input() game: any;
+  isStarRateBarShown: boolean;
+  rate: number;
 
   constructor() {
   }
 
   ngOnInit() {
+    this.isStarRateBarShown = false;
+  }
+
+  rateChange(rate: number) {
+    this.rate = rate;
   }
 }
