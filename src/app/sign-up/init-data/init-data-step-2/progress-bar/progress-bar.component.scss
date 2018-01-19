@@ -1,0 +1,24 @@
+@import "../../../../../styles";
+
+.card {
+  margin-bottom: .5rem;
+  &.fixed {
+    position: fixed;
+    width: calc(100% - 2rem);
+    margin: 0 -1rem;
+    padding: .5rem 1rem;
+    top: 0;
+  }
+  .counter {
+    text-align: center;
+    margin: .5rem 0;
+  }
+}
+
+.progress-bar-container {
+  margin-bottom: .5rem;
+  background-color: $secondary-light;
+  .progress-bar {
+    border: 3px solid $secondary-dark;
+  }
+}

@@ -5,12 +5,14 @@ import { GameCardContainerModule } from '../../../shared/component/game-card-con
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { RouterModule } from '@angular/router';
 import { GameService } from '../../../shared/service/game.service';
+import { ProgressBarModule } from './progress-bar/progress-bar.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FlexLayoutModule,
     RouterModule,
+    ProgressBarModule,
     GameCardContainerModule
   ],
   declarations: [InitDataStep2Component],
