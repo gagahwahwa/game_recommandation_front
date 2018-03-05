@@ -17,7 +17,7 @@ import { Router } from '@angular/router';
 export class InitDataStep2Component implements OnInit {
   gameList$: Observable<Array<any>>;
 
-  constructor(private initDataStore: InitDataStoreService, private gameService: GameService, private router: Router) {
+  constructor(public initDataStore: InitDataStoreService, private gameService: GameService, private router: Router) {
   }
 
   ngOnInit() {

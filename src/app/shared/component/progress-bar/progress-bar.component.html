@@ -1,0 +1,14 @@
+<div class="card" [ngClass]="{ fixed: isFixed }">
+  <div *ngIf="parent === 'init'" fxLayout="row" fxLayoutAlign="end" fxLayoutGap=".5rem" class="btn-group">
+    <button *ngIf="ratingCount >= LIMIT" class="btn raise primary">완료</button>
+    <button *ngIf="ratingCount < LIMIT" class="btn default">그만 할래요</button>
+  </div>
+  <h1 class="counter">{{ ratingCount }}</h1>
+  <div fxLayout="row" fxLayoutAlign="space-between" class="indicator">
+    <p class="start">{{ start }}</p>
+    <p class="end">{{ end }}</p>
+  </div>
+  <div class="progress-bar-container">
+    <div class="progress-bar" [style.width.%]="indicatedNumber"></div>
+  </div>
+</div>

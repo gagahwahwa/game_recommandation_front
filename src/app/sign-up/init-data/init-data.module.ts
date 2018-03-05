@@ -1,13 +1,12 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { RouterModule } from '@angular/router';
 
 import { InitDataRoutingModule } from './init-data-routing.module';
-import { InitDataComponent } from './init-data.component';
-import { FlexLayoutModule } from '@angular/flex-layout';
-import { GameCardContainerModule } from '../../shared/component/game-card-container/game-card-container.module';
 import { InitDataStep1Module } from './init-data-step-1/init-data-step-1.module';
 import { InitDataStep2Module } from './init-data-step-2/init-data-step-2.module';
-import { RouterModule } from '@angular/router';
+import { InitDataComponent } from './init-data.component';
 import { InitDataStoreService } from './shared/store/init-data-store.service';
 
 @NgModule({
@@ -23,4 +22,5 @@ import { InitDataStoreService } from './shared/store/init-data-store.service';
   declarations: [InitDataComponent],
   providers: [InitDataStoreService]
 })
-export class InitDataModule { }
+export class InitDataModule {
+}
