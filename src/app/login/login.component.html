@@ -1,16 +1,18 @@
-<div class="container" fxLayout="row" fxLayoutAlign="center center">
-  <div class="card" fxFlex.gt-sm="500px" fxLayout="column">
+<div fxFill class="container" fxLayout="row" fxLayoutAlign="center center">
+  <div style="color: #FFFFFF" fxFlex.gt-sm="500px" fxLayout="column">
     <p>Sign in</p>
-    <form class="form-group" fxLayout="column" fxLayoutGap="1rem">
-      <label for="email" class="form-label">Email
+    <form fxLayout="column" fxLayoutGap="1rem">
+      <div class="form-group">
+        <label for="email" class="form-label">Email</label>
         <input id="email" class="form-control" type="text">
-      </label>
-      <label for="password" class="form-label">Password
+      </div>
+      <div class="form-group">
+        <label for="password" class="form-label">Password</label>
         <input id="password" class="form-control" type="password">
-      </label>
+      </div>
       <div class="btn-group" fxLayout="column" fxLayoutGap=".2rem">
-        <button class="btn raise primary" type="submit">Sign in</button>
-        <button class="btn default" type="button" routerLink="/sign-up">Create an account</button>
+        <button class="btn raise secondary" type="submit">Sign in</button>
+        <button class="btn secondary" type="button" routerLink="/sign-up">Create an account</button>
       </div>
     </form>
   </div>
