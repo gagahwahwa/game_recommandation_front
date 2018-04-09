@@ -16,3 +16,7 @@ html, body, app-root {
   background-color: $background;
   font-family: 'Noto Sans KR', sans-serif;
 }
+
+app-login {
+  height: calc(100% -70px);
+}
