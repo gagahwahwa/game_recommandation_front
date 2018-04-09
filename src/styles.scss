@@ -4,12 +4,12 @@
 
 // color define.
 $primary-light: #4a2f9c; // font white.
-$primary: #0c056d; // font white.
+$primary: #393232; // font white.
 $primary-dark: #000042; // font white.
 $secondary-light: #ff90cd;
-$secondary: #f25d9c;
+$secondary: #ED8D8D;
 $secondary-dark: #bc256e; // font white.
-$background-dark: #E1E2E1;
+$background-dark: #4D4545;
 $background-light: #F5F5F6;
 
 html, body, app-root {
@@ -19,6 +19,11 @@ html, body, app-root {
   background-color: $background-dark;
   font-family: 'Nanum Gothic', sans-serif;
 }
+
+app-login {
+  height: calc(100% - 70px);
+}
+
 
 .container {
   padding: 0 1rem;
@@ -30,7 +35,6 @@ html, body, app-root {
 
 .card {
   padding: .5rem 1rem;
-  box-shadow: 4px 4px 8px -2px rgba(0, 0, 0, 0.2), 0 0 4px 2px rgba(0, 0, 0, 0.1);
   background-color: $background-light;
 }
 
@@ -41,33 +45,28 @@ a[routerLink] {
 }
 
 .form-group {
-  margin: 1rem 0;
-}
-
-.form-label {
-  font-size: .8rem;
-  color: rgba(0, 0, 0, .5);
-}
-
-.form-control {
-  width: 100%;
-  max-width: 100%;
-  margin-top: .2rem;
-  background-color: inherit;
-  box-sizing: border-box;
-  border-width: 0 0 2px 0;
-  border-color: #C3C3C3;
-  outline: none;
-  font-size: 1rem;
-  &.ng-invalid:not(.ng-untouched) {
-    border-color: $primary;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+  .form-label {
+    font-size: .8rem;
+    color: rgba(0, 0, 0, .6);
+    margin-bottom: .5rem;
   }
-}
-
-.validation-message {
-  margin: .25rem 0;
-  font-size: .8rem;
-  color: $primary;
+  .form-control {
+    border: 0;
+    border-bottom: 2px solid #C3C3C3;
+    background-color: inherit;
+    outline: none;
+    &.ng-invalid:not(.ng-untouched) {
+      border-color: $primary;
+    }
+  }
+  .form-hint {
+    margin: .25rem 0;
+    font-size: .8rem;
+    color: $primary;
+  }
 }
 
 .btn {
