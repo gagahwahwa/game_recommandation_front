@@ -1,0 +1,31 @@
+@import 'color.scss';
+
+.form-group {
+  margin: 1rem 0;
+}
+
+.form-label {
+  font-size: .8rem;
+  color: rgba(0, 0, 0, .5);
+}
+
+.form-control {
+  width: 100%;
+  max-width: 100%;
+  margin-top: .2rem;
+  background-color: inherit;
+  box-sizing: border-box;
+  border-width: 0 0 2px 0;
+  border-color: #C3C3C3;
+  outline: none;
+  font-size: 1rem;
+  &.ng-invalid:not(.ng-untouched) {
+    border-color: $primary;
+  }
+}
+
+.validation-message {
+  margin: .25rem 0;
+  font-size: .8rem;
+  color: $primary;
+}

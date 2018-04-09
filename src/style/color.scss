@@ -1,0 +1,35 @@
+$primary-light: #ffbebd;
+$primary: #ED8D8D;
+$primary-dark: #b85e60;
+
+$secondary-light: #be908f;
+$secondary: #8D6262; // white
+$secondary-dark: #5e3738; // white
+
+$background-light: #797070; // white
+$background: #4D4545; // white
+$background-dark: #251e1e; // white
+
+$pointer-light: #635b5b; // white
+$pointer: #393232; // white
+$pointer-dark: #140a0a; // white
+
+.primary {
+  background-color: inherit;
+  color: $primary;
+}
+
+.raise.primary {
+  background-color: $primary;
+  color: #000000;
+}
+
+.secondary {
+  background-color: inherit;
+  color: $secondary;
+}
+
+.raise.secondary {
+  background-color: $secondary;
+  color: #FFFFFF;
+}
