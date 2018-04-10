@@ -1,3 +1,5 @@
+@import '../../../../../styles';
+
 .card {
   background-size: cover;
   height: 159px;
@@ -14,7 +16,7 @@
       margin: 0;
     }
     &:hover {
-      background-color: #FFFFFF;
+      background-color: $primary;
       color: #000000;
     }
   }
