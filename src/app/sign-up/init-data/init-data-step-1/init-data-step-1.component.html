@@ -1,6 +1,5 @@
 <div class="container" fxLayout="column" fxLayoutGap=".5rem">
-  <div id="selected" class="card">
-
+  <div id="selected">
     <div fxLayout="row" fxLayoutAlign="space-between">
       <p>선택한 게임 장르 ({{ selectedTagList.length}} / {{ MAX_COUNT }})</p>
       <button *ngIf="selectedTagList.length >= MAX_COUNT" class="btn raise primary" fxFlexAlign="center" (click)="next()">다음 단계</button>
@@ -9,7 +8,7 @@
       <label *ngFor="let tag of selectedTagList" class="label raise primary" (click)="unselect(tag)">{{ tag.name }}</label>
     </div>
   </div>
-  <div id="whole" class="card">
+  <div id="whole">
     <p>전체 게임 장르</p>
     <input id="tag" type="text" class="form-control" [formControl]="searchKeyword" placeholder="태그 검색">
     <div *ngIf="searchedTagList$ | async as tagList" class="label-group">
