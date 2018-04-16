@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit {
   login(form: FormGroup) {
     const email = form.value.email;
     const password = form.value.password;
-    this.userService.logIn(email, password).subscribe((res: any) => {
+    this.userService.logIn(email, btoa(password)).subscribe((res: any) => {
       if (res.result === 'success') {
         sessionStorage.setItem('id', res.data.id);
         this.router.navigateByUrl('/main');

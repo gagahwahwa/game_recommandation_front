@@ -17,6 +17,7 @@ export class UserService {
   }
 
   logIn(email: string, password: string) {
-    return this.http.get(this.url + `/log-in?email=${email}&password=${password}`);
+    const encoded = btoa(`${email}:${password}`);
+    return this.http.get(this.url + `/log-in`, {headers: {Authorization: `Base ${encoded}`}});
   }
 }
