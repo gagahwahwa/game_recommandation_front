@@ -33,6 +33,7 @@ export class SignUpComponent implements OnInit {
             form.controls.email.reset();
           } else if (res.result === 'success') {
             sessionStorage.setItem('id', res.id);
+            sessionStorage.setItem('nickname', form.controls.nickname.value);
             this.router.navigateByUrl('/sign-up/init-data');
           }
         });
