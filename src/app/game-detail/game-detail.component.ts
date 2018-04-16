@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-game-detail',
@@ -11,5 +13,6 @@ export class GameDetailComponent implements OnInit {
 
   ngOnInit() {
   }
+
 
 }
