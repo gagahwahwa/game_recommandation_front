@@ -7,12 +7,15 @@ import { LoginRoutingModule } from './login-routing.module';
 import { LoginComponent } from './login.component';
 import { UserService } from '../shared/service/user.service';
 
+import { Ng2CarouselamosModule } from 'ng2-carouselamos';
+
 @NgModule({
   imports: [
     CommonModule,
     ReactiveFormsModule,
     FlexLayoutModule,
-    LoginRoutingModule
+    LoginRoutingModule,
+    Ng2CarouselamosModule
   ],
   declarations: [LoginComponent],
   providers: [UserService]

@@ -1,0 +1,88 @@
+.maincard {
+  border-color: rgb(70, 65, 97);
+  background-color: #140a0a;
+  block-size: 216px;
+}
+
+.rankcard {
+  border-color: rgb(70, 65, 97);
+  background-color: #140a0a;
+  block-size: 320px;
+}
+
+.gamecard {
+  border-color: rgb(70, 65, 97);
+  background-color: #140a0a;
+  block-size: 100px;
+}
+
+.recommandcard {
+  background-color: #140a0a;
+  block-size: 200px;
+}
+
+.searchcard {
+  background-color: #4D4545;
+  block-size: 60px;
+  padding : 10px;
+  border-bottom: 2px solid #ffbebd;
+}
+
+.searchinput {
+  padding: 2px;
+  border: 0px;
+  background-color: #4D4545;
+  outline: none;
+  font-size:15pt;
+  color:#ffbebd;
+}
+
+.arrow-image {
+  width: 60px;
+  height: auto;
+}
+
+.arrow-image:active, .arrow-image:focus {
+  outline: 0;
+  border: none;
+  -moz-outline-style: none
+}
+button:focus {
+  outline : none;
+}
+
+
+.arrow-button:focus {
+  outline: 0;
+  border: none;
+}
+
+.search-image {
+  padding-top: 10px;
+  padding-right: 10px;
+  width: 25px;
+  height: 40px;
+}
+
+.items {
+  max-width: 500px;
+  height: 216px;
+}
+
+#left, #right {
+  margin-left: 30px;
+  margin-right: 30px;
+  outline: none;
+}
+
+.ant-carousel .slick-slide {
+  text-align: center;
+  height: 160px;
+  line-height: 160px;
+  background: #364d79;
+  overflow: hidden;
+}
+
+.ant-carousel .slick-slide h3 {
+  color: #fff;
+}
