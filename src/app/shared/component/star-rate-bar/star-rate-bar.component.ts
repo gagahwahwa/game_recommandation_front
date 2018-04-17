@@ -23,6 +23,15 @@ export class StarRateBarComponent implements OnInit {
     this.starArray = new Array(5);
     this.starTypeArray = new Array(5).fill('star_border');
     this.savedStarTypeArray = new Array(5).fill('star_border');
+    if (this.rate) {
+      const half = this.rate % 1;
+      this.starTypeArray.fill('star', 0, (this.rate - half));
+      this.savedStarTypeArray.fill('star', 0, (this.rate - half));
+      if (half === 0.5) {
+        this.starTypeArray.fill('star_half', (this.rate - half), (this.rate + 1));
+        this.savedStarTypeArray.fill('star_half', (this.rate - half), (this.rate + 1));
+      }
+    }
   }
 
   onMouseMove(event) {
