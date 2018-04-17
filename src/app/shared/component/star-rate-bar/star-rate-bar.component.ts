@@ -1,5 +1,4 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { InitDataStoreService } from '../../../sign-up/init-data/shared/store/init-data-store.service';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-star-rate-bar',
@@ -10,14 +9,14 @@ import { InitDataStoreService } from '../../../sign-up/init-data/shared/store/in
 
 export class StarRateBarComponent implements OnInit {
   @Output() rateChange = new EventEmitter<number>();
-  rate: number;
+  @Input() rate: number;
   starArray: Array<number>;
   starTypeArray: Array<string>;
   savedStarTypeArray: Array<string>;
 
   private ICON_HALF_WIDTH = 12;
 
-  constructor(private initDataStore: InitDataStoreService) {
+  constructor() {
   }
 
   ngOnInit() {
@@ -62,6 +61,5 @@ export class StarRateBarComponent implements OnInit {
       }
     }
     this.rateChange.emit(this.rate);
-    this.initDataStore.ratingCount = this.initDataStore.ratingCount + 1;
   }
 }
