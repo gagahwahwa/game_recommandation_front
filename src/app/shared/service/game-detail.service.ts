@@ -9,7 +9,6 @@ export class GameDetailService {
   constructor(private global: GlobalService, private http: HttpClient) {
     this.url = global.url;
   }
-  constructor() { }
 
   getGame3monthRate(id: Array<any>): Observable<Array<any>> {
     return this.http.get(this.url + `/gamedetail-page/${id}`).map((res: any) => res.result === 'success' ? res.data : []);
