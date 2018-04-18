@@ -1,8 +1,13 @@
 <div class="card">
-  <form [formGroup]="CommentFormGroup" (submit)="postNewComment(CommentFormGroup)">
-  <p>코멘터리 입력 및 평점</p>
-  <textarea></textarea>
-  <app-star-rate-bar></app-star-rate-bar>
+  <form class="form-group" [formGroup]="CommentFormGroup" (submit)="newComment(CommentFormGroup)">
+    <p>코멘터리 입력 및 평점</p>
+    <div class="comment-input">
+      <textarea></textarea>
+      <div class="comment-input-btn">
+        <app-star-rate-bar></app-star-rate-bar>
+        <button class="btn" type="submit">등록</button>
+      </div>
+    </div>
   </form>
 </div>
 <div class="card">
@@ -12,16 +17,18 @@
       <li *ngFor="let comment of res.data;">
         <!--댓글-->
         <div class="comment-header">
-          <p class="writer-font">{{ comment.cWriter }}</p>
-          <p class="date-font">{{ comment.cDate }}</p>
+          <app-star-rate-bar [rate]="comment.cRate"></app-star-rate-bar>
+          <p class="comment-writer-font">{{ comment.cWriter }}</p>
+          <p class="comment-date-font">{{ comment.cDate }}</p>
         </div>
 
         <div class="comment-main">
           <div class="comment-content">
             <p>{{ comment.cContent }}</p>
           </div>
-          <div class="comment-button">
-            <button (click)="DeleteComment(CommentFormGroup)">삭제</button>
+          <!-- *ngIf 이용해서 작성자 == 로그인한 사람만 버튼 보이게 하고싶음 -->
+          <div class="comment-btn">
+            <button (click)="deleteComment(CommentFormGroup)">삭제</button>
           </div>
         </div>
       </li>
