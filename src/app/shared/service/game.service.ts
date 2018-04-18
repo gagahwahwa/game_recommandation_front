@@ -17,7 +17,8 @@ export class GameService {
       .map((res: any) => res.result === 'success' ? res.data : []);
   }
 
-  getTop20GameList(): Observable<Array<any>> {
-    return this.http.get(this.url + `/main`).map((res: any) => res.result === 'success' ? res.data : []);
+  getRankingGameList(limit: number): Observable<Array<any>> {
+    return this.http.get(this.url + '/rank?limit=10').map((res: any) => res.result === 'success' ? res.data : []);
+    // return this.http.get(this.url + '/rank?limit=10').map((res: any) => res.json);
   }
 }

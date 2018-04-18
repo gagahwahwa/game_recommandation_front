@@ -9,10 +9,7 @@ import { GameService } from '../shared/service/game.service';
 })
 export class MainComponent implements OnInit {
   items: Array<any> = [];
-  ranks: Array<any> = [];
-  rank1game: any;
-
-  gameList$: Observable<Array<any>>;
+  rankList$: Observable<Array<any>>;
   constructor(private gameService: GameService) {
     this.items = [
       { url: 'assets/main/big1.jpg' },
@@ -21,14 +18,10 @@ export class MainComponent implements OnInit {
       { url: 'assets/main/header4.jpg' },
       { url: 'assets/main/header5.jpg' }
     ];
-
-    // Backend에서 랭킹 불러와서 ranks
    }
 
   ngOnInit() {
-      // this.gameList$ = this.gameService.getTop20GameList();
-
-      // this.rank1game = this.gameList$[0];
+    this.rankList$ = this.gameService.getRankingGameList(10);
   }
 
 }
