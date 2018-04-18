@@ -27,6 +27,7 @@ export class LoginComponent implements OnInit {
     this.userService.logIn(email, btoa(password)).subscribe((res: any) => {
       if (res.result === 'success') {
         sessionStorage.setItem('id', res.data.id);
+        sessionStorage.setItem('nickname', res.data.nickname);
         this.router.navigateByUrl('/main');
       } else {
         alert(res.msg);

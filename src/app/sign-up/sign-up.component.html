@@ -1,6 +1,6 @@
-<div class="container" fxLayout="row" fxLayoutAlign="center center">
-  <div class="card" fxFlex.gt-sm="500px" fxLayout="column">
-    <p>Sign up</p>
+<div class="container" fxFill fxLayout="row" fxLayoutAlign="center center">
+  <div fxFlex.gt-sm="500px" fxLayout="column">
+    <p class="title">Sign up</p>
     <form [formGroup]="signUpFormGroup" class="form-group" fxLayout="column" fxLayoutGap="1rem" (submit)="signup(signUpFormGroup)" ngNativeValidate>
       <div class="form-control-group">
         <label for="email" class="form-label">Email</label>

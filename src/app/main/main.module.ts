@@ -3,16 +3,17 @@ import { CommonModule } from '@angular/common';
 
 import { MainComponent } from './main.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { Ng2CarouselamosModule } from 'ng2-carouselamos';
 import { GameCardContainerModule } from '../shared/component/game-card-container/game-card-container.module';
 import { GameService } from '../shared/service/game.service';
+import { NavbarModule } from '../shared/component/navbar/navbar.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FlexLayoutModule,
-    Ng2CarouselamosModule,
-    GameCardContainerModule
+    GameCardContainerModule,
+    FlexLayoutModule,
+    NavbarModule
   ],
   declarations: [MainComponent],
   providers: [GameService]
