@@ -6,14 +6,14 @@
 .maincard {
   border-color: rgb(70, 65, 97);
   background-color: #140a0a;
-  block-size: 216px;
+  block-size: 416px;
 }
 
 .rankcard {
   border-color: rgb(70, 65, 97);
   background-color: #140a0a;
   block-size: 600px;
-  padding: 40px;
+  padding: 20px;
 }
 
 #heart-icon {
@@ -25,7 +25,11 @@
   font-size: 20px;
   color: #ffbebd;
   font-weight: bold;
-  margin: auto;
+  margin: 0;
+}
+
+.rank-top-card {
+  margin-top: 47px;
 }
 
 .rank-top {
@@ -36,15 +40,13 @@
 
 }
 
-.rank-top-card {
-  margin: auto;
-}
 
 .ranking-font {
-  font-size: 30px;
+  font-size: 36px;
   color: #ffbebd;
   text-align: center;
   font-weight: bold;
+  margin-bottom: 60px;
 }
 
 .rank-top-font {
@@ -54,15 +56,24 @@
 }
 
 .rank1 {
-  width: 300px;
+  width: 350px;
   height: auto;
   object-fit: cover;
+  border-radius: 10px;
 }
 
 .rank2 {
-  width: 140px; height: 140px;
+  width: 250px;
+  height: auto;
   object-fit: cover;
-  border-radius: 50%;
+  border-radius: 10px;
+}
+
+.rank-small {
+  width: 200px;
+  height: auto;
+  object-fit: cover;
+  border-radius: 10px;
 }
 
 .gamecard {

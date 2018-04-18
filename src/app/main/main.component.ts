@@ -15,11 +15,11 @@ export class MainComponent implements OnInit {
   gameList$: Observable<Array<any>>;
   constructor(private gameService: GameService) {
     this.items = [
-      { name: 'assets/main/header1.jpg' },
-      { name: 'assets/main/header2.jpg' },
-      { name: 'assets/main/header3.jpg' },
-      { name: 'assets/main/header4.jpg' },
-      { name: 'assets/main/header5.jpg' }
+      { url: 'assets/main/big1.jpg' },
+      { url: 'assets/main/big2.jpg' },
+      { url: 'assets/main/header3.jpg' },
+      { url: 'assets/main/header4.jpg' },
+      { url: 'assets/main/header5.jpg' }
     ];
 
     // Backend에서 랭킹 불러와서 ranks

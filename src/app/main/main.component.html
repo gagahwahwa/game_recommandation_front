@@ -1,72 +1,69 @@
 <app-navbar></app-navbar>
 <div class="container" fxLayout="column" fxLayoutGap=".5rem">
   <div class="maincard">
-    <div ng2-carouselamos class="slides-wrapper"
-      [items]="items"
-      [width]="900"
-      [$prev]="prev"
-      [$next]="next"
-      [$item]="item">
-    </div>
-
+    <app-slider [items]="items"></app-slider>
     <ng-template #prev class="arrow-button">
-      <img class = "arrow-image" src = "assets/main/left_arrow.png" id="left">
+      <img class="arrow-image" src="assets/main/left_arrow.png" id="left">
     </ng-template>
 
     <ng-template #next>
-        <img class = "arrow-image" src = "assets/main/right_arrow.png" id="right">
+      <img class="arrow-image" src="assets/main/right_arrow.png" id="right">
     </ng-template>
 
     <ng-template #item let-item let-i="index">
-        <div class="items">
-          <img src="{{ item.name }}">
-        </div>
+      <div class="items">
+        <img src="{{ item.name }}">
+      </div>
     </ng-template>
 
   </div>
 
   <div class="contents" fxLayout.gt-sm="row" fxLayout.lt-md="column" fxLayoutGap=".5rem">
     <div class="rankcard" fxFlex.gt-sm="8 0 auto">
-        <p class="ranking-font">RANKING</p>
+      <p class="ranking-font">RANKING</p>
 
-      <div class="rank-top" fxLayout="row" fxLayoutAlign="space-around stretch">
-
-        <div class="rank-top-card" fxFlex.gt-sm="1 0 auto">
-          <img class = "rank2" src = "assets/main/header4.jpg" id="rank1">
-          <p class = "rank-top-font">Shark Game</p>
+      <div class="rank-top" fxLayout="row" fxLayoutAlign="space-around">
+        <div class="rank-top-card" fxLayout="column" fxLayoutAlign="start center" fxFlex.gt-sm="1 0 auto">
+          <img class="rank2" src="assets/main/header4.jpg" id="rank2">
+          <p class="rank-top-font">One Ping Only</p>
+          <div fxLayout="row" fxLayoutAlign="center" fxLayoutGap=".5rem">
+            <i class="material-icons" id="heart-icon">favorite</i>
+            <p class="rank-top-star">4.5</p>
+          </div>
+        </div>
+        <div fxLayout="column" fxLayoutAlign="start center" fxFlex.gt-sm="1 0 auto">
+            <img class="rank1" src="assets/main/header2.jpg" id="rank1">
+          <p class="rank-top-font">Shark Game</p>
+          <div fxLayout="row" fxLayoutGap=".5rem">
+            <i class="material-icons" id="heart-icon">favorite</i>
+            <p class="rank-top-star">4.5</p>
+          </div>
+        </div>
+        <div class="rank-top-card" fxLayout="column" fxLayoutAlign="start center" fxFlex.gt-sm="1 0 auto">
+          <img class="rank2" src="assets/main/header3.jpg" id="rank3">
+          <p class="rank-top-font">Draw Near</p>
           <div fxLayout="row" fxLayoutGap=".5rem">
             <i class="material-icons" id="heart-icon">favorite</i>
             <p class="rank-top-star">4.5</p>
           </div>
         </div>
 
-        <div class="rank-top-card" fxFlex.gt-sm="1 0 auto">
-
-            <p class = "rank-top-font">Shark Game</p>
-            <div fxLayout="row" fxLayoutGap=".5rem">
-              <i class="material-icons" id="heart-icon">favorite</i>
-              <p class="rank-top-star">4.5</p>
-            </div>
-          </div>
-
-          <div class="rank-top-card" fxFlex.gt-sm="1 0 auto">
-              <img class = "rank2" src = "assets/main/header3.jpg" id="rank1">
-              <p class = "rank-top-font">Shark Game</p>
-              <div fxLayout="row" fxLayoutGap=".5rem">
-                <i class="material-icons" id="heart-icon">favorite</i>
-                <p class="rank-top-star">4.5</p>
-              </div>
-          </div>
-
       </div>
 
       <div class="rank-bottom-card">
-        <p>4~10 랭킹 리스트</p>
+        <div>
+            <img class="rank-small" src="assets/main/header3.jpg" id="rank3">
+            <p class="rank-top-font">Draw Near</p>
+            <div fxLayout="row" fxLayoutGap=".5rem">
+                <i class="material-icons" id="heart-icon">favorite</i>
+                <p class="rank-top-star">4.5</p>
+              </div>
+        </div>
       </div>
     </div>
 
     <div class="searchcard" fxFlex.gt-sm="1 0 auto">
-      <input class = "searchinput" formControlName="gameName" type="text" fxFlex.gt-sm="8 0 auto">
+      <input class="searchinput" formControlName="gameName" type="text" fxFlex.gt-sm="8 0 auto">
       <i class="material-icons" id="search-icon">search</i>
     </div>
 

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { GlobalService } from '../store/global.service';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/map';
 
 @Injectable()
 export class GameService {
@@ -12,7 +13,8 @@ export class GameService {
 
   getGameListByTagList(tagList: Array<any>): Observable<Array<any>> {
     const tagIdList = tagList.map(tag => tag.id);
-    return this.http.get(this.url + `/gamelist-tag/${JSON.stringify(tagIdList)}`).map((res: any) => res.result === 'success' ? res.data : []);
+    return this.http.get(this.url + `/gamelist-tag/${JSON.stringify(tagIdList)}`)
+      .map((res: any) => res.result === 'success' ? res.data : []);
   }
 
   getTop20GameList(): Observable<Array<any>> {

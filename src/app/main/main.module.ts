@@ -6,6 +6,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { GameCardContainerModule } from '../shared/component/game-card-container/game-card-container.module';
 import { GameService } from '../shared/service/game.service';
 import { NavbarModule } from '../shared/component/navbar/navbar.module';
+import { SliderModule } from '../shared/component/slider/slider.module';
 
 @NgModule({
   imports: [
@@ -13,7 +14,8 @@ import { NavbarModule } from '../shared/component/navbar/navbar.module';
     FlexLayoutModule,
     GameCardContainerModule,
     FlexLayoutModule,
-    NavbarModule
+    NavbarModule,
+    SliderModule
   ],
   declarations: [MainComponent],
   providers: [GameService]
