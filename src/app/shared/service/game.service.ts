@@ -14,4 +14,8 @@ export class GameService {
     const tagIdList = tagList.map(tag => tag.id);
     return this.http.get(this.url + `/gamelist-tag/${JSON.stringify(tagIdList)}`).map((res: any) => res.result === 'success' ? res.data : []);
   }
+
+  getTop20GameList(): Observable<Array<any>> {
+    return this.http.get(this.url + `/main`).map((res: any) => res.result === 'success' ? res.data : []);
+  }
 }

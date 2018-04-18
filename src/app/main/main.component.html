@@ -23,24 +23,51 @@
     </ng-template>
 
   </div>
+
   <div class="contents" fxLayout.gt-sm="row" fxLayout.lt-md="column" fxLayoutGap=".5rem">
-    <div class="rankcard" fxFlex.gt-sm="3 0 auto">
-      <p>랭킹</p>
+    <div class="rankcard" fxFlex.gt-sm="8 0 auto">
+        <p class="ranking-font">RANKING</p>
+
+      <div class="rank-top" fxLayout="row" fxLayoutAlign="space-around stretch">
+
+        <div class="rank-top-card" fxFlex.gt-sm="1 0 auto">
+          <img class = "rank2" src = "assets/main/header4.jpg" id="rank1">
+          <p class = "rank-top-font">Shark Game</p>
+          <div fxLayout="row" fxLayoutGap=".5rem">
+            <i class="material-icons" id="heart-icon">favorite</i>
+            <p class="rank-top-star">4.5</p>
+          </div>
+        </div>
+
+        <div class="rank-top-card" fxFlex.gt-sm="1 0 auto">
+
+            <p class = "rank-top-font">Shark Game</p>
+            <div fxLayout="row" fxLayoutGap=".5rem">
+              <i class="material-icons" id="heart-icon">favorite</i>
+              <p class="rank-top-star">4.5</p>
+            </div>
+          </div>
+
+          <div class="rank-top-card" fxFlex.gt-sm="1 0 auto">
+              <img class = "rank2" src = "assets/main/header3.jpg" id="rank1">
+              <p class = "rank-top-font">Shark Game</p>
+              <div fxLayout="row" fxLayoutGap=".5rem">
+                <i class="material-icons" id="heart-icon">favorite</i>
+                <p class="rank-top-star">4.5</p>
+              </div>
+          </div>
+
+      </div>
+
+      <div class="rank-bottom-card">
+        <p>4~10 랭킹 리스트</p>
+      </div>
     </div>
-    <div fxLayout="column" fxFlex.gt-sm="3 0 auto" fxLayoutGap=".5rem">
-      <div class="gamecard" fxFlex.gt-sm="1 0 auto">
-        <p>게임사진</p>
-      </div>
-      <div class="gamecard" fxFlex.gt-sm="1 0 auto">
-        <p>게임사진</p>
-      </div>
-      <div class="gamecard" fxFlex.gt-sm="1 0 auto">
-        <p>게임사진</p>
-      </div>
-    </div>
+
     <div class="searchcard" fxFlex.gt-sm="1 0 auto">
       <input class = "searchinput" formControlName="gameName" type="text" fxFlex.gt-sm="8 0 auto">
-      <img class = "search-image" src="assets/main/search_icon.png" fxFlex.gt-sm="1 0 auto">
+      <i class="material-icons" id="search-icon">search</i>
     </div>
+
   </div>
 </div>

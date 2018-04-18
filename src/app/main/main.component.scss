@@ -1,3 +1,8 @@
+.container {
+  width: 1440px;
+  margin: auto;
+}
+
 .maincard {
   border-color: rgb(70, 65, 97);
   background-color: #140a0a;
@@ -7,24 +12,77 @@
 .rankcard {
   border-color: rgb(70, 65, 97);
   background-color: #140a0a;
-  block-size: 320px;
+  block-size: 600px;
+  padding: 40px;
+}
+
+#heart-icon {
+  color: #ffbebd;
+  font-size: 25px;
+}
+
+.rank-top-star {
+  font-size: 20px;
+  color: #ffbebd;
+  font-weight: bold;
+  margin: auto;
+}
+
+.rank-top {
+
+}
+
+.rank-bottom {
+
+}
+
+.rank-top-card {
+  margin: auto;
+}
+
+.ranking-font {
+  font-size: 30px;
+  color: #ffbebd;
+  text-align: center;
+  font-weight: bold;
+}
+
+.rank-top-font {
+  font-size: 20px;
+  color: white;
+  font-weight: bold;
+}
+
+.rank1 {
+  width: 300px;
+  height: auto;
+  object-fit: cover;
+}
+
+.rank2 {
+  width: 140px; height: 140px;
+  object-fit: cover;
+  border-radius: 50%;
 }
 
 .gamecard {
   border-color: rgb(70, 65, 97);
   background-color: #140a0a;
-  block-size: 100px;
+  block-size: 216px;
 }
 
 .recommandcard {
   background-color: #140a0a;
   block-size: 200px;
+  margin-bottom: 30px;
 }
 
 .searchcard {
   background-color: #4D4545;
   block-size: 60px;
-  padding : 10px;
+  padding : 18px;
+  margin-left: 30px;
+  margin-right: 20px;
   border-bottom: 2px solid #ffbebd;
 }
 
@@ -34,23 +92,19 @@
   background-color: #4D4545;
   outline: none;
   font-size:15pt;
+  font-family: Arial, Helvetica, sans-serif;
   color:#ffbebd;
+}
+
+#search-icon {
+  color: #ffbebd;
+  font-size: 33px;
 }
 
 .arrow-image {
   width: 60px;
   height: auto;
 }
-
-.arrow-image:active, .arrow-image:focus {
-  outline: 0;
-  border: none;
-  -moz-outline-style: none
-}
-button:focus {
-  outline : none;
-}
-
 
 .arrow-button:focus {
   outline: 0;
@@ -85,4 +139,58 @@ button:focus {
 
 .ant-carousel .slick-slide h3 {
   color: #fff;
+}
+
+.selected {
+  background-color: #CFD8DC
+  !important; color: white;
+}
+
+.ranks {
+  margin: 0 0 2em 10em;
+  list-style-type: none;
+  padding: 0;
+  width: 59em;
+}
+
+.ranks li {
+  cursor: pointer;
+  position: relative;
+  left: 0;
+  background-color: #EEE;
+  margin: .8em;
+  padding: .3em 0;
+  height: 1.6em;
+  border-radius: 4px;
+}
+
+.ranks li.selected:hover {
+  background-color: #BBD8DC
+  !important; color: white;
+}
+
+.ranks li:hover {
+  color: rgb(143, 137, 180);
+  background-color: #DDD;
+  left: .1em;
+}
+
+.ranks .text {
+  position: relative;
+  top: -3px;
+}
+
+.ranks .badge {
+  display: inline-block;
+  font-size: small;
+  color: white;
+  padding: 0.8em 0.7em 0 0.7em;
+  background-color: rgb(70, 65, 97);
+  line-height: 1em;
+  position: relative;
+  left: -1px;
+  top: -4px;
+  height: 1.8em;
+  margin-right: .8em;
+  border-radius: 4px 0 0 4px;
 }
