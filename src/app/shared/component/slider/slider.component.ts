@@ -10,6 +10,14 @@ export class SliderComponent implements OnInit {
   selected: number;
 
   constructor() {
+    this.items = [
+      {
+        url: '../../../../assets/header.jpg',
+      },
+      {
+        url: 'http://img.tenasia.hankyung.com/webwp_kr/wp-content/uploads/2017/07/2017070610080220951-540x386.jpg'
+      }
+    ];
   }
 
   ngOnInit() {
@@ -26,7 +34,7 @@ export class SliderComponent implements OnInit {
 
   prev() {
     if (this.selected === 0) {
-      this.selected = this.items.length;
+      this.selected = this.items.length - 1;
     } else {
       this.selected--;
     }
