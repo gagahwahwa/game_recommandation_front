@@ -1,0 +1,27 @@
+.container {
+    display : flex;
+    width: 1440px;
+    margin: auto;
+}
+.card_top {
+    background-color: #393232;
+    color : white;
+    text-align: center;
+}
+.card_recommendation {
+    background-color: #393232;
+    color : white;
+    text-align: center;
+    height: 600px;
+}
+.right {
+    display : flex;
+    background-color: #8d6262;
+    margin: auto;
+}
+.card_tag {
+    background-color:  #ed8d8d;
+    color : white;
+    text-align: center;
+    height: 180px;
+}
