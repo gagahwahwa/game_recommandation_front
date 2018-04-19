@@ -39,7 +39,10 @@
         </div>
         <div class="card" fxFlex="1 1">
           <p class="rate-title">최근 3개월 평점</p>
-          <p class="rate">3.1</p>
+          <div *ngIf="recent3monthRate$ | async as res">
+              <div *ngFor="let post of res.data">
+                <p class="rate">{{ post.rate_avg_3_month }}</p>
+          </div></div>
           <div fxHide.lt-md id="lately" class="graph">
             <p>그래프</p>
           </div>

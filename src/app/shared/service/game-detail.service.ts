@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { GlobalService } from '../store/global.service';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 
 @Injectable()
@@ -10,7 +10,10 @@ export class GameDetailService {
     this.url = global.url;
   }
 
-  getGame3monthRate(id: Array<any>): Observable<Array<any>> {
-    return this.http.get(this.url + `/gamedetail-page/${id}`).map((res: any) => res.result === 'success' ? res.data : []);
+  getGame3monthRate(game_id: number): Observable<any> {
+    // const game_id_prams = new HttpParams());
+
+    return this.http.get(this.url + `/game-rate-avg?game_id=${game_id}`);
+    // .map((res: any) => res.result === 'success' ? res.data : []);
   }
 }

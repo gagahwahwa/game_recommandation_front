@@ -12,14 +12,15 @@ import { Route } from '@angular/compiler/src/core';
 
 export class GameDetailComponent implements OnInit {
 
-  constructor() { // rout?
-   }
+  constructor( private gameService: GameDetailService, private route: ActivatedRoute) { // rout?
+  }
 
   recent3monthRate$: Observable<any>;
   postingID: number;
+
   ngOnInit() {
-    //this.postingID = this.route.snapshot.params.id;
-    //this.recent3monthRate$ = this.getGame3monthRate(this.postingID);
+    this.postingID = this.route.snapshot.params.id;
+    this.recent3monthRate$ = this.gameService.getGame3monthRate(this.postingID);
   }
 
 }

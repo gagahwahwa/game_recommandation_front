@@ -14,4 +14,5 @@ export class GameService {
     const tagIdList = tagList.map(tag => tag.id);
     return this.http.get(this.url + `/gamelist-tag/${JSON.stringify(tagIdList)}`).map((res: any) => res.result === 'success' ? res.data : []);
   }
+
 }
