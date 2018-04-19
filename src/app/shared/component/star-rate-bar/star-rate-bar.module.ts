@@ -2,8 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { StarRateBarComponent } from './star-rate-bar.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { InitDataStoreService } from '../../../sign-up/init-data/shared/store/init-data-store.service';
-import { RateService } from '../../service/rate.service';
 
 @NgModule({
   imports: [
@@ -12,6 +10,6 @@ import { RateService } from '../../service/rate.service';
   ],
   declarations: [StarRateBarComponent],
   exports: [StarRateBarComponent],
-  providers: [InitDataStoreService]
+  providers: []
 })
 export class StarRateBarModule { }

@@ -16,7 +16,7 @@ export class UserService {
     return this.http.post(this.url + '/sign-up', null, {headers: {Authorization: `Beare ${encoded}`}});
   }
 
-  logIn(email: string, password: string) {
+  logIn(email: string, password: string): Observable<any> {
     const encoded = btoa(`${email}:${password}`);
     return this.http.get(this.url + `/log-in`, {headers: {Authorization: `Base ${encoded}`}});
   }

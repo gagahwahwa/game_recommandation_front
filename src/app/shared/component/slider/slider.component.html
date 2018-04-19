@@ -1,0 +1,16 @@
+<div id="slider">
+  <div fxLayout="row" fxLayoutAlign="center" class="contents">
+    <img class="item" [src]="items[selected].url" alt="이미지">
+  </div>
+  <div fxLayout="row" fxLayoutAlign="space-between" class="indicator">
+    <div fxLayout="column" fxLayoutAlign="center center" class="prev dir" (click)="prev()">
+      <i class="material-icons">keyboard_arrow_left</i>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="center" fxLayoutGap=".5rem" class="current">
+      <i *ngFor="let item of items; let i = index" class="material-icons">{{ selected === i ? 'lens' : 'panorama_fish_eye' }}</i>
+    </div>
+    <div fxLayout="column" fxLayoutAlign="center center" class="next dir" (click)="next()">
+      <i class="material-icons">keyboard_arrow_right</i>
+    </div>
+  </div>
+</div>
