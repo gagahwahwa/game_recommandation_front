@@ -29,7 +29,7 @@
   <div id="game-rate" fxLayout="column" fxLayoutGap=".5rem">
     <div id="rate-group" fxLayout.lt-md="column" fxLayout.gt-sm="row" fxLayoutGap=".9rem">
       <div class="card" fxFlex="1 1">
-        <p class="rate-title">예상 평점 혹은 내 평점</p>
+        <p class="rate-title"> 예상 평점 혹은 내 평점</p>
         <div *ngIf="userRate$ | async as res">
           <div *ngFor="let userRate of res.data">
             <p class="rate">{{ userRate.rate }}</p> <!-- 여기 부분 문제 0이랑 1인 부분 둘다 출력 되는 것 같음 -->
