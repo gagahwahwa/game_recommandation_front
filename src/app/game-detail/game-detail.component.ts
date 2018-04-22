@@ -15,7 +15,7 @@ export class GameDetailComponent implements OnInit {
   recent3monthRate$: Observable<Array<any>>;
   allRate$: Observable<Array<any>>;
   userRate$: Observable<Array<any>>;
-  gamedetailInfo$: Observable<Array<any>>;
+  gamedetailInfo$: Observable<any>;
   postingID: number;
 
   constructor(private gameService: GameDetailService, private route: ActivatedRoute) { // rout?

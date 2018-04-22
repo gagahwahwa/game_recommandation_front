@@ -27,8 +27,9 @@ export class GameDetailService {
                 .map((res: any) => res.result === 'success' ? res.data : []);
   }
 
-  getGameInformation(game_id: number): Observable<Array<any>> {
-    return this.http.get(this.url + `/game?id=${game_id}`).map((res: any) => res.result === 'success' ? res.data : []);
+  getGameInformation(game_id: number): Observable<any> {
+    return this.http.get(this.url + `/game?id=${game_id}`);
+    // .map((res: any) => res.result === 'success' ? res.data : [])
   }
 
 }
