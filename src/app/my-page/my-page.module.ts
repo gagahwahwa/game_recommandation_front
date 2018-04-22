@@ -4,12 +4,14 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { MyPageRoutingModule } from './my-page-routing.module';
 import { MyPageComponent } from './my-page.component';
+import { NavbarModule } from '../shared/component/navbar/navbar.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FlexLayoutModule,
-    MyPageRoutingModule
+    MyPageRoutingModule,
+    NavbarModule
   ],
   declarations: [MyPageComponent]
 })

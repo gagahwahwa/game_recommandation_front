@@ -1,7 +1,13 @@
 <div class="card" fxLayout="row" fxLayoutAlign="start end"
      style="background-image: url('../../../../../assets/header.jpg')">
-  <div class="game-info" fxFlex="calc(100% + 2rem)" fxLayout="column" fxLayoutAlign="center"
-       (mouseenter)="isStarRateBarShown = true" (mouseleave)="isStarRateBarShown = false">
+  <div
+    class="game-info"
+    fxFlex="calc(100% + 2rem)"
+    fxLayout="column"
+    fxLayoutAlign="center"
+    (mouseenter)="isStarRateBarShown = true"
+    (mouseleave)="isStarRateBarShown = false"
+  >
     <p class="title">{{ game.title }}</p>
     <div class="placeholder">
       <app-star-rate-bar *ngIf="isStarRateBarShown || rate" (rateChange)="rateChange($event)" fxLayout="row" fxLayoutAlign="center"></app-star-rate-bar>

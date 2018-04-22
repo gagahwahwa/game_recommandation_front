@@ -1,5 +1,4 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { InitDataStoreService } from '../../../sign-up/init-data/shared/store/init-data-store.service';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-star-rate-bar',
@@ -10,20 +9,29 @@ import { InitDataStoreService } from '../../../sign-up/init-data/shared/store/in
 
 export class StarRateBarComponent implements OnInit {
   @Output() rateChange = new EventEmitter<number>();
-  rate: number;
+  @Input() rate: number;
   starArray: Array<number>;
   starTypeArray: Array<string>;
   savedStarTypeArray: Array<string>;
 
   private ICON_HALF_WIDTH = 12;
 
-  constructor(private initDataStore: InitDataStoreService) {
+  constructor() {
   }
 
   ngOnInit() {
     this.starArray = new Array(5);
     this.starTypeArray = new Array(5).fill('star_border');
     this.savedStarTypeArray = new Array(5).fill('star_border');
+    if (this.rate) {
+      const half = this.rate % 1;
+      this.starTypeArray.fill('star', 0, (this.rate - half));
+      this.savedStarTypeArray.fill('star', 0, (this.rate - half));
+      if (half === 0.5) {
+        this.starTypeArray.fill('star_half', (this.rate - half), (this.rate + 1));
+        this.savedStarTypeArray.fill('star_half', (this.rate - half), (this.rate + 1));
+      }
+    }
   }
 
   onMouseMove(event) {
@@ -62,6 +70,5 @@ export class StarRateBarComponent implements OnInit {
       }
     }
     this.rateChange.emit(this.rate);
-    this.initDataStore.ratingCount = this.initDataStore.ratingCount + 1;
   }
 }

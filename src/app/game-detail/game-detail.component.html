@@ -1,26 +1,15 @@
+<app-navbar></app-navbar>
 <div class="container" fxLayout="column" fxLayoutGap=".5rem">
   <div id="game-info" fxLayout="column" fxLayoutGap=".5rem">
-
-        <div *ngIf="gamedetailInfo$ | async as res" >
-            <div *ngFor="let gamedinfo of res.data">
-                 <p class="game-name">    {{ gamedinfo.title }} </p>
-            </div>
-        </div>
-
-
-    <div fxLayout="colum">
-      <div class="card">
-        <img src="assets/header.jpg">
-      </div>
-      <div class="gameinfomation">
-        <div class="card">
-          <p>2016-01-01</p>
-          <p>nexon</p>
-        </div>
-        <div class="card">
-          <p>장르 정보</p>
-        </div>
-      </div>
+    <div class="card">
+      <p>게임 이름</p>
+    </div>
+    <div class="card">
+      <p>발매일</p>
+      <p>개발사</p>
+    </div>
+    <div class="card">
+      <p>장르 정보</p>
     </div>
   </div>
 
@@ -82,5 +71,6 @@
     <div class="card">
       <p>코멘터리 리스트</p>
     </div>
+    <app-comment></app-comment>
   </div>
 </div>
