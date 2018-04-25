@@ -20,5 +20,12 @@ export class GameService {
   getRankingGameList(limit: number): Observable<Array<any>> {
     return this.http.get(this.url + '/rank?limit=10').map((res: any) => res.result === 'success' ? res.data : []);
     // return this.http.get(this.url + '/rank?limit=10').map((res: any) => res.json);
+    return this.http.get(this.url + `/gamelist-tag/${JSON.stringify(tagIdList)}`)
+      .map((res: any) => res.result === 'success' ? res.data : []);
+  }
+
+  searchGame(keyword: string): Observable<Array<any>> {
+    return this.http.get(this.url + `/search?keyword=${keyword}`)
+      .map((res: any) => res.result === 'success' ? res.data : []);
   }
 }
