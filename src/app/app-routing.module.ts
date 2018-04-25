@@ -10,7 +10,6 @@ const routes: Routes = [
   {path: 'sign-up', loadChildren: 'app/sign-up/sign-up.module#SignUpModule'},
   {path: 'game-detail/:gameId', loadChildren: 'app/game-detail/game-detail.module#GameDetailModule', canActivate: [AuthGuard]},
   {path: 'my-page/:userId', loadChildren: 'app/my-page/my-page.module#MyPageModule', canActivate: [AuthGuard]},
-  {path: 'game-detail/:gameId', loadChildren: 'app/game-detail/game-detail.module#GameDetailModule', canActivate: [AuthGuard]},
 ];
 
 @NgModule({
