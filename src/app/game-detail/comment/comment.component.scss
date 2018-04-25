@@ -1,0 +1,12 @@
+.comment-input{
+  display: flex;
+  flex-flow: column nowrap;
+}
+.comment-input-btn{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.comment-list{
+  display: flex;
+}
