@@ -23,7 +23,7 @@
       <p class="ranking-font">RANKING</p>
 
       <div class="rank-top" fxLayout="row" fxLayoutAlign="space-around">
-        <div class="rank-top-card" fxLayout="column" fxLayoutAlign="start center" fxFlex.gt-sm="1 0 auto">
+        <div (click)="gameClick(res[1].id)" class="rank-top-card" fxLayout="column" fxLayoutAlign="start center" fxFlex.gt-sm="1 0 auto">
           <img class="rank2" src="assets/main/header4.jpg" id="rank2">
           <p class="rank-top-font">{{ res[1].title }}</p>
           <div fxLayout="row" fxLayoutAlign="center" fxLayoutGap=".5rem">
@@ -31,7 +31,7 @@
             <p class="rank-top-star">{{ res[1].rate_avg }}</p>
           </div>
         </div>
-        <div fxLayout="column" fxLayoutAlign="start center" fxFlex.gt-sm="1 0 auto">
+        <div (click)="gameClick(res[0].id)" fxLayout="column" fxLayoutAlign="start center" fxFlex.gt-sm="1 0 auto">
             <img class="rank1" src="assets/main/header2.jpg" id="rank1">
               <p class="rank-top-font">{{ res[0].title }}</p>
           <div fxLayout="row" fxLayoutGap=".5rem">
@@ -39,7 +39,7 @@
             <p class="rank-top-star">{{ res[0].rate_avg }}</p>
           </div>
         </div>
-        <div class="rank-top-card" fxLayout="column" fxLayoutAlign="start center" fxFlex.gt-sm="1 0 auto">
+        <div (click)="gameClick(res[2].id)" class="rank-top-card" fxLayout="column" fxLayoutAlign="start center" fxFlex.gt-sm="1 0 auto">
           <img class="rank2" src="assets/main/header3.jpg" id="rank3">
           <p class="rank-top-font">{{ res[2].title }}</p>
           <div fxLayout="row" fxLayoutGap=".5rem">
@@ -51,7 +51,7 @@
       </div>
 
       <div class="rank-bottom" fxLayout="column">
-        <div class="rank-bottom-card" fxLayout="row" fxLayoutAlign="start" *ngFor="let rank of res | slice:3:10; let i = index">
+        <div class="rank-bottom-card" (click)="gameClick(rank.id)" fxLayout="row" fxLayoutAlign="start" *ngFor="let rank of res | slice:3:10; let i = index">
           <div fxLayoutAlign=" center" fxFlex.gt-sm="1 0 auto">
             <img class="rank-small" src="assets/main/header3.jpg">
           </div>
@@ -71,7 +71,7 @@
 
     <div class="searchcard" fxFlex.gt-sm="1 0 auto">
       <input class="searchinput" formControlName="gameName" type="text" fxFlex.gt-sm="8 0 auto">
-      <i class="material-icons" id="search-icon">search</i>
+      <button class="search-button" (click)="searchClick()" type="submit"><i class="material-icons" id="search-icon">search</i></button>
     </div>
 
     </div>
