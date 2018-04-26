@@ -8,14 +8,29 @@
   justify-content: space-between;
   align-items: center;
 }
-.comment-list{
+li
+{
   display: flex;
+  flex-flow: column nowrap;
 }
-.comment-header{
+
+.comment-list
+{
   display: flex;
-  justify-content: space-around;
-  align-items: center;
+  flex-direction: row;
 }
+.comment{
+  display: flex;
+  flex-direction: row;
+
+}
+.comment-header
+{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
 .comment-nickname-font{
   font-weight: bold;
 }
@@ -23,17 +38,14 @@
   font-size: 8pt;
   color: gray;
 }
-.comment-main{
-  display: flex;
-  flex-flow: column nowrap;
-
-}
 .comment-content{
 
+  display: flex;
+  flex-flow: column nowrap;
 }
 .comment-btn{
   display: flex;
   flex-flow: row wrap;
-  justify-content: flex-end; // space-between
+  justify-content: space-between; // space-between
   align-items: center;
 }
