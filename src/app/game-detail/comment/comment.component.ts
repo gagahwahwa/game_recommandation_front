@@ -18,14 +18,17 @@ export class CommentComponent implements OnInit {
 
   ngOnInit() {
     // 라우터에서 gameID를 받아옴
-    this.gameID = this.route.snapshot.params.id;
+    // 왜 못받아옴 id -> gameID 바꿔도 안되쟈냐~~~~?
+    this.gameID = this.route.snapshot.params.gameID;
+    console.log(this.gameID);
+    this.gameID = 13763 ;
     // formGroup 선언
     this.CommentFormGroup = this.fb.group({
       gameID: [this.gameID],
-      cWriter: ['작성자'],
-      cDate: [''],
-      cRate: [0.0],
-      cContent: ['']
+      nickname: [''], // 작성자 닉네임
+      regi_date: [''], // 댓글 등록 날짜
+      rate: [0], // 평점
+      comment: [''] // 댓글 내용
     });
 
     this.comments$ = this.commentService.getComments(this.gameID);

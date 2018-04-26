@@ -6,7 +6,34 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
 }
 .comment-list{
   display: flex;
+}
+.comment-header{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.comment-nickname-font{
+  font-weight: bold;
+}
+.comment-date-font{
+  font-size: 8pt;
+  color: gray;
+}
+.comment-main{
+  display: flex;
+  flex-flow: column nowrap;
+
+}
+.comment-content{
+
+}
+.comment-btn{
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-end; // space-between
+  align-items: center;
 }
