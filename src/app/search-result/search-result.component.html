@@ -1,0 +1,15 @@
+<app-navbar></app-navbar>
+<div class="container" fxLayout="column" fxLayoutGap=".5rem">
+  <div class="card">
+    <p><span class="keyword">{{ keyword }}</span> 검색 결과입니다.</p>
+  </div>
+  <div class="contents">
+    <app-game-card-container
+      fxLayout="row"
+      fxLayoutGap=".5rem"
+      *ngIf="searchedGames$ | async as searchedGames"
+      [gameList]="searchedGames"
+    >
+    </app-game-card-container>
+  </div>
+</div>

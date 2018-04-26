@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
+import { GameService } from '../shared/service/game.service';
 
 @Component({
   selector: 'app-main',
@@ -6,10 +8,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./main.component.scss']
 })
 export class MainComponent implements OnInit {
-
-  constructor() { }
+  items: Array<any> = [];
+  rankList$: Observable<Array<any>>;
+  constructor(private gameService: GameService) {
+    this.items = [
+      { url: 'assets/main/big1.jpg' },
+      { url: 'assets/main/big2.jpg' },
+      { url: 'assets/main/header3.jpg' },
+      { url: 'assets/main/header4.jpg' },
+      { url: 'assets/main/header5.jpg' }
+    ];
+   }
 
   ngOnInit() {
+    this.rankList$ = this.gameService.getRankingGameList(10);
   }
 
 }
