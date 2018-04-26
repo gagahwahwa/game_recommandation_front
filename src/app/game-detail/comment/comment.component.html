@@ -26,8 +26,8 @@
             <p>{{ comment.comment }}</p>
           </div>
           <!-- *ngIf 이용해서 작성자 == 로그인한 사람만 버튼 보이게 하고, star-rate-bar 고정-->
-          <div class="comment-btn" *ngIf=(comment.nickname) >
-            <app-star-rate-bar [rate]="comment.rate"></app-star-rate-bar>
+          <div class="comment-btn" *ngIf=(comment.nickname)>
+            <app-star-rate-bar [rate]="comment.rate" [readOnly]=true></app-star-rate-bar>
             <button class="btn" (click)="deleteComment(CommentFormGroup)">삭제</button>
           </div>
         </div>
