@@ -13,7 +13,7 @@ export class CommentComponent implements OnInit {
   CommentFormGroup: FormGroup;
   comments$: Observable<any>;
   game_id: number;
-  user_id: number;
+  user_id: string;
 
   constructor(private commentService: CommentService, private fb: FormBuilder, private route: ActivatedRoute, private router: Router) { }
 
@@ -23,7 +23,7 @@ export class CommentComponent implements OnInit {
     this.game_id = this.route.snapshot.params.gameID;
     console.log(this.game_id);
     this.game_id = 13763 ;
-    this.user_id = Number(sessionStorage.getItem('id'));
+    this.user_id = sessionStorage.getItem('id');
     // formGroup 선언
     this.CommentFormGroup = this.fb.group({
       id: [0],

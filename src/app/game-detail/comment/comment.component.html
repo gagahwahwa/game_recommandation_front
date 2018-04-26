@@ -22,13 +22,12 @@
         </div>
 
         <div class="comment-main">
-          <div class="comment-content">
-            <p>{{ comment.comment }}</p>
+          <div class="comment-content" >
+            <p>{{ comment.comment }}  {{ comment.id }} </p>
           </div>
-          <!-- *ngIf 이용해서 작성자 == 로그인한 사람만 버튼 보이게 하고, star-rate-bar 고정-->
           <div class="comment-btn">
             <app-star-rate-bar [rate]="comment.rate" [readOnly]=true></app-star-rate-bar>
-            <button ng-show="comment.id==user_id" class="btn" (click)="deleteComment(CommentFormGroup)">삭제</button>
+            <button *ngIf="comment.id==user_id" class="btn" (click)="deleteComment(CommentFormGroup)">삭제</button>
           </div>
         </div>
       </li>
