@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
+import { FormBuilder, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs/Observable';
 import { GameService } from '../shared/service/game.service';
 
 @Component({
@@ -11,7 +12,9 @@ import { GameService } from '../shared/service/game.service';
 export class MainComponent implements OnInit {
   items: Array<any> = [];
   rankList$: Observable<Array<any>>;
-  constructor(private gameService: GameService, private router: Router) {
+  keywordFormControl: FormControl;
+
+  constructor(private gameService: GameService, private router: Router, private fb: FormBuilder) {
     this.items = [
       { url: 'assets/main/big1.jpg' },
       { url: 'assets/main/big2.jpg' },
@@ -22,6 +25,7 @@ export class MainComponent implements OnInit {
    }
 
   ngOnInit() {
+    this.keywordFormControl = this.fb.control(['']);
     this.rankList$ = this.gameService.getRankingGameList(10);
   }
 
@@ -29,8 +33,8 @@ export class MainComponent implements OnInit {
     this.router.navigate([`/game-detail/${gameID}`]);
   }
 
-  searchClick() {
-    this.router.navigate([`/game-detail/${form.controls.searchinput.value}`]);
+  searchClick(formControl: FormControl) {
+    this.router.navigate([`/game-detail/${formControl.value}`]);
   }
 
 }

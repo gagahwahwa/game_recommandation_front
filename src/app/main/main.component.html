@@ -70,8 +70,8 @@
     </div>
 
     <div class="searchcard" fxFlex.gt-sm="1 0 auto">
-      <input formControlName="searchinput" class="search-input" type="text" placeholder="# 태그검색" fxFlex.gt-sm="8 0 auto" required>
-      <button class="search-button" (click)="searchClick()"><i class="material-icons" id="search-icon">search</i></button>
+      <input [formControl]="keywordFormControl" class="search-input" type="text" placeholder="# 태그검색" fxFlex.gt-sm="8 0 auto" required>
+      <button class="search-button" (click)="searchClick(keywordFormControl)"><i class="material-icons" id="search-icon">search</i></button>
     </div>
 
     </div>
