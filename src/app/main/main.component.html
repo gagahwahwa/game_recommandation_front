@@ -32,8 +32,8 @@
           </div>
         </div>
         <div (click)="gameClick(res[0].id)" fxLayout="column" fxLayoutAlign="start center" fxFlex.gt-sm="1 0 auto">
-            <img class="rank1" src="assets/main/header2.jpg" id="rank1">
-              <p class="rank-top-font">{{ res[0].title }}</p>
+          <img class="rank1" src="assets/main/header2.jpg" id="rank1">
+          <p class="rank-top-font">{{ res[0].title }}</p>
           <div fxLayout="row" fxLayoutGap=".5rem">
             <i class="material-icons" id="heart-icon">favorite</i>
             <p class="rank-top-star">{{ res[0].rate_avg }}</p>
@@ -55,11 +55,11 @@
           <div fxLayoutAlign=" center" fxFlex.gt-sm="1 0 auto">
             <img class="rank-small" src="assets/main/header3.jpg">
           </div>
-            <div class = "name-star" fxLayout="column" fxFlex.gt-sm="8 0 auto">
+          <div class="name-star" fxLayout="column" fxFlex.gt-sm="8 0 auto">
             <p class="rank-top-font">{{rank.title}}</p>
             <div fxLayout="row" fxLayoutGap=".5rem">
-                <i class="material-icons" id="heart-icon">favorite</i>
-                <p class="rank-top-star">{{rank.rate_avg}}</p>
+              <i class="material-icons" id="heart-icon">favorite</i>
+              <p class="rank-top-star">{{rank.rate_avg}}</p>
             </div>
           </div>
           <div class="rank-num" fxFlexAlign="end" fxFlex.gt-sm="1 0 auto">
@@ -69,11 +69,10 @@
       </div>
     </div>
 
-    <div class="searchcard" fxFlex.gt-sm="1 0 auto">
-      <input [formControl]="keywordFormControl" class="search-input" type="text" placeholder="# 태그검색" fxFlex.gt-sm="8 0 auto" required>
-      <button class="search-button" (click)="searchClick(keywordFormControl)"><i class="material-icons" id="search-icon">search</i></button>
-    </div>
-
-    </div>
+    <form [formGroup]="keywordForm" class="searchcard" fxFlex.gt-sm="1 0 auto" (submit)="searchClick(keywordForm)">
+      <input formControlName="keyword" class="search-input" type="text" placeholder="# 태그검색" fxFlex.gt-sm="8 0 auto" required>
+      <button class="search-button" type="submit"><i class="material-icons" id="search-icon">search</i></button>
+    </form>
   </div>
+</div>
 

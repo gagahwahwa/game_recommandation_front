@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import { GameService } from '../shared/service/game.service';
@@ -12,7 +12,7 @@ import { GameService } from '../shared/service/game.service';
 export class MainComponent implements OnInit {
   items: Array<any> = [];
   rankList$: Observable<Array<any>>;
-  keywordFormControl: FormControl;
+  keywordForm: FormGroup;
 
   constructor(private gameService: GameService, private router: Router, private fb: FormBuilder) {
     this.items = [
@@ -25,7 +25,9 @@ export class MainComponent implements OnInit {
    }
 
   ngOnInit() {
-    this.keywordFormControl = this.fb.control(['']);
+    this.keywordForm = this.fb.group({
+      keyword: ['']
+    });
     this.rankList$ = this.gameService.getRankingGameList(10);
   }
 
@@ -33,8 +35,8 @@ export class MainComponent implements OnInit {
     this.router.navigate([`/game-detail/${gameID}`]);
   }
 
-  searchClick(formControl: FormControl) {
-    this.router.navigate([`/game-detail/${formControl.value}`]);
+  searchClick(form: FormGroup) {
+    this.router.navigate([`/game-detail/${form.controls.keyword.value}`]);
   }
 
 }
