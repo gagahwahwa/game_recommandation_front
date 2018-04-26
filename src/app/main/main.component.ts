@@ -30,9 +30,7 @@ export class MainComponent implements OnInit {
   }
 
   searchClick() {
-    this.router.navigate(['/search/over']);
+    this.router.navigate([`/game-detail/${form.controls.searchinput.value}`]);
   }
-
-  // this.router.navigateByUrl('/sign-up/init-data');
 
 }
