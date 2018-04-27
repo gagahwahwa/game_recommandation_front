@@ -1,6 +1,7 @@
 .comment-input{
   display: flex;
   flex-flow: column nowrap;
+  margin-bottom: 1em;
 }
 .comment-input-btn{
   display: flex;
@@ -12,6 +13,8 @@ li
 {
   display: flex;
   flex-flow: column nowrap;
+  border-bottom: 1px solid;
+  margin-bottom: 1.3em;
 }
 
 .comment-list
@@ -22,13 +25,16 @@ li
 .comment{
   display: flex;
   flex-direction: row;
-
+  width: 1290px;
+  margin-bottom: 3em;
 }
 .comment-header
 {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  margin-right: 1em;
+  flex-basis: 12%;
 }
 
 .comment-nickname-font{
@@ -42,6 +48,7 @@ li
 
   display: flex;
   flex-flow: column nowrap;
+  flex-basis: 50%;
 }
 .comment-btn{
   display: flex;
