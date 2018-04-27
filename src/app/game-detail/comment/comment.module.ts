@@ -4,6 +4,7 @@ import { CommentComponent } from './comment.component';
 import { CommentService } from '../../shared/service/comment.service';
 import { StarRateBarModule } from '../../shared/component/star-rate-bar/star-rate-bar.module';
 import { ReactiveFormsModule } from '@angular/forms';
+import { SubstrPipe } from './substr.pipe';
 @NgModule({
   imports: [
     CommonModule,
@@ -11,7 +12,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     ReactiveFormsModule,
     ],
   exports: [CommentComponent],
-  declarations: [CommentComponent],
+  declarations: [CommentComponent, SubstrPipe],
   providers: [CommentService]
 })
 export class CommentModule { }

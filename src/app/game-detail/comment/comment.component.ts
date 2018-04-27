@@ -18,6 +18,7 @@ export class CommentComponent implements OnInit {
   user_id: string;
 
   basicComment: string[] = [
+    '정말 최악이에요!!',
     '최악이에요!',
     '싫어요!',
     '재미없어요',

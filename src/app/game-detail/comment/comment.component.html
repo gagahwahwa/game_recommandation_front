@@ -18,12 +18,12 @@
         <!--댓글-->
         <div class="comment">
           <div class="comment-header">
-            <p class="comment-nickname-font">{{ comment.nickname }}</p>
+            <p class="comment-nickname-font">{{ comment.nickname | substr }}</p>
             <p class="comment-date-font">{{ comment.regi_date }}</p>
           </div>
           <!-- 여기에 새로줄 넣고싶은데 코드는 적었는데 안돼염-->
           <div class="comment-content">
-              <p *ngIf="comment.comment==null"> {{ basicComment[comment.rate * 2 - 1] }}</p>
+              <p *ngIf="comment.comment==null"> {{ basicComment[comment.rate * 2] }}</p>
           </div>
         </div>
         <div class="comment-btn">
