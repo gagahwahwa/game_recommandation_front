@@ -7,6 +7,7 @@ import { CommentModule } from './comment/comment.module';
 
 import { GameDetailRoutingModule } from './game-detail-routing.module';
 import { GameDetailComponent } from './game-detail.component';
+import { GameCardModule } from '../shared/component/game-card-container/game-card/game-card.module';
 
 @NgModule({
   imports: [
@@ -14,7 +15,8 @@ import { GameDetailComponent } from './game-detail.component';
     FlexLayoutModule,
     GameDetailRoutingModule,
     NavbarModule,
-    CommentModule
+    CommentModule,
+    GameCardModule
   ],
   declarations: [GameDetailComponent],
   providers: [GameDetailService]

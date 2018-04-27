@@ -19,6 +19,7 @@ export class GameDetailComponent implements OnInit {
   userRate$: Observable<Array<any>>;
   gamedetailInfo$: Observable<Array<any>>;
   gameTag$: Observable<Array<any>>;
+  predictRate$: Observable<Array<any>>;
   postingID: number;
   allrate: number;
   userrate: number;
@@ -34,10 +35,10 @@ export class GameDetailComponent implements OnInit {
     this.gameRate$ = this.gameService.getGameRate(this.postingID);
     this.userRate$ = this.gameService.getGameUserRate();
     this.gameTag$ = this.gameService.getGameTag(this.postingID);
+    this.predictRate$ = this.gameService.getGamePredictScore(this.postingID);
     // this.ratenum = this.gameService.getAvgRate(this.postingID);
     // this.gurl = this.gameService.gethttp();
    // this.recent3monthRate$ = this.gameService.getGame3monthRate(this.postingID);
-
   }
 }
 

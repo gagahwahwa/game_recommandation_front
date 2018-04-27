@@ -17,7 +17,8 @@ export class GameDetailService {
   }
   // game_id
   getGameUserRate(): Observable<Array<any>>  {
-    return this.http.get(this.url + `/game-rate?user_id=${sessionStorage.getItem('id')}`).map((res: any) => res.result === 'success' ? res.data : []);
+    return this.http.get(this.url + `/game-rate?user_id=${sessionStorage.getItem('id')}`)
+      .map((res: any) => res.result === 'success' ? res.data : []);
   }
 
   getGameInformation(game_id: number): Observable<Array<any>> {
@@ -27,7 +28,14 @@ export class GameDetailService {
   getGameTag(game_id: number): Observable<Array<any>> {
     return this.http.get(this.url + `/game-tag?game_id=${game_id}`).map((res: any) => res.result === 'success' ? res.data : []);
   }
+  getGamePredictScore(game_id: number): Observable<Array<any>> {
+    return this.http.get(this.url + `/predict-score?user_id=${sessionStorage.getItem('id')}&game_id=${game_id}`)
+      .map((res: any) => res.result === 'success' ? res.data : []);
+  }
+
 }
+
+
 
  /*getAvgRate(game_id: number): Observable<any>  {
     return this.http.get(this.url + `/game-rate?game_id=${game_id}`).map((res: any) => res.result === 'success' ? res.data : []).reduce((prev, cur) => ({

@@ -1,6 +1,6 @@
 <div class="container" fxLayout="column" fxLayoutGap=".5rem">
 
-  <div id="game-info" fxLayout="column" fxLayoutGap=".5rem">
+  <div  fxLayout="column" fxLayoutGap=".5rem">
     <div *ngIf="gamedetailInfo$ | async as res">
       <div *ngFor="let gameinfo of res">
         <p class="game-name"> {{ gameinfo.title }} </p>
@@ -9,9 +9,9 @@
 
     <div *ngIf="gamedetailInfo$ | async as res">
       <div *ngFor="let gameinfo of res">
-        <div class="image-content" fxLayout="colum">
+        <div fxLayout="colum">
           <!--<img src="{{gameinfo.url}}" width="600px" height="300px">-->
-          <img src="assets/header.jpg">
+          <app-game-card id="image-info" src="assets/header.jpg"></app-game-card>
           <div class="game-info">
             <p>발행일 : {{ gameinfo.release_date }}</p>
             <p>제조사 : {{ gameinfo.developer}}</p>
@@ -32,9 +32,9 @@
     <div id="rate-group" fxLayout.lt-md="column" fxLayout.gt-sm="row" fxLayoutGap=".9rem">
       <div class="rate-card" fxFlex="1 1">
         <p class="rate-title"> 예상 평점</p>
-        <div *ngIf="userRate$ | async as res">
-          <div class="rate" *ngFor="let userRate of res">
-            {{ userRate.rate }}
+        <div *ngIf="predictRate$ | async as res">
+          <div class="prate" *ngFor="let pRate of res">
+            {{ pRate.data }}
           </div>
         </div>
       </div>

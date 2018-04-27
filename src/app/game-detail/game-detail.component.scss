@@ -1,7 +1,7 @@
-img {
+/*img {
   object-fit: fill;
   width:800px; height:400px
-}
+}*/
 .container {
   width: 1440px;
   margin: auto;
@@ -15,15 +15,8 @@ img {
   color: white;
   margin: 5px;
   padding-top: 50px;
-  padding-bottom: 10px;
+  padding-bottom: 30px;
 }
-
-.gameinfomation{
-  width: 445px;
-  word-break: break-all;
-  vertical-align: top;
-}
-
 
 .rate{
   font-size:40px;
@@ -36,9 +29,6 @@ img {
   font-size:20px;
 }
 
-.image-content{
-  margin-top:25px;
-}
 .game-info{
   color: rgb(253, 107, 107);
   margin-left:20px;
@@ -49,7 +39,10 @@ img {
   padding-top:15px;
   padding-bottom: 15px;
 }
-
+#image-info{
+  object-fit: fill;
+  width:700px; height:400px
+}
 
 .rate-card {
   border:5px solid;
