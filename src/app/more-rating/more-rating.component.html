@@ -1,9 +1,8 @@
 <app-navbar></app-navbar>
-<div class="container">
-  <div class="card">
-    <app-progress-bar></app-progress-bar>
-  </div>
+<div class="container" fxLayout="column" fxLayoutGap=".5rem">
+  <app-progress-bar [ratingCount]="count$ | async"></app-progress-bar>
   <div class="content">
-    <app-game-card-container *ngIf="gameList$ | async as gameList" fxLayout="row" fxLayoutGap=".5rem" [gameList]="gameList"></app-game-card-container>
+    <app-game-card-container *ngIf="gameList$ | async as gameList" fxLayout="row" fxLayoutGap=".5rem" [gameList]="gameList"
+                             (rateCountChange)="changeRateCount($event)"></app-game-card-container>
   </div>
 </div>
