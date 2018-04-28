@@ -1,3 +1,43 @@
 img {
   object-fit: cover;
 }
+.container {
+  width: 1440px;
+  margin: auto;
+}
+.pagewarp{
+  width: 1400px;
+}
+.game-image{
+  max-width:500px; max-height:300px
+}
+.game-name{
+  font-size: 40px;
+  font-weight: bolder;
+  color: white;
+  margin: 5px;
+  padding-top: 20px;
+  padding-bottom: 10px;
+}
+
+.gameinfomation{
+
+  width: 445px;
+  word-break: break-all;
+  vertical-align: top;
+}
+
+.emptyline{
+  height: 20px;
+}
+
+.rate{
+  font-size:40px;
+  font-weight: bolder;
+  float: right;
+  margin-right: 25px;
+}
+
+.rate-title{
+  font-size:18px;
+}

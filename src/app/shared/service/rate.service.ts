@@ -12,7 +12,6 @@ export class RateService {
   }
 
   postRate(body: any): Observable<any> {
-    console.log(body);
     return this.http.post(this.url + '/enroll-game-rate', body);
   }
 }

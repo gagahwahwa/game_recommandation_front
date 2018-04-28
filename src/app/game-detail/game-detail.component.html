@@ -1,34 +1,81 @@
 <div class="container" fxLayout="column" fxLayoutGap=".5rem">
   <div id="game-info" fxLayout="column" fxLayoutGap=".5rem">
-    <div class="card">
-      <p>게임 이름</p>
-    </div>
-    <div class="card">
-      <p>발매일</p>
-      <p>개발사</p>
-    </div>
-    <div class="card">
-      <p>장르 정보</p>
+
+        <div *ngIf="gamedetailInfo$ | async as res" >
+            <div *ngFor="let gameinfo of res.data">
+                 <p class="game-name">    {{ gameinfo.title }} </p>
+
+
+    <div fxLayout="colum">
+      <div class="card">
+        <img src="assets/header.jpg">
+      </div>
+      <div class="gameinfomation"  >
+        <div class="card" >
+          <p>발행일 : {{ gameinfo.release_date }}</p>
+          <p>제조사 : {{ gameinfo.developer}}</p>
+        </div>
+        <div class="card">
+          <p>{{gameinfo.tag}}</p>
+        </div>
+      </div>
     </div>
   </div>
+</div>
+</div>
+
+  <div class="emptyline"> </div>
+
   <div id="game-rate" fxLayout="column" fxLayoutGap=".5rem">
-    <div id="rate-group" fxLayout.lt-md="column" fxLayout.gt-sm="row" fxLayoutGap=".5rem">
+    <div id="rate-group" fxLayout.lt-md="column" fxLayout.gt-sm="row" fxLayoutGap=".9rem">
       <div class="card" fxFlex="1 1">
-        <p>예상 평점 혹은 내 평점</p>
+        <p class="rate-title"> 예상 평점 혹은 내 평점</p>
+        <div *ngIf="userRate$ | async as res">
+          <div *ngFor="let userRate of res.data">
+            <p class="rate">{{ userRate.rate }}</p> <!-- 여기 부분 문제 0이랑 1인 부분 둘다 출력 되는 것 같음 -->
+          </div>
+        </div>
+        <div class="star-rate"></div>
       </div>
+
+
       <div class="card" fxFlex="1 1">
-        <p>전체 기간 평점</p>
+        <p class="rate-title">전체 기간 평점 </p>
+        <div *ngIf="allRate$ | async as res">
+          <div *ngFor="let allRate of res.data">
+            <p class="rate"> {{ allRate.rate }} </p>
+          </div>
+        </div>
         <div fxHide.lt-md id="all-time" class="graph">
           <p>그래프</p>
         </div>
       </div>
+
+
       <div class="card" fxFlex="1 1">
-        <p>최근 3개월 평점</p>
+        <p class="rate-title">최근 3개월 평점</p>
+        <div *ngIf="recent3monthRate$ | async as res">
+          <div *ngFor="let recentRate of res.data">
+            <p class="rate">{{ recentRate.rate_avg_3_month }}</p>
+          </div>
+        </div>
         <div fxHide.lt-md id="lately" class="graph">
           <p>그래프</p>
         </div>
       </div>
     </div>
+
+
+
+
+
+
+
+
+    <div class="card">
+      <p>태그</p>
+    </div>
+
     <div class="card">
       <p>코멘터리 입력 및 평점</p>
     </div>
