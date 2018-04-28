@@ -22,7 +22,7 @@
   </div>
 
   <div class="tag-info" *ngIf="gameTag$ | async as res">
-    <div class="label" *ngFor="let gametag of res">
+    <div class="label raise primary" *ngFor="let gametag of res">
       {{ gametag.name }}
     </div>
   </div>
