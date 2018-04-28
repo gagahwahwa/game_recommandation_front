@@ -30,7 +30,8 @@
 }
 
 .game-info{
-  color: rgb(253, 107, 107);
+  padding: .5rem 1rem;
+  color: #FFFFFF;
   margin-left:20px;
   font-size:25px;
 }
@@ -40,15 +41,19 @@
   padding-bottom: 15px;
 }
 #image-info{
+
   object-fit: fill;
   width:700px; height:400px
 }
 
 .rate-card {
-  border:5px solid;
+  padding: .5rem 1rem;
+  border: 2px solid #ffbebd;
+  color: #FFFFFF;
+  /*border:5px solid;
   border-color:rgb(253, 107, 107);
   padding: .5rem 1rem;
   border-radius: 20px;
   color: rgb(253, 107, 107);
-  height: 150px;
+  height: 150px;*/
 }
