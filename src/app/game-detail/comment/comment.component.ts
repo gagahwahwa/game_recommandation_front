@@ -1,9 +1,8 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
-import { Observable } from 'rxjs/Observable';
-import { map } from 'rxjs/operators/map';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { CommentService } from '../../shared/service/comment.service';
+import { Observable } from 'rxjs/Observable';
+import { ActivatedRoute, Router } from '@angular/router';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-comment',
@@ -12,11 +11,12 @@ import { CommentService } from '../../shared/service/comment.service';
 })
 export class CommentComponent implements OnInit {
 
-  @Output() rateChange = new EventEmitter<number>();
   CommentFormGroup: FormGroup;
   comments$: Observable<any>;
   game_id: number;
   user_id: string;
+
+  starRateArray: Array<string>;
 
   basicComment: string[] = [
     '정말 최악이에요!!',
@@ -32,18 +32,11 @@ export class CommentComponent implements OnInit {
     '최고예요!'
   ];
 
-  starArray: Array<number>;
-  starTypeArray: Array<string>;
-
-  constructor(private commentService: CommentService, private fb: FormBuilder, private route: ActivatedRoute, private router: Router) {
-  }
+  constructor(private commentService: CommentService, private fb: FormBuilder, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
-    // 라우터에서 gameID를 받아옴
-    // 왜 못받아옴 id -> gameID 바꿔도 안되쟈냐~~~~?
     this.game_id = this.route.snapshot.params.gameId;
     console.log(this.game_id);
-    // this.game_id = 13763 ;
     this.user_id = sessionStorage.getItem('id');
 
     // formGroup 선언
@@ -54,37 +47,33 @@ export class CommentComponent implements OnInit {
       rate: [0], // 평점
       comment: [''] // 댓글 내용
     });
-    this.comments$ = this.commentService.getComments(this.game_id).pipe(
-      map(res => res.data.sort((prev, next) => prev.comment ? -1 : 1))
-    );
-  }
-
+    this.comments$ = this.commentService.getComments(this.game_id);
+    }
   newComment(formGroup: FormGroup) {
     // 백엔드로 댓글 전송
     this.commentService.postComment(formGroup.value).subscribe((res: any) => {
-      if (res.result === 'success') { // 성공시
+      if ( res.result === 'success') { // 성공시
         // 페이지 리로드(?)
         this.comments$ = this.commentService.getComments(this.game_id);
       }
     });
   }
-
   // 인자 수정 요망
   deleteComment(formGroup: FormGroup) {
     // DB로 삭제할 댓글 전송
   }
 
-  star_rate_bar(rate: number) {
-    this.starArray = new Array(5);
-    this.starTypeArray = new Array(5).fill('star_border');
-    if (rate) {
+  // 평점 -> 별점 계산
+  cal_star_rate(rate: number) {
+    this.starRateArray = new Array(5).fill('star_border');
+    if (rate !== 0) {
       const half = rate % 1;
-      this.starTypeArray.fill('star', 0, (rate - half));
+      this.starRateArray.fill('star', 0, (rate - half));
       if (half === 0.5) {
-        this.starTypeArray.fill('star_half', (rate - half), (rate + 1));
+        this.starRateArray.fill('star_half', (rate - half), (rate + 1));
       }
     }
-    this.rateChange.emit(rate);
+    return this.starRateArray;
   }
 
 }
