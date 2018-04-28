@@ -23,14 +23,15 @@ export class CommentComponent implements OnInit {
     this.CommentFormGroup = this.fb.group({
       gameID: [this.gameID],
       cWriter: ['작성자'],
-      cPassword: ['password'],
+      cDate: [''],
+      cRate: [0.0],
       cContent: ['']
     });
 
     this.comments$ = this.commentService.getComments(this.gameID);
 
   }
-  NewComment(formGroup: FormGroup) {
+  newComment(formGroup: FormGroup) {
     // 백엔드로 댓글 전송
     this.commentService.postComment(formGroup.value).subscribe((res: any) => {
       if ( res.result === 'success') { // 성공시
@@ -40,7 +41,7 @@ export class CommentComponent implements OnInit {
     });
   }
   // 인자 수정 요망
-  DeleteComment(formGroup: FormGroup) {
+  deleteComment(formGroup: FormGroup) {
     // DB로 삭제할 댓글 전송
   }
 }

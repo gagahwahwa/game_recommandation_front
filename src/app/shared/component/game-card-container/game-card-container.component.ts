@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
 
 @Component({
   selector: 'app-game-card-container',
@@ -7,6 +7,7 @@ import { Component, ElementRef, Input, OnChanges, SimpleChanges } from '@angular
 })
 export class GameCardContainerComponent implements OnChanges {
   @Input() gameList: Array<any>;
+  @Output() rateCountChange = new EventEmitter();
   row: number;
   rowMaker: Array<any>;
   flex: string;
