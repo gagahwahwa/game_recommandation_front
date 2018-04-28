@@ -11,9 +11,12 @@ export class MyPageService {
     this.url = global.url;
   }
   getTag(user_id: number): Observable<Array<any>> {
-    return this.http.get(this.url + `/game-tag?user_id=:user_id=${user_id}`).map((res: any) => res.result === 'success' ? res.data : []);
+    return this.http.get(this.url + `/game-tag?user_id=${user_id}`).map((res: any) => res.result === 'success' ? res.data : []);
   }
-  getUserRate(user_id: number): Observable<Array<any>> {
-      return this.http.get(this.url + `/game-rate?user_id=:user_id=${user_id}`).map((res: any) => res.result === 'success' ? res.data : []);
+  getUserRateCount(user_id: number): Observable<any> {
+      return this.http.get(this.url + `/user-rate-count?user_id=${user_id}`).map((res: any) => res.result === 'success' ? res.data : []);
+  }
+  getUserRateAverage(user_id: number): Observable<any> {
+    return this.http.get(this.url + `/user-rate-avg?user_id=${user_id}`).map((res: any) => res.result === 'success' ? res.data : []);
   }
 }

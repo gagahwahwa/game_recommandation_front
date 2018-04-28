@@ -13,7 +13,9 @@ import { GameService } from '../shared/service/game.service';
 })
 export class MyPageComponent implements OnInit {
   userID: number;
-  userRate$: Observable<Array<any>>;
+  userRateAverage$: Observable<any>;
+  userRateCount$: Observable<any>;
+
   userTag$: Observable<Array<any>>;
   gameList$: Observable<Array<any>>;
   tagGameList$: Observable<Array<any>>;
@@ -21,7 +23,8 @@ export class MyPageComponent implements OnInit {
 
   ngOnInit() {
     this.userID = this.route.snapshot.params.userId;
-    this.userRate$ = this.myPageService.getUserRate(this.userID);
+    this.userRateAverage$ = this.myPageService.getUserRateAverage(this.userID);
+    this.userRateCount$ = this.myPageService.getUserRateCount(this.userID);
     this.userTag$ = this.myPageService.getTag(this.userID);
     this.gameList$ = this.gameService.getGameList(20);
     //this.tagGameList$ = this.gameService.getGameListByTagList();
