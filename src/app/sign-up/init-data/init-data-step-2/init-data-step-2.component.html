@@ -1,4 +1,5 @@
 <div class="container">
-  <app-progress-bar [LIMIT]="15" [parent]="'init'" [ratingCount]="initDataStore.ratingCount"></app-progress-bar>
-  <app-game-card-container *ngIf="gameList$ | async as gameList" fxLayout="row" fxLayoutGap=".5rem" [gameList]="gameList"></app-game-card-container>
+  <app-progress-bar [LIMIT]="15" [parent]="'init'" [ratingCount]="(count$ | async) || 0"></app-progress-bar>
+  <app-game-card-container *ngIf="gameList$ | async as gameList" fxLayout="row" fxLayoutGap=".5rem" [gameList]="gameList"
+                           (rateCountChange)="changeRateCount($event)"></app-game-card-container>
 </div>
