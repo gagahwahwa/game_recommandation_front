@@ -26,8 +26,8 @@
           </div>
         </div>
         <div class="comment-btn">
-          <i class="material-icons" *ngFor="let empty of cal_star_rate(comment.rate); let i = index">{{ starRateArray[i] }}</i>
-          <button *ngIf="comment.id==user_id" class="btn" (click)="deleteComment(CommentFormGroup)">삭제</button>
+          <i class="material-icons" *ngFor="let empty of cal_star_rate(comment.rate); let i = index" flex-basis="10%">{{ starRateArray[i] }}</i>
+          <button *ngIf="comment.id==user_id" class="btn" (click)="deleteComment(CommentFormGroup) " flex-basis="60%">삭제</button>
         </div>
       </li>
     </ul>

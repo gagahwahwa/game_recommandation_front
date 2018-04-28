@@ -8,6 +8,7 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  color: white;
 }
 li
 {
@@ -26,7 +27,7 @@ li
   display: flex;
   flex-direction: row;
   width: 1290px;
-  margin-bottom: 3em;
+  margin-bottom: 1em;
 }
 .comment-header
 {
@@ -53,7 +54,7 @@ li
 .comment-btn{
   display: flex;
   flex-flow: row wrap;
-  justify-content: space-between; // space-between
   align-items: center;
   color: white;
+  margin-bottom: 2em;
 }
