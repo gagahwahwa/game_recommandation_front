@@ -19,7 +19,6 @@ export class GameCardComponent implements OnInit {
   ngOnInit() {
     this.isStarRateBarShown = false;
   }
-
   rateChange(rate: number) {
     this.rate = rate;
     this.rateService.postRate({
@@ -35,5 +34,11 @@ export class GameCardComponent implements OnInit {
         this.initStore.ratingCount++;
       }
     });
+  }
+
+  navigateToGame(gameId: number) {
+    if (this.router.url !== '/sign-up/init-data/2') {
+      this.router.navigateByUrl(`/game-detail/${gameId}`);
+    }
   }
 }
