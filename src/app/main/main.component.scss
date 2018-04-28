@@ -6,7 +6,7 @@
 .maincard {
   border-color: rgb(70, 65, 97);
   background-color: #393232;
-  block-size: 416px;
+  block-size: 500px;
 }
 
 .rankcard {
@@ -23,7 +23,7 @@
 }
 
 .rank-top {
-  border-bottom: 0.1px solid #ffbebd;
+  margin: 4px;
 }
 
 .rank-bottom {
@@ -46,11 +46,12 @@
 }
 
 .rank-bottom-card {
-  border-bottom: 0.03px solid #ffbebd;
+  border-bottom: 0.01px solid #ffbebd;
 }
 
 .rank-num {
   margin-right: 15px;
+  margin-left: 20px;
 }
 
 .rank-num-font {
@@ -70,12 +71,19 @@
   color: #ffbebd;
   text-align: center;
   font-weight: bold;
+  margin-top: 35px;
+  margin-bottom: 55px;
 }
 
 .rank-top-font {
   font-size: 20px;
   color: white;
   font-weight: bold;
+}
+
+.rank-bottom-font {
+  font-size: 19px;
+  color: white;
 }
 
 .rank1 {

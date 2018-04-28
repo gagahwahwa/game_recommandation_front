@@ -6,7 +6,7 @@
 
   <div class="contents" fxLayout.gt-sm="row" fxLayout.lt-md="column" fxLayoutGap=".5rem" *ngIf="rankList$ | async as res">
     <div class="rankcard" fxFlex.gt-sm="8 0 auto">
-      <p class="ranking-font">RANKING</p>
+      <p class="ranking-font">GAME RANKING</p>
 
       <div class="rank-top" fxLayout="row" fxLayoutAlign="space-around">
         <div (click)="gameClick(res[1].id)" class="rank-top-card" fxLayout="column" fxLayoutAlign="start center" fxFlex.gt-sm="1 0 auto">
@@ -42,7 +42,7 @@
             <p class="rank-num-font">{{i+4}}</p>
           </div>
           <div class="name-star" fxLayout="column" fxFlex.gt-sm="1 1 auto">
-            <p class="rank-top-font">{{rank.title}}</p>
+            <p class="rank-bottom-font">{{rank.title}}</p>
           </div>
         </div>
       </div>
