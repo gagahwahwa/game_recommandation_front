@@ -5,6 +5,7 @@ import { GameCardContainerModule } from '../shared/component/game-card-container
 import { NavbarModule } from '../shared/component/navbar/navbar.module';
 import { ProgressBarModule } from '../shared/component/progress-bar/progress-bar.module';
 import { GameService } from '../shared/service/game.service';
+import { UserService } from '../shared/service/user.service';
 
 import { MoreRatingRoutingModule } from './more-rating-routing.module';
 import { MoreRatingComponent } from './more-rating.component';
@@ -18,7 +19,7 @@ import { MoreRatingComponent } from './more-rating.component';
     GameCardContainerModule,
     MoreRatingRoutingModule
   ],
-  providers: [GameService],
+  providers: [GameService, UserService],
   declarations: [MoreRatingComponent]
 })
 export class MoreRatingModule {

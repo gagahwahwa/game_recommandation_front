@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { GameService } from '../shared/service/game.service';
+import { UserService } from '../shared/service/user.service';
 
 @Component({
   selector: 'app-more-rating',
@@ -9,12 +10,19 @@ import { GameService } from '../shared/service/game.service';
 })
 export class MoreRatingComponent implements OnInit {
   gameList$: Observable<Array<any>>;
+  count$: Observable<any>;
 
-  constructor(private gameService: GameService) {
+  constructor(private gameService: GameService, private userSerivce: UserService) {
   }
 
   ngOnInit() {
     this.gameList$ = this.gameService.getGameList(200);
+    this.count$ = this.userSerivce.getUserRateCount(+sessionStorage.getItem('id'));
   }
 
+  changeRateCount(isChange: boolean) {
+    if (isChange) {
+      this.count$ = this.userSerivce.getUserRateCount(+sessionStorage.getItem('id'));
+    }
+  }
 }
