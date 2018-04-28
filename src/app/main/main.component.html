@@ -2,20 +2,6 @@
 <div class="container" fxLayout="column" fxLayoutGap=".5rem">
   <div class="maincard">
     <app-slider [items]="items"></app-slider>
-    <ng-template #prev class="arrow-button">
-      <img class="arrow-image" src="assets/main/left_arrow.png" id="left">
-    </ng-template>
-
-    <ng-template #next>
-      <img class="arrow-image" src="assets/main/right_arrow.png" id="right">
-    </ng-template>
-
-    <ng-template #item let-item let-i="index">
-      <div class="items">
-        <img src="{{ item.name }}">
-      </div>
-    </ng-template>
-
   </div>
 
   <div class="contents" fxLayout.gt-sm="row" fxLayout.lt-md="column" fxLayoutGap=".5rem" *ngIf="rankList$ | async as res">
@@ -52,18 +38,11 @@
 
       <div class="rank-bottom" fxLayout="column">
         <div class="rank-bottom-card" (click)="gameClick(rank.id)" fxLayout="row" fxLayoutAlign="start" *ngFor="let rank of res | slice:3:10; let i = index">
-          <div fxLayoutAlign=" center" fxFlex.gt-sm="1 0 auto">
-            <img class="rank-small" src="assets/main/header3.jpg">
-          </div>
-          <div class="name-star" fxLayout="column" fxFlex.gt-sm="8 0 auto">
-            <p class="rank-top-font">{{rank.title}}</p>
-            <div fxLayout="row" fxLayoutGap=".5rem">
-              <i class="material-icons" id="heart-icon">favorite</i>
-              <p class="rank-top-star">{{rank.rate_avg}}</p>
-            </div>
-          </div>
-          <div class="rank-num" fxFlexAlign="end" fxFlex.gt-sm="1 0 auto">
+          <div class="rank-num" fxFlexAlign="end" fxFlex.gt-sm="1 1 5%">
             <p class="rank-num-font">{{i+4}}</p>
+          </div>
+          <div class="name-star" fxLayout="column" fxFlex.gt-sm="1 1 auto">
+            <p class="rank-top-font">{{rank.title}}</p>
           </div>
         </div>
       </div>

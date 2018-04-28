@@ -36,7 +36,7 @@ export class MainComponent implements OnInit {
   }
 
   searchClick(form: FormGroup) {
-    this.router.navigate([`/game-detail/${form.controls.keyword.value}`]);
+    this.router.navigate([`/search/${form.controls.keyword.value}`]);
   }
 
 }
