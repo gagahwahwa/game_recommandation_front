@@ -1,3 +1,4 @@
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -7,7 +8,6 @@ import { AppComponent } from './app.component';
 import { MainModule } from './main/main.module';
 import { NavbarModule } from './shared/component/navbar/navbar.module';
 import { GlobalService } from './shared/store/global.service';
-import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -17,7 +17,6 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
-
     NavbarModule,
     MainModule
   ],

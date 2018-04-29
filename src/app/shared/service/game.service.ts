@@ -7,6 +7,7 @@ import { GlobalService } from '../store/global.service';
 @Injectable()
 export class GameService {
   private url: string;
+
   constructor(private global: GlobalService, private http: HttpClient) {
     this.url = global.url;
   }
