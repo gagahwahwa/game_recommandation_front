@@ -3,10 +3,10 @@
   <div class="slider-container">
     <app-slider [items]="items"></app-slider>
   </div>
-  <div class="contents" fxLayout="row" fxLayoutAlign="space-between" fxLayoutGap="1rem">
+  <div class="contents" fxLayout.lt-sm="column" fxLayout="row" fxLayoutAlign="space-between" fxLayoutGap="1rem">
     <div class="rank-container" fxFlex="1 1 80%">
       <p class="title">GAME RANKING</p>
-      <div class="top-rank-container" fxLayout="row" fxLayoutAlign="space-between" fxLayoutGap=".5rem">
+      <div class="top-rank-container" fxLayout.lt-sm="column" fxLayout="row" fxLayoutAlign="space-between" fxLayoutGap=".5rem">
         <div
           [id]="'rank' + (i + 1)"
           class="top-rank"
