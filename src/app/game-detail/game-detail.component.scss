@@ -1,6 +1,7 @@
-img {
-  object-fit: cover;
-}
+/*img {
+  object-fit: fill;
+  width:800px; height:400px
+}*/
 .container {
   width: 1440px;
   margin: auto;
@@ -8,27 +9,13 @@ img {
 .pagewarp{
   width: 1400px;
 }
-.game-image{
-  max-width:500px; max-height:300px
-}
 .game-name{
-  font-size: 40px;
+  font-size: 50px;
   font-weight: bolder;
   color: white;
   margin: 5px;
-  padding-top: 20px;
-  padding-bottom: 10px;
-}
-
-.gameinfomation{
-
-  width: 445px;
-  word-break: break-all;
-  vertical-align: top;
-}
-
-.emptyline{
-  height: 20px;
+  padding-top: 50px;
+  padding-bottom: 30px;
 }
 
 .rate{
@@ -39,5 +26,29 @@ img {
 }
 
 .rate-title{
-  font-size:18px;
+  font-size:20px;
+}
+
+.game-info{
+  color: rgb(253, 107, 107);
+  margin-left:20px;
+  font-size:25px;
+}
+
+.tag-info{
+  padding-top:15px;
+  padding-bottom: 15px;
+}
+#image-info{
+  object-fit: fill;
+  width:700px; height:400px
+}
+
+.rate-card {
+  border:5px solid;
+  border-color:rgb(253, 107, 107);
+  padding: .5rem 1rem;
+  border-radius: 20px;
+  color: rgb(253, 107, 107);
+  height: 150px;
 }
