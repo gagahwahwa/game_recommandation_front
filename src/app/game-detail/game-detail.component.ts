@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/reduce';
 import { Observable } from 'rxjs/Observable';
+import { map, shareReplay } from 'rxjs/operators';
 import { GameDetailService } from '../shared/service/game-detail.service';
 
 
@@ -13,53 +12,31 @@ import { GameDetailService } from '../shared/service/game-detail.service';
 })
 
 export class GameDetailComponent implements OnInit {
+  gameId: number;
+  userId: number;
+  gameInfo$: Observable<any>;
+  predictRate$: Observable<any>;
+  myRate$: Observable<any>;
+  rateAvarage$: Observable<any>;
+  tags$: Observable<Array<any>>;
 
-  // recent3monthRate$: Observable<any>;
-  gameRate$: Observable<Array<any>>;
-  userRate$: Observable<Array<any>>;
-  gamedetailInfo$: Observable<Array<any>>;
-  gameTag$: Observable<Array<any>>;
-  predictRate$: Observable<Array<any>>;
-  postingID: number;
-  allrate: number;
-  userrate: number;
-  gurl: string;
-
-  constructor(private gameService: GameDetailService, private route: ActivatedRoute) { // rout?
+  constructor(private gameService: GameDetailService, private route: ActivatedRoute) {
   }
-  ngOnInit() {
-    this.allrate = 0;
-    this.postingID = this.route.snapshot.params.gameId;
 
-    this.gamedetailInfo$ = this.gameService.getGameInformation(this.postingID);
-    this.gameRate$ = this.gameService.getGameRate(this.postingID);
-    this.userRate$ = this.gameService.getGameUserRate();
-    this.gameTag$ = this.gameService.getGameTag(this.postingID);
-    this.predictRate$ = this.gameService.getGamePredictScore(this.postingID);
-    // this.ratenum = this.gameService.getAvgRate(this.postingID);
-    // this.gurl = this.gameService.gethttp();
-   // this.recent3monthRate$ = this.gameService.getGame3monthRate(this.postingID);
+  ngOnInit() {
+    this.gameId = this.route.snapshot.params.gameId;
+    this.userId = +sessionStorage.getItem('id');
+    this.gameInfo$ = this.gameService.getGameInformation(this.gameId).pipe(
+      map((data: any) => data[0])
+    );
+    this.predictRate$ = this.gameService.getGamePredictScore(this.gameId, this.userId);
+    this.myRate$ = this.gameService.getGameUserRate(this.userId).pipe(
+      map((data: any) => data.filter((item: any) => item.id === this.gameId)[0])
+    );
+    this.rateAvarage$ = this.gameService.getGameRateAvg(this.gameId).pipe(
+      map((data: any) => data[0]),
+      shareReplay()
+    );
+    this.tags$ = this.gameService.getGameTag(this.gameId);
   }
 }
-
-  /*av_rate(): void {
-    this.userRate$.forEach();
-  }
-  us_rate(rateInfo: Observable<Array<any>>): number {
-    this.ratenum = 0;
-
-    rateInfo.forEach(element => {
-      this.ratenum += rateInfo.rate;
-    });
-    return this.ratenum;
-  }
-  rate(rateInfo: Observable<Array<any>>): number {
-    this.ratenum = 0;
-
-    rateInfo.forEach(element => {
-      this.ratenum += rateInfo.rate;
-    });
-    return this.ratenum;
-  }
-
-*/
