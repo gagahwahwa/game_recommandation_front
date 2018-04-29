@@ -14,13 +14,13 @@
           (click)="navigateToGameDetail(topRank.id)"
         >
           <img [src]="'assets/main/header'+ (i + 2) +'.jpg'" alt="thumbnail" class="thumbnail">
-          <div class="info" fxLayout="row" fxLayoutAlign="start" fxLayoutGap=".5rem">
+          <div class="info" fxLayout="row" fxLayoutAlign="start start" fxLayoutGap=".5rem">
             <p class="index" fxLayout="column">{{ i + 1 }}</p>
             <div class="detail">
               <p class="title">{{ topRank.title }}</p>
               <div class="rate-container" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap=".5rem">
                 <i class="material-icons heart">favorite</i>
-                <p class="rate">{{ topRank.rate_avg }}</p>
+                <p class="rate">{{ topRank.rate_avg | number:'.2-2' }}</p>
               </div>
             </div>
           </div>
@@ -37,7 +37,7 @@
         >
           <p class="index" fxFlex="1 1 4rem">{{ i + 4 }}</p>
           <p class="title">{{ subRank.title }}</p>
-          <p class="rate">{{ subRank.rate_avg }}</p>
+          <p class="rate">{{ subRank.rate_avg | number:'.2-2' }}</p>
         </div>
       </div>
     </div>
