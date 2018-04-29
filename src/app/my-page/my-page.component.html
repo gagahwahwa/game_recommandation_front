@@ -1,22 +1,35 @@
 <app-navbar></app-navbar>
 <div class="container" fxLayout="column" fxLayoutGap=".5rem">
-  <div class="card-top">
-    <p>게임평가현황</p>
+  <div class="card-top">평균
+    <div class="card-avg" *ngIf="userRateAverage$ | async as res">
+      <div *ngFor="let userrateaverage of res">
+        {{ userrateaverage.avg | number:'.1-1'}} 점
+      </div>
+    </div>평가 게임 수
+    <div  class ="card-count" *ngIf="userRateCount$ | async as res">
+      <div *ngFor="let userratecount of res">
+        {{ userratecount.count }} 개
+      </div>
+    </div>
   </div>
   <div class="contents" fxLayout.gt-sm="row" fxLayout.lt-md="column" fxLayoutGap=".5rem">
     <div class="left" fxLayout="column" fxLayoutGap=".5rem" fxFlex="3 0 auto">
-      <div class="card-recommendation">
+      <div class="card-recommendation" flex="1 1 40%">
         <p>추천</p>
+        <!--<app-game-card-container *ngIf="tagGameList$ | async as res" [gameList]="tagGameList"></app-game-card-container>-->
+        <app-game-card-container *ngIf="gameList$ | async as gameList" fxLayout="row" fxLayoutGap=".5rem" [gameList]="gameList"></app-game-card-container>
       </div>
     </div>
     <div class="right" fxLayout="column" fxLayoutGap=".5rem" fxFlex="1 0 auto">
-      <div class="card" fxLayoutGap=".5rem">
-        <p>선호하는 장르</p>
+      <div class="card-tag" fxLayoutGap=".5rem">
+          <p>선호하는 장르</p>
+        <div *ngIf="userTag$ | async as res">
+        <div *ngFor="let usertag of res">
+          {{ usertag.name }}
+        </div>
+        </div>
       </div>
-      <div class="card" fxLayoutGap=".5rem">
-        <p>선호하는 개발사</p>
-      </div>
-      <div class="card" fxLayoutGap=".5rem">
+      <div class="card-graph" fxLayoutGap=".5rem">
         <p>평가 그래프</p>
       </div>
     </div>

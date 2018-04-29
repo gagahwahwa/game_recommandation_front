@@ -4,25 +4,58 @@
     margin: auto;
 }
 .card-top {
-    background-color: #393232;
+    font-size: 20pt;
+    display: flex;
+    background-color: #140a0a;
     color : white;
-    text-align: center;
 }
+
 .card-recommendation {
-    background-color: #393232;
+    background-color: #140a0a;
     color : white;
     text-align: center;
     height: 600px;
+    width: 1000px;
 }
 .right {
     display : flex;
-    background-color: #8d6262;
-    margin: auto;
+    width: 400px;
 }
-.card {
-    background-color:  #ed8d8d;
+.card-tag {
+    background-color:  #140a0a;
+    color : white;
+    text-align: center;
+    padding: 20pt;
+    font-size: 15pt;
+}
+.card-graph {
+    background-color:  #140a0a;
     color : white;
     text-align: center;
     height: 180px;
+}
 
+.card-avg {
+    font-size: 32pt;
+    margin: auto;
+    border: white;
+    padding: 20pt;
+}
+
+.card-count {
+    font-size: 32pt;
+    margin: auto;
+    border: white;
+    padding: 20pt;
+}
+
+.card-most {
+    margin: auto;
+    border: white;
+    padding: 20pt;
+}
+
+p {
+    font-size: 20pt;
+    color: #ffbebd;
 }
