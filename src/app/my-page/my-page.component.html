@@ -1,17 +1,6 @@
 <app-navbar></app-navbar>
 <div class="container" fxLayout="column" fxLayoutGap=".5rem">
-  <div class="card-top">평균
-    <div class="card-avg" *ngIf="userRateAverage$ | async as res">
-      <div *ngFor="let userrateaverage of res">
-        {{ userrateaverage.avg | number:'.1-1'}} 점
-      </div>
-    </div>평가 게임 수
-    <div  class ="card-count" *ngIf="userRateCount$ | async as res">
-      <div *ngFor="let userratecount of res">
-        {{ userratecount.count }} 개
-      </div>
-    </div>
-  </div>
+  <app-progress-bar></app-progress-bar>
   <div class="contents" fxLayout.gt-sm="row" fxLayout.lt-md="column" fxLayoutGap=".5rem">
     <div class="left" fxLayout="column" fxLayoutGap=".5rem" fxFlex="3 0 auto">
       <div class="card-recommendation" flex="1 1 40%">

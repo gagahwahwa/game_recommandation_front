@@ -3,8 +3,8 @@ import { ActivatedRoute } from '@angular/router';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/reduce';
 import { Observable } from 'rxjs/Observable';
-import { MyPageService } from '../shared/service/my-page.service';
 import { GameService } from '../shared/service/game.service';
+import { MyPageService } from '../shared/service/my-page.service';
 
 @Component({
   selector: 'app-my-page',
@@ -26,8 +26,7 @@ export class MyPageComponent implements OnInit {
     this.userRateAverage$ = this.myPageService.getUserRateAverage(this.userID);
     this.userRateCount$ = this.myPageService.getUserRateCount(this.userID);
     this.userTag$ = this.myPageService.getTag(this.userID);
-    this.gameList$ = this.gameService.getGameList(20);
-    //this.tagGameList$ = this.gameService.getGameListByTagList();
+    this.gameList$ = this.gameService.getGameListByUserId(this.userID);
   }
 
 }

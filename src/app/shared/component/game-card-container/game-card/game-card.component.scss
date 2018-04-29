@@ -1,8 +1,9 @@
 @import '../../../../../styles';
 
 .card {
-  background-size: cover;
   height: 159px;
+  background-size: cover;
+  border: 0;
   .game-info {
     margin: 0 -1rem -.5rem -1rem;
     padding: .5rem 1rem;

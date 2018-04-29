@@ -1,4 +1,4 @@
-<div class="card" [ngClass]="{ fixed: isFixed }">
+<div class="card">
   <div *ngIf="parent === 'init'" fxLayout="row" fxLayoutAlign="end" fxLayoutGap=".5rem" class="btn-group">
     <button routerLink="/main" class="btn raise primary">{{ ratingCount >= LIMIT ? '완료' : '그만 할래요' }}</button>
   </div>

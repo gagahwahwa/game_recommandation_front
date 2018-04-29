@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/map';
 import { Observable } from 'rxjs/Observable';
+import { map } from 'rxjs/operators';
 import { GlobalService } from '../store/global.service';
 
 @Injectable()
@@ -29,5 +30,11 @@ export class GameService {
 
   getGameList(limit: number = 0): Observable<Array<any>> {
     return this.http.get(this.url + `/gamelist?limit=${limit}`).map((res: any) => res.result === 'success' ? res.data : []);
+  }
+
+  getGameListByUserId(userId: number): Observable<Array<any>> {
+    return this.http.get(this.url + `/game-rate?user_id=${userId}`).pipe(
+      map((res: any) => res.result === 'success' ? res.data : [])
+    );
   }
 }

@@ -18,6 +18,7 @@ export class GameCardComponent implements OnInit {
 
   ngOnInit() {
     this.isStarRateBarShown = false;
+    this.rate = this.game.rate;
   }
 
   rateChange(rate: number) {
