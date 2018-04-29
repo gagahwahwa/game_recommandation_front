@@ -1,13 +1,16 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CommentComponent } from './comment.component';
-import { CommentService } from '../../shared/service/comment.service';
-import { StarRateBarModule } from '../../shared/component/star-rate-bar/star-rate-bar.module';
+import { NgModule } from '@angular/core';
+import { FlexLayoutModule } from '@angular/flex-layout';
 import { ReactiveFormsModule } from '@angular/forms';
+import { StarRateBarModule } from '../../shared/component/star-rate-bar/star-rate-bar.module';
+import { CommentService } from '../../shared/service/comment.service';
+import { CommentComponent } from './comment.component';
 import { SubstrPipe } from './substr.pipe';
+
 @NgModule({
   imports: [
     CommonModule,
+    FlexLayoutModule,
     StarRateBarModule,
     ReactiveFormsModule,
     ],

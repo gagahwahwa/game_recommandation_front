@@ -1,8 +1,8 @@
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
-import { CommentService } from '../../shared/service/comment.service';
-import { Observable } from 'rxjs/Observable';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Observable } from 'rxjs/Observable';
+import { CommentService } from '../../shared/service/comment.service';
 
 @Component({
   selector: 'app-comment',
@@ -10,11 +10,11 @@ import { FormBuilder, FormGroup } from '@angular/forms';
   styleUrls: ['./comment.component.scss']
 })
 export class CommentComponent implements OnInit {
-
-  CommentFormGroup: FormGroup;
+  commentFormGroup: FormGroup;
   comments$: Observable<any>;
   game_id: number;
-  user_id: string;
+  user_id: number;
+  rate: number;
 
   starRateArray: Array<string>;
 
@@ -32,32 +32,36 @@ export class CommentComponent implements OnInit {
     '최고예요!'
   ];
 
-  constructor(private commentService: CommentService, private fb: FormBuilder, private route: ActivatedRoute, private router: Router) { }
+  constructor(private commentService: CommentService, private fb: FormBuilder, private route: ActivatedRoute, private router: Router) {
+  }
 
   ngOnInit() {
     this.game_id = this.route.snapshot.params.gameId;
-    console.log(this.game_id);
-    this.user_id = sessionStorage.getItem('id');
+    this.user_id = +sessionStorage.getItem('id');
+    this.comments$ = this.commentService.getComments(this.game_id);
+    this.rate = 0;
 
     // formGroup 선언
-    this.CommentFormGroup = this.fb.group({
-      id: [0],
-      nickname: [''], // 작성자 닉네임
-      regi_date: [''], // 댓글 등록 날짜
-      rate: [0], // 평점
+    this.commentFormGroup = this.fb.group({
       comment: [''] // 댓글 내용
     });
-    this.comments$ = this.commentService.getComments(this.game_id);
-    }
-  newComment(formGroup: FormGroup) {
+  }
+
+  registerComment(formGroup: FormGroup) {
     // 백엔드로 댓글 전송
-    this.commentService.postComment(formGroup.value).subscribe((res: any) => {
-      if ( res.result === 'success') { // 성공시
+    this.commentService.postComment({
+      game_id: this.game_id,
+      user_id: this.user_id,
+      rate: this.rate,
+      comment: formGroup.controls.comment.value
+    }).subscribe((res: any) => {
+      if (res.result === 'success') { // 성공시
         // 페이지 리로드(?)
         this.comments$ = this.commentService.getComments(this.game_id);
       }
     });
   }
+
   // 인자 수정 요망
   deleteComment(formGroup: FormGroup) {
     // DB로 삭제할 댓글 전송

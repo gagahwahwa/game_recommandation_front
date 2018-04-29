@@ -1,35 +1,34 @@
-<div class="card">
-  <form class="form-group" [formGroup]="CommentFormGroup" (submit)="newComment(CommentFormGroup)">
-    <p>코멘터리 입력 및 평점</p>
-    <div class="comment-input">
-      <textarea></textarea>
-      <div class="comment-input-btn">
-        <app-star-rate-bar></app-star-rate-bar>
-        <button class="btn" type="submit">등록</button>
+<div fxLayout="column" fxLayoutGap=".5rem">
+  <div class="card">
+    <form id="comment-form" [formGroup]="commentFormGroup" (submit)="registerComment(commentFormGroup)">
+      <div class="form-group">
+        <label for="comment">평점 및 코멘트 등록</label>
+        <textarea formControlName="comment" id="comment" class="form-control"></textarea>
+      </div>
+      <div class="bottom" fxLayout="row" fxLayoutAlign="space-between center">
+        <app-star-rate-bar (rateChange)="rate = $event"></app-star-rate-bar>
+        <button type="submit" class="btn raise primary">등록</button>
+      </div>
+    </form>
+  </div>
+  <div class="card">
+    <div class="comments" fxLayout="column">
+      <div class="comment" *ngFor="let comment of comments$ | async" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="1rem">
+        <div class="header" fxFlex="15%">
+          <p class="nickname">{{ comment.nickname }}</p>
+          <p class="date">{{ comment.regi_date }}</p>
+        </div>
+        <div class="content">
+          <p class="comment">{{ comment.comment || basicComment[comment.rate * 2] }}</p>
+          <i class="material-icons"
+             *ngFor="let empty of cal_star_rate(comment.rate);
+             let i = index"
+          >
+            {{ starRateArray[i] }}
+          </i>
+        </div>
+        <button class="btn raise primary" *ngIf="user_id === comment.id">삭제</button>
       </div>
     </div>
-  </form>
-</div>
-<div class="card">
-  <p>코멘터리 리스트</p>
-  <div class="comment-list" *ngIf="comments$ | async as res">
-    <ul>
-      <li *ngFor="let comment of res.data;">
-        <!--댓글-->
-        <div class="comment">
-          <div class="comment-header">
-            <p class="comment-nickname-font">{{ comment.nickname | substr }}</p>
-            <p class="comment-date-font">{{ comment.regi_date }}</p>
-          </div>
-          <div class="comment-content">
-              <p *ngIf="comment.comment==null"> {{ basicComment[comment.rate * 2] }}</p>
-          </div>
-        </div>
-        <div class="comment-btn">
-          <i class="material-icons" *ngFor="let empty of cal_star_rate(comment.rate); let i = index" flex-basis="10%">{{ starRateArray[i] }}</i>
-          <button *ngIf="comment.id==user_id" class="btn" (click)="deleteComment(CommentFormGroup) " flex-basis="60%">삭제</button>
-        </div>
-      </li>
-    </ul>
   </div>
 </div>
