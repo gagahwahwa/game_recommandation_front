@@ -8,8 +8,10 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output
 })
 
 export class StarRateBarComponent implements OnInit {
-  @Output() rateChange = new EventEmitter<number>();
   @Input() rate: number;
+  @Input() readOnly? = false;
+  @Output() rateChange = new EventEmitter<number>();
+
   starArray: Array<number>;
   starTypeArray: Array<string>;
   savedStarTypeArray: Array<string>;
@@ -35,20 +37,22 @@ export class StarRateBarComponent implements OnInit {
   }
 
   onMouseMove(event) {
-    const x = event.pageX - event.target.parentElement.offsetLeft;
-    const pointer = x % (this.ICON_HALF_WIDTH * 2);
-    const index = Math.floor(x / (this.ICON_HALF_WIDTH * 2));
-    if (index < 5) {
-      if (0 < pointer && pointer < this.ICON_HALF_WIDTH) {
-        this.starTypeArray[index] = 'star_half';
-        this.starTypeArray.fill('star', 0, index);
-        this.starTypeArray.fill('star_border', index + 1);
-      } else if (this.ICON_HALF_WIDTH <= pointer && pointer < this.ICON_HALF_WIDTH * 2) {
-        this.starTypeArray[index] = 'star';
-        this.starTypeArray.fill('star', 0, index);
-        this.starTypeArray.fill('star_border', index + 1);
-      } else {
-        this.starTypeArray[index] = 'star_border';
+    if (!this.readOnly) {
+      const x = event.pageX - event.target.parentElement.offsetLeft;
+      const pointer = x % (this.ICON_HALF_WIDTH * 2);
+      const index = Math.floor(x / (this.ICON_HALF_WIDTH * 2));
+      if (index < 5) {
+        if (0 < pointer && pointer < this.ICON_HALF_WIDTH) {
+          this.starTypeArray[index] = 'star_half';
+          this.starTypeArray.fill('star', 0, index);
+          this.starTypeArray.fill('star_border', index + 1);
+        } else if (this.ICON_HALF_WIDTH <= pointer && pointer < this.ICON_HALF_WIDTH * 2) {
+          this.starTypeArray[index] = 'star';
+          this.starTypeArray.fill('star', 0, index);
+          this.starTypeArray.fill('star_border', index + 1);
+        } else {
+          this.starTypeArray[index] = 'star_border';
+        }
       }
     }
   }
@@ -58,17 +62,19 @@ export class StarRateBarComponent implements OnInit {
   }
 
   submitRate() {
-    this.rate = 0;
-    this.savedStarTypeArray = [...this.starTypeArray];
-    for (let i = 0; i < this.savedStarTypeArray.length; i++) {
-      if (this.savedStarTypeArray[i] === 'star_border') {
-        break;
-      } else if (this.savedStarTypeArray[i] === 'star') {
-        this.rate = this.rate + 1;
-      } else if (this.savedStarTypeArray[i] === 'star_half') {
-        this.rate = this.rate + 0.5;
+    if (!this.readOnly) {
+      this.rate = 0;
+      this.savedStarTypeArray = [...this.starTypeArray];
+      for (let i = 0; i < this.savedStarTypeArray.length; i++) {
+        if (this.savedStarTypeArray[i] === 'star_border') {
+          break;
+        } else if (this.savedStarTypeArray[i] === 'star') {
+          this.rate = this.rate + 1;
+        } else if (this.savedStarTypeArray[i] === 'star_half') {
+          this.rate = this.rate + 0.5;
+        }
       }
+      this.rateChange.emit(this.rate);
     }
-    this.rateChange.emit(this.rate);
   }
 }

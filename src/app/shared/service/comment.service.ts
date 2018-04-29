@@ -11,7 +11,8 @@ export class CommentService {
   }
   // url + 수정 요망
   getComments(id: number): Observable<any> {
-    return this.http.get(this.url + `/comment/${id}`);
+
+    return this.http.get(this.url + `/game-rate?game_id=${id}`);
   }
 
   // url + 수정 요망

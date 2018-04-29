@@ -16,20 +16,18 @@
     <ul>
       <li *ngFor="let comment of res.data;">
         <!--댓글-->
-        <div class="comment-header">
-          <app-star-rate-bar [rate]="comment.cRate"></app-star-rate-bar>
-          <p class="comment-writer-font">{{ comment.cWriter }}</p>
-          <p class="comment-date-font">{{ comment.cDate }}</p>
-        </div>
-
-        <div class="comment-main">
+        <div class="comment">
+          <div class="comment-header">
+            <p class="comment-nickname-font">{{ comment.nickname | substr }}</p>
+            <p class="comment-date-font">{{ comment.regi_date }}</p>
+          </div>
           <div class="comment-content">
-            <p>{{ comment.cContent }}</p>
+              <p *ngIf="comment.comment==null"> {{ basicComment[comment.rate * 2] }}</p>
           </div>
-          <!-- *ngIf 이용해서 작성자 == 로그인한 사람만 버튼 보이게 하고싶음 -->
-          <div class="comment-btn">
-            <button (click)="deleteComment(CommentFormGroup)">삭제</button>
-          </div>
+        </div>
+        <div class="comment-btn">
+          <i class="material-icons" *ngFor="let empty of cal_star_rate(comment.rate); let i = index" flex-basis="10%">{{ starRateArray[i] }}</i>
+          <button *ngIf="comment.id==user_id" class="btn" (click)="deleteComment(CommentFormGroup) " flex-basis="60%">삭제</button>
         </div>
       </li>
     </ul>
