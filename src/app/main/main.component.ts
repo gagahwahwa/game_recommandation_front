@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
+import { shareReplay } from 'rxjs/operators';
 import { GameService } from '../shared/service/game.service';
 
 @Component({
@@ -11,6 +12,7 @@ import { GameService } from '../shared/service/game.service';
 })
 export class MainComponent implements OnInit {
   items: Array<any> = [];
+  limit: number;
   rankList$: Observable<Array<any>>;
   keywordForm: FormGroup;
 
@@ -28,14 +30,17 @@ export class MainComponent implements OnInit {
     this.keywordForm = this.fb.group({
       keyword: ['']
     });
-    this.rankList$ = this.gameService.getRankingGameList(10);
+    this.limit = 20;
+    this.rankList$ = this.gameService.getRankingGameList(this.limit).pipe(
+      shareReplay()
+    );
   }
 
-  gameClick(gameID: number) {
+  navigateToGameDetail(gameID: number) {
     this.router.navigate([`/game-detail/${gameID}`]);
   }
 
-  searchClick(form: FormGroup) {
+  search(form: FormGroup) {
     // if value invlolve #, then split
     const inputValue = form.controls.keyword.value;
     let realValue = '';

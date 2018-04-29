@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-slider',
@@ -9,7 +10,7 @@ export class SliderComponent implements OnInit {
   @Input() items: any[];
   selected: number;
 
-  constructor() {
+  constructor(private router: Router) {
   }
 
   ngOnInit() {
@@ -30,5 +31,9 @@ export class SliderComponent implements OnInit {
     } else {
       this.selected--;
     }
+  }
+
+  navigateToGameDetail(gameId: number) {
+    this.router.navigateByUrl(`/game-detail/${gameId}`);
   }
 }

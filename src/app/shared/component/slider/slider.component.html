@@ -2,7 +2,7 @@
   <div fxLayout="row" fxLayoutAlign="center" class="contents">
     <img class="item" [src]="items[selected].url" alt="이미지">
   </div>
-  <div fxLayout="row" fxLayoutAlign="space-between" class="indicator">
+  <div fxLayout="row" fxLayoutAlign="space-between" class="indicator" (click)="navigateToGameDetail(items[selected].id)">
     <div fxLayout="column" fxLayoutAlign="center center" class="prev dir" (click)="prev()">
       <i class="material-icons">keyboard_arrow_left</i>
     </div>

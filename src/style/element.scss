@@ -1,5 +1,11 @@
 @import 'color.scss';
 
+.container {
+  max-width: 1440px;
+  margin: auto;
+  padding: 0 1rem;
+}
+
 a[routerLink] {
   color: inherit;
   text-decoration: none;
@@ -20,11 +26,6 @@ a[routerLink] {
   padding: .5rem 1rem;
   border: 2px solid $primary-light;
   color: #FFFFFF;
-}
-
-
-.container {
-  padding: 0 1rem;
 }
 
 .label {

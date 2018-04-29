@@ -1,57 +1,54 @@
 <app-navbar></app-navbar>
-<div class="container" fxLayout="column" fxLayoutGap=".5rem">
-  <div class="maincard">
+<div class="container" fxLayout="column" fxLayoutGap="2rem">
+  <div class="slider-container">
     <app-slider [items]="items"></app-slider>
   </div>
-
-  <div class="contents" fxLayout.gt-sm="row" fxLayout.lt-md="column" fxLayoutGap=".5rem" *ngIf="rankList$ | async as res">
-    <div class="rankcard" fxFlex.gt-sm="8 0 auto">
-      <p class="ranking-font">GAME RANKING</p>
-
-      <div class="rank-top" fxLayout="row" fxLayoutAlign="space-around">
-        <div (click)="gameClick(res[1].id)" class="rank-top-card" fxLayout="column" fxLayoutAlign="start center" fxFlex.gt-sm="1 0 auto">
-          <img class="rank2" src="assets/main/header4.jpg" id="rank2">
-          <p class="rank-top-font">{{ res[1].title }}</p>
-          <div fxLayout="row" fxLayoutAlign="center" fxLayoutGap=".5rem">
-            <i class="material-icons" id="heart-icon">favorite</i>
-            <p class="rank-top-star">{{ res[1].rate_avg }}</p>
+  <div class="contents" fxLayout="row" fxLayoutAlign="space-between" fxLayoutGap="1rem">
+    <div class="rank-container" fxFlex="1 1 80%">
+      <p class="title">GAME RANKING</p>
+      <div class="top-rank-container" fxLayout="row" fxLayoutAlign="space-between" fxLayoutGap=".5rem">
+        <div
+          [id]="'rank' + (i + 1)"
+          class="top-rank"
+          *ngFor="let topRank of rankList$ | async | slice:0:3; let i = index"
+          (click)="navigateToGameDetail(topRank.id)"
+        >
+          <img [src]="'assets/main/header'+ (i + 2) +'.jpg'" alt="thumbnail" class="thumbnail">
+          <div class="info" fxLayout="row" fxLayoutAlign="start" fxLayoutGap=".5rem">
+            <p class="index" fxLayout="column">{{ i + 1 }}</p>
+            <div class="detail">
+              <p class="title">{{ topRank.title }}</p>
+              <div class="rate-container" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap=".5rem">
+                <i class="material-icons heart">favorite</i>
+                <p class="rate">{{ topRank.rate_avg }}</p>
+              </div>
+            </div>
           </div>
         </div>
-        <div (click)="gameClick(res[0].id)" fxLayout="column" fxLayoutAlign="start center" fxFlex.gt-sm="1 0 auto">
-          <img class="rank1" src="assets/main/header2.jpg" id="rank1">
-          <p class="rank-top-font">{{ res[0].title }}</p>
-          <div fxLayout="row" fxLayoutGap=".5rem">
-            <i class="material-icons" id="heart-icon">favorite</i>
-            <p class="rank-top-star">{{ res[0].rate_avg }}</p>
-          </div>
-        </div>
-        <div (click)="gameClick(res[2].id)" class="rank-top-card" fxLayout="column" fxLayoutAlign="start center" fxFlex.gt-sm="1 0 auto">
-          <img class="rank2" src="assets/main/header3.jpg" id="rank3">
-          <p class="rank-top-font">{{ res[2].title }}</p>
-          <div fxLayout="row" fxLayoutGap=".5rem">
-            <i class="material-icons" id="heart-icon">favorite</i>
-            <p class="rank-top-star">{{ res[2].rate_avg }}</p>
-          </div>
-        </div>
-
       </div>
-
-      <div class="rank-bottom" fxLayout="column">
-        <div class="rank-bottom-card" (click)="gameClick(rank.id)" fxLayout="row" fxLayoutAlign="start" *ngFor="let rank of res | slice:3:10; let i = index">
-          <div class="rank-num" fxFlexAlign="end" fxFlex.gt-sm="1 1 5%">
-            <p class="rank-num-font">{{i+4}}</p>
-          </div>
-          <div class="name-star" fxLayout="column" fxFlex.gt-sm="1 1 auto">
-            <p class="rank-bottom-font">{{rank.title}}</p>
-          </div>
+      <div class="sub-rank-container" fxLayout="column">
+        <div
+          class="sub-rank"
+          *ngFor="let subRank of rankList$ | async | slice:3:limit; let i = index"
+          fxLayout="row"
+          fxLayoutAlign="start center"
+          fxLayoutGap="1rem"
+          (click)="navigateToGameDetail(subRank.id)"
+        >
+          <p class="index" fxFlex="1 1 4rem">{{ i + 4 }}</p>
+          <p class="title">{{ subRank.title }}</p>
+          <p class="rate">{{ subRank.rate_avg }}</p>
         </div>
       </div>
     </div>
-
-    <form [formGroup]="keywordForm" class="searchcard" fxFlex.gt-sm="1 0 auto" (submit)="searchClick(keywordForm)">
-      <input formControlName="keyword" class="search-input" type="text" placeholder="# 태그검색" fxFlex.gt-sm="8 0 auto" required>
-      <button class="search-button" type="submit"><i class="material-icons" id="search-icon">search</i></button>
-    </form>
+    <div class="search-bar" fxFlex="1 1 20%">
+      <form class="card" [formGroup]="keywordForm" (submit)="search(keywordForm)">
+        <div class="form-group" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap=".5rem">
+          <input type="text" class="form-control">
+          <button class="btn primary" type="submit"><i class="material-icons">search</i></button>
+        </div>
+      </form>
+    </div>
   </div>
 </div>
 

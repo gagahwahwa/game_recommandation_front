@@ -21,3 +21,7 @@ html, body, app-root {
 app-login, app-sign-up {
   height: calc(100% - 70px);
 }
+
+p {
+  margin: 0;
+}

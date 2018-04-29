@@ -1,9 +1,10 @@
 @import "../../../../styles.scss";
 
-.container {
+.navbar {
+  margin-bottom: 1rem;
+  padding: 0 1rem;
   background-color: $pointer;
   color: #FFFFFF;
-  margin-bottom: 1rem;
 }
 
 .title, .nickname {
