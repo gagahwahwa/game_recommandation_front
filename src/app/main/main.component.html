@@ -44,7 +44,7 @@
     <div class="search-bar" fxFlex="1 1 20%">
       <form class="card" [formGroup]="keywordForm" (submit)="search(keywordForm)">
         <div class="form-group" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap=".5rem">
-          <input type="text" class="form-control">
+          <input formControlName="keyword" type="text" class="form-control">
           <button class="btn primary" type="submit"><i class="material-icons">search</i></button>
         </div>
       </form>

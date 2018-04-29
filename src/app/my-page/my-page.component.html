@@ -10,6 +10,9 @@
         <div class="tab" [ngClass]="{'active': selected === 'recommend'}" (click)="selected = 'recommend'">
           <p class="title">Recommend</p>
         </div>
+        <div class="tab">
+          <p class="title" routerLink="/more-rating">More Rating</p>
+        </div>
       </div>
       <div class="card" *ngIf="selected === 'rated'">
         <app-game-card-container *ngIf="ratedGameList$ | async as gameList" fxLayout="row" fxLayoutGap=".5rem" [gameList]="gameList"></app-game-card-container>

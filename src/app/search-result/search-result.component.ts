@@ -9,6 +9,7 @@ import { GameService } from '../shared/service/game.service';
   styleUrls: ['./search-result.component.scss']
 })
 export class SearchResultComponent implements OnInit {
+  type: string;
   keyword: string;
   searchedGames$: Observable<Array<any>>;
 
@@ -16,7 +17,8 @@ export class SearchResultComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.type = this.route.snapshot.url[0].path;
     this.keyword = this.route.snapshot.params.keyword;
-    this.searchedGames$ = this.gameService.searchGame(this.keyword);
+    this.searchedGames$ = this.gameService.searchGame(this.type, this.keyword);
   }
 }

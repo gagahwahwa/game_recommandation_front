@@ -41,14 +41,16 @@ export class MainComponent implements OnInit {
   }
 
   search(form: FormGroup) {
-    // if value invlolve #, then split
-    const inputValue = form.controls.keyword.value;
-    if (inputValue.search('#') !== -1 ) {
-      const realValue = inputValue.split('#');
-      this.router.navigate([`/search/tag/${realValue[1]}`]);
-    } else {
-      this.router.navigate([`/search/game/${form.controls.keyword.value}`]);
+    const value = form.controls.keyword.value;
+    if (value !== '') {
+      if (value.search('#') !== -1) {
+        const realValue = value.split('#');
+        this.router.navigate([`/search/tag/${realValue[1]}`]);
+      } else {
+        this.router.navigate([`/search/game/${value}`]);
+      }
     }
+    // if value invlolve #, then split
   }
 
 }

@@ -9,6 +9,7 @@
     padding: .5rem 1rem;
     max-height: 100%;
     color: #FFFFFF;
+    background: linear-gradient(to bottom, transparent, $pointer);
     .title {
       text-align: center;
       cursor: pointer;

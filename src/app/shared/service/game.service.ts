@@ -23,8 +23,8 @@ export class GameService {
     return this.http.get(this.url + `/rank?limit=${limit}`).map((res: any) => res.result === 'success' ? res.data : []);
   }
 
-  searchGame(keyword: string): Observable<Array<any>> {
-    return this.http.get(this.url + `/search?keyword=${keyword}`)
+  searchGame(type: string, keyword: string): Observable<Array<any>> {
+    return this.http.get(this.url + `/search/${type}?keyword=${keyword}`)
       .map((res: any) => res.result === 'success' ? res.data : []);
   }
 
