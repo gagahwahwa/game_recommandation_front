@@ -1,21 +1,29 @@
 <app-navbar></app-navbar>
 <div class="container" fxLayout="column" fxLayoutGap=".5rem">
-  <app-progress-bar></app-progress-bar>
+  <app-progress-bar [ratingCount]="rateCount$ | async"></app-progress-bar>
   <div class="contents" fxLayout.gt-sm="row" fxLayout.lt-md="column" fxLayoutGap=".5rem">
-    <div class="left" fxLayout="column" fxLayoutGap=".5rem" fxFlex="3 0 auto">
-      <div class="card-recommendation" flex="1 1 40%">
-        <p>추천</p>
-        <!--<app-game-card-container *ngIf="tagGameList$ | async as res" [gameList]="tagGameList"></app-game-card-container>-->
-        <app-game-card-container *ngIf="gameList$ | async as gameList" fxLayout="row" fxLayoutGap=".5rem" [gameList]="gameList"></app-game-card-container>
+    <div class="left" fxLayout="column" fxFlex="1 1 75%">
+      <div class="tabs" fxLayout="row" fxLayoutGap=".5rem">
+        <div class="tab" [ngClass]="{'active': selected === 'rated'}" (click)="selected = 'rated'">
+          <p class="title">Rated</p>
+        </div>
+        <div class="tab" [ngClass]="{'active': selected === 'recommend'}" (click)="selected = 'recommend'">
+          <p class="title">Recommend</p>
+        </div>
+      </div>
+      <div class="card" *ngIf="selected === 'rated'">
+        <app-game-card-container *ngIf="ratedGameList$ | async as gameList" fxLayout="row" fxLayoutGap=".5rem" [gameList]="gameList"></app-game-card-container>
+      </div>
+      <div class="card" *ngIf="selected === 'recommend'">
+        <app-game-card-container *ngIf="recommendGameList$ | async as recommendGameList" fxLayout="row" fxLayoutGap=".5rem"
+                                 [gameList]="recommendGameList"></app-game-card-container>
       </div>
     </div>
-    <div class="right" fxLayout="column" fxLayoutGap=".5rem" fxFlex="1 0 auto">
+    <div class="right" fxLayout="column" fxLayoutGap=".5rem" fxFlex="1 1 25%">
       <div class="card-tag" fxLayoutGap=".5rem">
-          <p>선호하는 장르</p>
-        <div *ngIf="userTag$ | async as res">
-        <div *ngFor="let usertag of res">
-          {{ usertag.name }}
-        </div>
+        <p>선호하는 장르</p>
+        <div *ngIf="tags$ | async as tags">
+          <p class="label raise primary" *ngFor="let tag of tags">{{ tag.name }}</p>
         </div>
       </div>
       <div class="card-graph" fxLayoutGap=".5rem">

@@ -1,0 +1,23 @@
+@import '../../styles';
+
+.contents {
+  margin-top: 2rem;
+}
+
+.contents .left .tabs {
+}
+
+.contents .left .tabs .tab {
+  background-color: $primary;
+  padding: 1rem 2rem;
+  cursor: pointer;
+  color: #000000;
+}
+
+.contents .left .tabs .tab.active {
+  background-color: $primary-light;
+}
+
+.card {
+  padding: 0;
+}

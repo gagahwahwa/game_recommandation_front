@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/reduce';
 import { Observable } from 'rxjs/Observable';
+import { map } from 'rxjs/operators';
 import { GameService } from '../shared/service/game.service';
 import { MyPageService } from '../shared/service/my-page.service';
 
@@ -13,20 +12,26 @@ import { MyPageService } from '../shared/service/my-page.service';
 })
 export class MyPageComponent implements OnInit {
   userID: number;
-  userRateAverage$: Observable<any>;
-  userRateCount$: Observable<any>;
+  selected: string;
+  rateAvrate$: Observable<any>;
+  rateCount$: Observable<any>;
+  tags$: Observable<Array<any>>;
+  ratedGameList$: Observable<Array<any>>;
+  recommendGameList$: Observable<Array<any>>;
 
-  userTag$: Observable<Array<any>>;
-  gameList$: Observable<Array<any>>;
-  tagGameList$: Observable<Array<any>>;
-  constructor(private myPageService: MyPageService, private gameService: GameService, private route: ActivatedRoute) { }
+  constructor(private myPageService: MyPageService, private gameService: GameService, private route: ActivatedRoute) {
+  }
 
   ngOnInit() {
     this.userID = this.route.snapshot.params.userId;
-    this.userRateAverage$ = this.myPageService.getUserRateAverage(this.userID);
-    this.userRateCount$ = this.myPageService.getUserRateCount(this.userID);
-    this.userTag$ = this.myPageService.getTag(this.userID);
-    this.gameList$ = this.gameService.getGameListByUserId(this.userID);
+    this.selected = 'rated';
+    this.rateAvrate$ = this.myPageService.getUserRateAverage(this.userID);
+    this.rateCount$ = this.myPageService.getUserRateCount(this.userID).pipe(
+      map((data: any) => data[0].count)
+    );
+    this.tags$ = this.myPageService.getTag(this.userID);
+    this.ratedGameList$ = this.gameService.getGameListByUserId(this.userID);
+    this.recommendGameList$ = this.gameService.getGameList(20);
   }
 
 }
