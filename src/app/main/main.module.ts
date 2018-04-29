@@ -1,17 +1,19 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
-import { MainComponent } from './main.component';
+import { NgModule } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { ReactiveFormsModule } from '@angular/forms';
 import { GameCardContainerModule } from '../shared/component/game-card-container/game-card-container.module';
-import { GameService } from '../shared/service/game.service';
 import { NavbarModule } from '../shared/component/navbar/navbar.module';
 import { SliderModule } from '../shared/component/slider/slider.module';
+import { GameService } from '../shared/service/game.service';
+
+import { MainComponent } from './main.component';
 
 @NgModule({
   imports: [
     CommonModule,
     FlexLayoutModule,
+    ReactiveFormsModule,
     GameCardContainerModule,
     FlexLayoutModule,
     NavbarModule,

@@ -5,14 +5,14 @@
 
 .maincard {
   border-color: rgb(70, 65, 97);
-  background-color: #140a0a;
-  block-size: 416px;
+  background-color: #393232;
+  block-size: 500px;
 }
 
 .rankcard {
   border-color: rgb(70, 65, 97);
-  background-color: #140a0a;
-  block-size: 1500px;
+  background-color: #393232;
+  block-size: 1000px;
   padding: 20px;
   margin-top: 20px;
 }
@@ -23,7 +23,7 @@
 }
 
 .rank-top {
-  border-bottom: 0.1px solid #ffbebd;
+  margin: 4px;
 }
 
 .rank-bottom {
@@ -42,26 +42,27 @@
 .rank-top-card {
   margin-top: 47px;
   margin-bottom: 40px;
+  max-width: 280px;
 }
 
 .rank-bottom-card {
-  border-bottom: 0.1px solid #ffbebd;
+  border-bottom: 0.01px solid #ffbebd;
 }
 
 .rank-num {
   margin-right: 15px;
+  margin-left: 20px;
 }
 
 .rank-num-font {
-  font-size: 35px;
+  font-size: 20px;
   color: #ffbebd;
   font-weight: bold;
   font-family: Arial, Helvetica, sans-serif;
-  border: 3px solid #ffbebd;
+  border: 2px solid #ffbebd;
   text-align: center;
   border-radius: 10px;
-  padding-top: 15px;
-  padding-bottom: 15px;
+  padding: 5px;
 
 }
 
@@ -70,13 +71,19 @@
   color: #ffbebd;
   text-align: center;
   font-weight: bold;
-  margin-bottom: 60px;
+  margin-top: 35px;
+  margin-bottom: 55px;
 }
 
 .rank-top-font {
   font-size: 20px;
   color: white;
   font-weight: bold;
+}
+
+.rank-bottom-font {
+  font-size: 19px;
+  color: white;
 }
 
 .rank1 {
@@ -93,15 +100,8 @@
   border-radius: 10px;
 }
 
-.rank-small {
-  width: auto;
-  height: 90px;
-  object-fit: cover;
-  border-radius: 10px;
-}
-
 .name-star {
-  margin: 15px;
+  margin: 5px;
 }
 
 .gamecard {
@@ -122,10 +122,11 @@
   padding : 18px;
   margin-left: 30px;
   margin-right: 20px;
+  margin-top: 20px;
   border-bottom: 2px solid #ffbebd;
 }
 
-.searchinput {
+.search-input {
   padding: 2px;
   border: 0px;
   background-color: #4D4545;
@@ -135,101 +136,14 @@
   color:#ffbebd;
 }
 
+.search-button {
+  background-color: hsla(120, 100%, 50%, 0.0);
+  border: 0;
+  outline: 0;
+}
+
 #search-icon {
   color: #ffbebd;
   font-size: 33px;
 }
 
-.arrow-image {
-  width: 60px;
-  height: auto;
-}
-
-.arrow-button:focus {
-  outline: 0;
-  border: none;
-}
-
-.search-image {
-  padding-top: 10px;
-  padding-right: 10px;
-  width: 25px;
-  height: 40px;
-}
-
-.items {
-  max-width: 500px;
-  height: 216px;
-}
-
-#left, #right {
-  margin-left: 30px;
-  margin-right: 30px;
-  outline: none;
-}
-
-.ant-carousel .slick-slide {
-  text-align: center;
-  height: 160px;
-  line-height: 160px;
-  background: #364d79;
-  overflow: hidden;
-}
-
-.ant-carousel .slick-slide h3 {
-  color: #fff;
-}
-
-.selected {
-  background-color: #CFD8DC
-  !important; color: white;
-}
-
-.ranks {
-  margin: 0 0 2em 10em;
-  list-style-type: none;
-  padding: 0;
-  width: 59em;
-}
-
-.ranks li {
-  cursor: pointer;
-  position: relative;
-  left: 0;
-  background-color: #EEE;
-  margin: .8em;
-  padding: .3em 0;
-  height: 1.6em;
-  border-radius: 4px;
-}
-
-.ranks li.selected:hover {
-  background-color: #BBD8DC
-  !important; color: white;
-}
-
-.ranks li:hover {
-  color: rgb(143, 137, 180);
-  background-color: #DDD;
-  left: .1em;
-}
-
-.ranks .text {
-  position: relative;
-  top: -3px;
-}
-
-.ranks .badge {
-  display: inline-block;
-  font-size: small;
-  color: white;
-  padding: 0.8em 0.7em 0 0.7em;
-  background-color: rgb(70, 65, 97);
-  line-height: 1em;
-  position: relative;
-  left: -1px;
-  top: -4px;
-  height: 1.8em;
-  margin-right: .8em;
-  border-radius: 4px 0 0 4px;
-}
