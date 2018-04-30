@@ -12,9 +12,10 @@
     <div class="rates" fxLayout="row" fxLayoutGap=".5rem">
       <div class="card predict" fxFlex="1 1">
         <p class="title">예상 평점</p>
-        <p class="rate" *ngIf="predictRate$ | async as predictedRate">
+        <p class="rate" *ngIf="predictRate$ | async as predictedRate; else predictYet">
           {{ predictedRate === - 999 ? '아직 예상 점수를 계산할 수 없습니다.' : predictedRate | number:'.2-2' }}
         </p>
+        <ng-template #predictYet><p class="rate">예상 점수를 계산 중입니다.</p></ng-template>
       </div>
       <div class="card my" fxFlex="1 1" *ngIf="myRate$ | async as my">
         <p class="title">내 평점</p>
