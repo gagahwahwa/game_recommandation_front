@@ -22,8 +22,8 @@
                                  [gameList]="recommendGameList"></app-game-card-container>
       </div>
     </div>
-    <div class="right" fxLayout="column" fxLayoutGap=".5rem" fxFlex="1 1 25%">
-      <div class="card-tag" fxLayoutGap=".5rem">
+    <div class="right" fxLayout="column" fxLayoutGap="2rem" fxFlex="1 1 25%">
+      <div class="card-tag" fxLayout="column" fxLayoutGap="1rem">
         <p>선호하는 장르</p>
         <div *ngIf="tags$ | async as tags">
           <p class="label raise primary" *ngFor="let tag of tags">{{ tag.name }}</p>
