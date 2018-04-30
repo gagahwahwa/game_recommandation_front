@@ -26,7 +26,7 @@ export class CommentComponent implements OnInit {
     '별로예요.',
     '부족해요.',
     '보통이에요.',
-    '볼만해요.',
+    '할만해요.',
     '재미있어요.',
     '훌륭해요.',
     '최고예요!'

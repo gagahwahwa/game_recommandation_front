@@ -24,14 +24,14 @@ export class GameDetailComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.gameId = this.route.snapshot.params.gameId;
+    this.gameId = +this.route.snapshot.params.gameId;
     this.userId = +sessionStorage.getItem('id');
     this.gameInfo$ = this.gameService.getGameInformation(this.gameId).pipe(
       map((data: any) => data[0])
     );
     this.predictRate$ = this.gameService.getGamePredictScore(this.gameId, this.userId);
     this.myRate$ = this.gameService.getGameUserRate(this.userId).pipe(
-      map((data: any) => data.filter((item: any) => item.id === this.gameId)[0])
+      map((data: any) => data.filter((item: any) => item.id === this.gameId)[0]),
     );
     this.rateAvarage$ = this.gameService.getGameRateAvg(this.gameId).pipe(
       map((data: any) => data[0]),
