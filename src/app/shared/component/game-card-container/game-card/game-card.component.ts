@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
+import { isNullOrUndefined } from 'util';
 import { RateService } from '../../../service/rate.service';
 
 @Component({
@@ -18,7 +19,7 @@ export class GameCardComponent implements OnInit {
 
   ngOnInit() {
     this.isStarRateBarShown = false;
-    this.rate = this.game.rate;
+    this.rate = isNullOrUndefined(this.game.rate) ? null : this.game.rate;
   }
 
   rateChange(rate: number) {

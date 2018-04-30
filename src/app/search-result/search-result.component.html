@@ -7,7 +7,7 @@
     <app-game-card-container
       fxLayout="row"
       fxLayoutGap=".5rem"
-      *ngIf="searchedGames$ | async | slice:0:30  as searchedGames"
+      *ngIf="searchedGames$ | async | slice:0:100 as searchedGames"
       [gameList]="searchedGames"
     >
     </app-game-card-container>

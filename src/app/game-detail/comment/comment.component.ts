@@ -49,17 +49,21 @@ export class CommentComponent implements OnInit {
 
   registerComment(formGroup: FormGroup) {
     // 백엔드로 댓글 전송
-    this.commentService.postComment({
-      game_id: this.game_id,
-      user_id: this.user_id,
-      rate: this.rate,
-      comment: formGroup.controls.comment.value
-    }).subscribe((res: any) => {
-      if (res.result === 'success') { // 성공시
-        // 페이지 리로드(?)
-        this.comments$ = this.commentService.getComments(this.game_id);
-      }
-    });
+    if (this.rate === 0) {
+      alert('별점을 입력해주세요');
+    } else {
+      this.commentService.postComment({
+        game_id: this.game_id,
+        user_id: this.user_id,
+        rate: this.rate,
+        comment: formGroup.controls.comment.value
+      }).subscribe((res: any) => {
+        if (res.result === 'success') { // 성공시
+          // 페이지 리로드(?)
+          this.comments$ = this.commentService.getComments(this.game_id);
+        }
+      });
+    }
   }
 
   // 인자 수정 요망
