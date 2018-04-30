@@ -11,7 +11,7 @@
     <p class="title" (click)="navigateToGame(game.id)">{{ game.title }}</p>
     <div class="placeholder">
       <app-star-rate-bar
-        *ngIf="isStarRateBarShown || rate"
+        *ngIf="isStarRateBarShown || rate === null"
         [rate]="rate || 0"
         (rateChange)="rateChange($event)"
         fxLayout="row"

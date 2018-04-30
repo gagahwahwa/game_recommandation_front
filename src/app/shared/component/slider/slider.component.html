@@ -7,7 +7,7 @@
       <i class="material-icons">keyboard_arrow_left</i>
     </div>
     <div fxLayout="row" fxLayoutAlign="center" fxLayoutGap=".5rem" class="current">
-      <i *ngFor="let item of items; let i = index" class="material-icons">{{ selected === i ? 'lens' : 'panorama_fish_eye' }}</i>
+      <i *ngFor="let item of items; let i = index" class="material-icons" (click)="changeCurrent(i)">{{ selected === i ? 'lens' : 'panorama_fish_eye' }}</i>
     </div>
     <div fxLayout="column" fxLayoutAlign="center center" class="next dir" (click)="next()">
       <i class="material-icons">keyboard_arrow_right</i>
