@@ -1,13 +1,9 @@
 // https://codepen.io/grapgrap/pen/rpjOEg
 // font import
-
 @import url(https://fonts.googleapis.com/earlyaccess/notosanskr.css);
-
 @import './style/color.scss';
 @import './style/element.scss';
 @import './style/form.scss';
-
-// color define.
 
 html, body, app-root {
   display: flex;
@@ -18,8 +14,11 @@ html, body, app-root {
   color: #FFFFFF;
 }
 
-app-login, app-sign-up {
-  height: calc(100% - 70px);
+app-login,
+app-sign-up,
+app-init-data,
+app-init-data-step-1 {
+  height: 100%;
 }
 
 p {

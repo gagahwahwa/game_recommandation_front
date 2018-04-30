@@ -1,7 +1,7 @@
-<div class="container" fxLayout="column" fxLayoutGap=".5rem">
+<div class="container" fxLayout="column" fxLayoutAlign="center start" fxLayoutGap=".5rem">
   <div id="selected">
-    <div fxLayout="row" fxLayoutAlign="space-between">
-      <p>선택한 게임 장르 ({{ selectedTagList.length}} / {{ MAX_COUNT }})</p>
+    <div class="header" fxLayout="row" fxLayoutAlign="space-between">
+      <p>선택한 게임 장르 ({{ selectedTagList.length }} / {{ MAX_COUNT }})</p>
       <button *ngIf="selectedTagList.length >= MAX_COUNT" class="btn raise primary" fxFlexAlign="center" (click)="next()">다음 단계</button>
     </div>
     <div class="label-group">

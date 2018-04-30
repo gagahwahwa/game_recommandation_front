@@ -1,3 +1,21 @@
+.container {
+  margin-top: 2rem;
+}
+
 .form-control {
   margin: .5rem 0;
+}
+
+#selected {
+  width: 100%;
+  .header {
+    height: 2rem;
+  }
+  .label-group {
+    height: 3rem;
+  }
+}
+
+#whole {
+  width: 100%;
 }
