@@ -12,19 +12,20 @@
     <div class="rates" fxLayout="row" fxLayoutGap=".5rem">
       <div class="card predict" fxFlex="1 1">
         <p class="title">예상 평점</p>
-        <p class="rate" *ngIf="predictRate$ | async as predictedRate">{{ predictedRate === - 999 ? '아직 예상 점수를 계산할 수 없습니다.' : predictedRate }}</p>
+        <p class="rate" *ngIf="predictRate$ | async as predictedRate">{{ predictedRate === - 999 ? '아직 예상 점수를 계산할 수 없습니다.' : predictedRate | number:'.2-2'
+          }}</p>
       </div>
       <div class="card my" fxFlex="1 1" *ngIf="myRate$ | async as rate">
         <p class="title">내 평점</p>
-        <p class="rate">{{ rate }}</p>
+        <p class="rate">{{ rate | number:'.2-2' }}</p>
       </div>
       <div class="card all-time" fxFlex="1 1">
         <p class="title">전체 기간 평점 평균</p>
-        <p class="rate" *ngIf="rateAvarage$ | async as rateAvg">{{ rateAvg.rate_avg || 0 }}</p>
+        <p class="rate" *ngIf="rateAvarage$ | async as rateAvg">{{ rateAvg.rate_avg | number:'.2-2' || 0 }}</p>
       </div>
       <div class="card three-month" fxFlex="1 1">
         <p class="title">최근 3개월 평점 평균</p>
-        <p class="rate" *ngIf="rateAvarage$ | async as rateAvg">{{ rateAvg.rate_avg_3_month || 0 }}</p>
+        <p class="rate" *ngIf="rateAvarage$ | async as rateAvg">{{ rateAvg.rate_avg_3_month | number:'.2-2' || 0 }}</p>
       </div>
     </div>
     <div class="card tags">
