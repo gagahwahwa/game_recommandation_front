@@ -32,8 +32,4 @@ export class SliderComponent implements OnInit {
       this.selected--;
     }
   }
-
-  navigateToGameDetail(gameId: number) {
-    this.router.navigateByUrl(`/game-detail/${gameId}`);
-  }
 }
