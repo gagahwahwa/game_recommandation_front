@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
+import { shareReplay } from 'rxjs/operators';
 import { GameService } from '../shared/service/game.service';
 
 @Component({
@@ -11,10 +11,10 @@ import { GameService } from '../shared/service/game.service';
 })
 export class MainComponent implements OnInit {
   items: Array<any> = [];
+  limit: number;
   rankList$: Observable<Array<any>>;
-  keywordForm: FormGroup;
 
-  constructor(private gameService: GameService, private router: Router, private fb: FormBuilder) {
+  constructor(private gameService: GameService, private router: Router) {
     this.items = [
       { url: 'assets/main/big1.jpg' },
       { url: 'assets/main/big2.jpg' },
@@ -25,27 +25,13 @@ export class MainComponent implements OnInit {
    }
 
   ngOnInit() {
-    this.keywordForm = this.fb.group({
-      keyword: ['']
-    });
-    this.rankList$ = this.gameService.getRankingGameList(10);
+    this.limit = 20;
+    this.rankList$ = this.gameService.getRankingGameList(this.limit).pipe(
+      shareReplay()
+    );
   }
 
-  gameClick(gameID: number) {
+  navigateToGameDetail(gameID: number) {
     this.router.navigate([`/game-detail/${gameID}`]);
   }
-
-  searchClick(form: FormGroup) {
-    // if value invlolve #, then split
-    const inputValue = form.controls.keyword.value;
-    let realValue = '';
-
-    if (inputValue.search('#') !== -1 ) {
-      realValue = inputValue.split('#');
-      this.router.navigate([`/search/tag/${realValue[1]}`]);
-    } else {
-      this.router.navigate([`/search/game/${form.controls.keyword.value}`]);
-    }
-  }
-
 }

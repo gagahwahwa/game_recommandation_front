@@ -1,149 +1,89 @@
-.container {
-  width: 1440px;
-  margin: auto;
+@import '../../styles';
+
+.slider-container {
+  height: 24rem;
 }
 
-.maincard {
-  border-color: rgb(70, 65, 97);
-  background-color: #393232;
-  block-size: 500px;
+.rank-container {
+  background-color: $background-dark;
+  padding: 1rem;
 }
 
-.rankcard {
-  border-color: rgb(70, 65, 97);
-  background-color: #393232;
-  block-size: 1000px;
-  padding: 20px;
-  margin-top: 20px;
-}
-
-#heart-icon {
-  color: #ffbebd;
-  font-size: 25px;
-}
-
-.rank-top {
-  margin: 4px;
-}
-
-.rank-bottom {
-  margin-left: 20px;
-  margin-right: 20px;
-  margin-bottom: 20px;
-}
-
-.rank-top-star {
-  font-size: 20px;
-  color: #ffbebd;
+.rank-container > .title {
+  margin: 2rem 0 4rem 0;
+  font-size: 2rem;
+  color: $primary-light;
   font-weight: bold;
-  margin: 0;
-}
-
-.rank-top-card {
-  margin-top: 47px;
-  margin-bottom: 40px;
-  max-width: 280px;
-}
-
-.rank-bottom-card {
-  border-bottom: 0.01px solid #ffbebd;
-}
-
-.rank-num {
-  margin-right: 15px;
-  margin-left: 20px;
-}
-
-.rank-num-font {
-  font-size: 20px;
-  color: #ffbebd;
-  font-weight: bold;
-  font-family: Arial, Helvetica, sans-serif;
-  border: 2px solid #ffbebd;
   text-align: center;
-  border-radius: 10px;
-  padding: 5px;
-
 }
 
-.ranking-font {
-  font-size: 40px;
-  color: #ffbebd;
+.rank-container .top-rank-container {
+  padding-bottom: 4rem;
+}
+
+.rank-container .top-rank-container .top-rank {
+  cursor: pointer;
+}
+
+.rank-container .top-rank-container .top-rank .thumbnail {
+  width: 100%;
+  border-radius: 3px;
+}
+
+.rank-container .top-rank-container .top-rank .index {
+  width: 3rem;
+  height: 3rem;
+  margin-top: .5rem;
+  padding: .9rem 1rem;
+  border: 2px solid $primary-light;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: $primary-light;
+  border-radius: 3px;
+}
+
+.rank-container .top-rank-container .top-rank .title {
+  margin: .5rem 0;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.rank-container .top-rank-container .rate-container .heart {
+  color: $primary-light;
+}
+
+.rank-container .sub-rank-container {
+}
+
+.rank-container .sub-rank {
+  padding: .5rem 0;
+  cursor: pointer;
+}
+
+.rank-container .sub-rank-container .sub-rank .index {
+  width: 3rem;
+  height: 3rem;
+  padding: .5rem 1rem;
+  border: 2px solid $primary-light;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: $primary-light;
   text-align: center;
-  font-weight: bold;
-  margin-top: 35px;
-  margin-bottom: 55px;
+  border-radius: 3px;
 }
 
-.rank-top-font {
-  font-size: 20px;
-  color: white;
+.rank-container .sub-rank-container .sub-rank .title {
+  font-size: 1.2rem;
   font-weight: bold;
 }
 
-.rank-bottom-font {
-  font-size: 19px;
-  color: white;
+.rank-container .sub-rank-container .sub-rank .rate {
+  margin-left: auto;
+  font-size: 1.2rem;
+  font-weight: bold;
 }
 
-.rank1 {
-  width: 350px;
-  height: auto;
-  object-fit: cover;
-  border-radius: 10px;
+.rank-container .sub-rank-container .sub-rank .rate .material-icons {
+  margin-right: .5rem;
+  color: $primary-light;
 }
-
-.rank2 {
-  width: 250px;
-  height: auto;
-  object-fit: cover;
-  border-radius: 10px;
-}
-
-.name-star {
-  margin: 5px;
-}
-
-.gamecard {
-  border-color: rgb(70, 65, 97);
-  background-color: #140a0a;
-  block-size: 216px;
-}
-
-.recommandcard {
-  background-color: #140a0a;
-  block-size: 200px;
-  margin-bottom: 30px;
-}
-
-.searchcard {
-  background-color: #4D4545;
-  block-size: 60px;
-  padding : 18px;
-  margin-left: 30px;
-  margin-right: 20px;
-  margin-top: 20px;
-  border-bottom: 2px solid #ffbebd;
-}
-
-.search-input {
-  padding: 2px;
-  border: 0px;
-  background-color: #4D4545;
-  outline: none;
-  font-size:15pt;
-  font-family: Arial, Helvetica, sans-serif;
-  color:#ffbebd;
-}
-
-.search-button {
-  background-color: hsla(120, 100%, 50%, 0.0);
-  border: 0;
-  outline: 0;
-}
-
-#search-icon {
-  color: #ffbebd;
-  font-size: 33px;
-}
-
