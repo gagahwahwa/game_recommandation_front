@@ -16,14 +16,12 @@ export class GameCardContainerComponent implements OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    if (changes.gameList.isFirstChange()) {
-      this.row = Math.floor(this.containerRef.nativeElement.clientWidth / 325);
-      this.flex = `1 1 calc(100% / ${this.row} - .5rem)`;
-      this.gameList = changes.gameList.currentValue;
-      this.rowMaker = new Array(this.row);
-      for (let i = 0; i < this.rowMaker.length; i++) {
-        this.rowMaker[i] = this.gameList.filter((value, j) => j % this.row === i);
-      }
+    this.row = Math.floor(this.containerRef.nativeElement.clientWidth / 325);
+    this.flex = `1 1 calc(100% / ${this.row} - .5rem)`;
+    this.gameList = changes.gameList.currentValue;
+    this.rowMaker = new Array(this.row);
+    for (let i = 0; i < this.rowMaker.length; i++) {
+      this.rowMaker[i] = this.gameList.filter((value, j) => j % this.row === i);
     }
   }
 }
