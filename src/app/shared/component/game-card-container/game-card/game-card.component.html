@@ -1,14 +1,17 @@
 <div class="card" fxLayout="row" fxLayoutAlign="start end"
-     style="background-image: url('../../../../../assets/header.jpg')">
+     style="background-image: url('../../../../../assets/header.jpg')"
+     (click)="isStarRateBarShown || navigateToGame(game.id)"
+>
   <div
     class="game-info"
+    [ngClass]="{'rated': isStarRateBarShown || rate !== null}"
     fxFlex="calc(100% + 2rem)"
     fxLayout="column"
     fxLayoutAlign="center"
     (mouseenter)="isStarRateBarShown = true"
     (mouseleave)="isStarRateBarShown = false"
   >
-    <p class="title" (click)="navigateToGame(game.id)">{{ game.title }}</p>
+    <p class="title">{{ game.title }}</p>
     <div class="placeholder">
       <app-star-rate-bar
         *ngIf="isStarRateBarShown || rate !== null"

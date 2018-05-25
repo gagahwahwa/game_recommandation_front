@@ -1,19 +1,19 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { SearchBarModule } from '../search-bar/search-bar.module';
-import { NavbarComponent } from './navbar.component';
+import { SearchBarComponent } from './search-bar.component';
 
 @NgModule({
   imports: [
     CommonModule,
     FlexLayoutModule,
-    RouterModule,
-    SearchBarModule
+    ReactiveFormsModule,
+    RouterModule
   ],
-  declarations: [NavbarComponent],
-  exports: [NavbarComponent]
+  declarations: [SearchBarComponent],
+  exports: [SearchBarComponent]
 })
-export class NavbarModule {
+export class SearchBarModule {
 }

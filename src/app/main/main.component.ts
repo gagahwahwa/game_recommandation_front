@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import { shareReplay } from 'rxjs/operators';
@@ -14,9 +13,8 @@ export class MainComponent implements OnInit {
   items: Array<any> = [];
   limit: number;
   rankList$: Observable<Array<any>>;
-  keywordForm: FormGroup;
 
-  constructor(private gameService: GameService, private router: Router, private fb: FormBuilder) {
+  constructor(private gameService: GameService, private router: Router) {
     this.items = [
       { url: 'assets/main/big1.jpg' },
       { url: 'assets/main/big2.jpg' },
@@ -27,9 +25,6 @@ export class MainComponent implements OnInit {
    }
 
   ngOnInit() {
-    this.keywordForm = this.fb.group({
-      keyword: ['']
-    });
     this.limit = 20;
     this.rankList$ = this.gameService.getRankingGameList(this.limit).pipe(
       shareReplay()
@@ -39,18 +34,4 @@ export class MainComponent implements OnInit {
   navigateToGameDetail(gameID: number) {
     this.router.navigate([`/game-detail/${gameID}`]);
   }
-
-  search(form: FormGroup) {
-    const value = form.controls.keyword.value;
-    if (value !== '') {
-      if (value.search('#') !== -1) {
-        const realValue = value.split('#');
-        this.router.navigate([`/search/tag/${realValue[1]}`]);
-      } else {
-        this.router.navigate([`/search/game/${value}`]);
-      }
-    }
-    // if value invlolve #, then split
-  }
-
 }

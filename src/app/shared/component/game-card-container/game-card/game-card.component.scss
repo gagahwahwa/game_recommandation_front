@@ -4,21 +4,23 @@
   height: 159px;
   background-size: cover;
   border: 0;
+  cursor: pointer;
   .game-info {
     margin: 0 -1rem -.5rem -1rem;
     padding: .5rem 1rem;
     max-height: 100%;
     color: #FFFFFF;
+    cursor: default;
     background: linear-gradient(to bottom, transparent, $pointer);
     .title {
       text-align: center;
-      cursor: pointer;
+      color: #FFFFFF;
     }
     .placeholder {
       height: 24px;
       margin: 0;
     }
-    &:hover {
+    &:hover, &.rated {
       background-color: $pointer;
       color: $primary;
     }
