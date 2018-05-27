@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import { map, shareReplay } from 'rxjs/operators';
 import { GameDetailService } from '../shared/service/game-detail.service';
+import { FormGroup, FormBuilder } from '@angular/forms';
 
 
 @Component({
@@ -12,6 +13,7 @@ import { GameDetailService } from '../shared/service/game-detail.service';
 })
 
 export class GameDetailComponent implements OnInit {
+  // router: any;
   gameId: number;
   userId: number;
   gameInfo$: Observable<any>;
@@ -19,11 +21,13 @@ export class GameDetailComponent implements OnInit {
   myRate$: Observable<any>;
   rateAvarage$: Observable<any>;
   tags$: Observable<Array<any>>;
+  tagForm: FormGroup;
 
-  constructor(private gameService: GameDetailService, private route: ActivatedRoute) {
+  constructor(private gameService: GameDetailService, private route: ActivatedRoute, private router: Router) {
   }
 
   ngOnInit() {
+
     this.gameId = +this.route.snapshot.params.gameId;
     this.userId = +sessionStorage.getItem('id');
     this.gameInfo$ = this.gameService.getGameInformation(this.gameId).pipe(
@@ -39,4 +43,11 @@ export class GameDetailComponent implements OnInit {
     );
     this.tags$ = this.gameService.getGameTag(this.gameId);
   }
+
+   search(value: string) {
+    if (value !== '') {
+       this.router.navigate([`/search/tag/${value}`]);
+      }
+    }
 }
+

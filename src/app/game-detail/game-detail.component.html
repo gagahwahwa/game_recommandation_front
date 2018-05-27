@@ -31,7 +31,7 @@
       </div>
     </div>
     <div class="card tags">
-      <p class="label raise primary" *ngFor="let tag of tags$ | async">{{ tag.name }}</p>
+      <p class="label raise primary" *ngFor="let tag of tags$ | async" (click)="search(tag.name)">{{ tag.name }}</p>
     </div>
   </div>
   <div class="comment">
