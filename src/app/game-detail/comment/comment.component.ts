@@ -61,18 +61,31 @@ export class CommentComponent implements OnInit {
         if (res.result === 'success') { // 성공시
           // form reset
           formGroup.reset();
-          // star-rate-bar reset
-
+          // star-rate-bar reset ??
+          this.rate = 0 ;
           // 페이지 리로드
           this.comments$ = this.commentService.getComments(this.game_id);
+
         }
       });
     }
   }
 
-  // 인자 수정 요망
   deleteComment(formGroup: FormGroup) {
     // DB로 삭제할 댓글 전송
+    this.commentService.deleteComment({
+      game_id: this.game_id,
+      user_id: this.user_id,
+      rate: this.rate,
+      comment: formGroup.controls.comment.value
+    }).subscribe((res: any) => {
+      if (res.result === 'success') { // 성공시
+        // form reset
+        formGroup.reset();
+        // 페이지 리로드
+        this.comments$ = this.commentService.getComments(this.game_id);
+      }
+    });
   }
 
   // 평점 -> 별점 계산
