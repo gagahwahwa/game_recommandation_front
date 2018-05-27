@@ -19,7 +19,8 @@
       </div>
       <div *ngIf="selected === 'recommend'">
         <app-game-card-container *ngIf="recommendGameList$ | async as recommendGameList" fxLayout="row" fxLayoutGap=".5rem"
-                                 [gameList]="recommendGameList"></app-game-card-container>
+                                 [gameList]="recommendGameList"
+                                 (rateCountChange)="changeRateCount($event)"></app-game-card-container>
       </div>
     </div>
     <div class="right" fxLayout="column" fxLayoutGap="2rem" fxFlex="1 1 25%">
@@ -31,6 +32,10 @@
       </div>
       <div class="card-graph" fxLayoutGap=".5rem">
         <p>평가 그래프</p>
+        <br>
+        <div class="graph-bar-container">
+          <div class="graph-bar" [style.width.%]="indicatedNumber"></div>
+        </div>
       </div>
     </div>
   </div>

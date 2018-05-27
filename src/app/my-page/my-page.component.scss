@@ -22,3 +22,11 @@
 .card {
   padding: 0;
 }
+
+.graph-bar-container {
+  margin-bottom: .5rem;
+  border: #4D4545;
+  .graph-bar {
+    border: 3px solid $primary-light;
+  }
+}
