@@ -19,6 +19,7 @@
     .dir {
       width: 4rem;
       height: 100%;
+      z-index: 999;
     }
     .current {
       position: relative;
@@ -26,6 +27,7 @@
       width: calc(100% - 8rem);
       height: 2rem;
       color: #FFFFFF;
+      z-index: 999;
     }
   }
 
