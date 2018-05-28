@@ -62,7 +62,7 @@ export class CommentComponent implements OnInit {
           // form reset
           formGroup.reset();
           // star-rate-bar reset
-
+          this.rate = 0;
           // 페이지 리로드
           this.comments$ = this.commentService.getComments(this.game_id);
         }

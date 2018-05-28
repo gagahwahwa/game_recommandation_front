@@ -6,7 +6,7 @@
         <textarea formControlName="comment" id="comment" class="form-control"></textarea>
       </div>
       <div class="bottom" fxLayout="row" fxLayoutAlign="space-between center">
-        <app-star-rate-bar (rateChange)="rate = $event"></app-star-rate-bar>
+        <app-star-rate-bar [rate]="rate" (rateChange)="rate = $event"></app-star-rate-bar>
         <button type="submit" class="btn raise primary">등록</button>
       </div>
     </form>

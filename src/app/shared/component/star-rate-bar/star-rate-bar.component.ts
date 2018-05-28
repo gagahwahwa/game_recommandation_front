@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-star-rate-bar',
@@ -7,7 +7,7 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output
   changeDetection: ChangeDetectionStrategy.Default
 })
 
-export class StarRateBarComponent implements OnInit {
+export class StarRateBarComponent implements OnChanges, OnInit {
   @Input() rate: number;
   @Input() readOnly? = false;
   @Output() rateChange = new EventEmitter<number>();
@@ -19,6 +19,14 @@ export class StarRateBarComponent implements OnInit {
   private ICON_HALF_WIDTH = 12;
 
   constructor() {
+  }
+
+  ngOnChanges() {
+    if (this.rate === 0) {
+      this.starArray = new Array(5);
+      this.starTypeArray = new Array(5).fill('star_border');
+      this.savedStarTypeArray = new Array(5).fill('star_border');
+    }
   }
 
   ngOnInit() {
