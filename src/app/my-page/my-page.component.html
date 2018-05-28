@@ -5,13 +5,13 @@
     <div class="left" fxLayout="column" fxFlex="1 1 75%">
       <div class="tabs" fxLayout="row" fxLayoutGap=".5rem">
         <div class="tab" [ngClass]="{'active': selected === 'rated'}" (click)="selected = 'rated'">
-          <p class="title">Rated</p>
+          <p class="title">평가한 게임</p>
         </div>
         <div class="tab" [ngClass]="{'active': selected === 'recommend'}" (click)="selected = 'recommend'">
-          <p class="title">Recommend</p>
+          <p class="title">추천 게임</p>
         </div>
         <div class="tab">
-          <p class="title" routerLink="/more-rating">More Rating</p>
+          <p class="title" routerLink="/more-rating">평가 늘리기</p>
         </div>
       </div>
       <div *ngIf="selected === 'rated'">
@@ -34,7 +34,7 @@
         <p>평가 그래프</p>
         <br>
         <div class="graph-bar-container">
-          <div class="graph-bar" [style.width.%]="indicatedNumber"></div>
+          <p *ngFor="let indicatedNumber of indicatedNumbers; let i = index" class="graph-bar" [style.height.%]="indicatedNumber / max * 100">{{ i / 2 }}</p>
         </div>
       </div>
     </div>

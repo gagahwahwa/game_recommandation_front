@@ -1,7 +1,7 @@
-import { Component, OnInit, Input, OnChanges } from '@angular/core';
+import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
-import { map } from 'rxjs/operators';
+import { map, shareReplay } from 'rxjs/operators';
 import { GameService } from '../shared/service/game.service';
 import { MyPageService } from '../shared/service/my-page.service';
 
@@ -24,11 +24,13 @@ export class MyPageComponent implements OnInit, OnChanges {
   start: number[];
   end: number[];
   indicatedNumbers: number[];
+  max: number;
+
   constructor(private myPageService: MyPageService, private gameService: GameService, private route: ActivatedRoute) {
   }
 
   ngOnChanges() {
-    
+
   }
 
   ngOnInit() {
@@ -39,8 +41,16 @@ export class MyPageComponent implements OnInit, OnChanges {
       map((data: any) => data[0].count)
     );
     this.tags$ = this.myPageService.getTag(this.userID);
-    this.ratedGameList$ = this.gameService.getGameListByUserId(this.userID);
+    this.ratedGameList$ = this.gameService.getGameListByUserId(this.userID).pipe(
+      shareReplay()
+    );
     this.recommendGameList$ = this.gameService.getGameList(20);
+
+    this.indicatedNumbers = new Array(11).fill(0); // 0 ~ 10
+    this.ratedGameList$.subscribe((rates: any) => {
+      rates.map((rate: any) => this.indicatedNumbers[rate.rate * 2]++);
+      this.max = Math.max(...this.indicatedNumbers);
+    });
   }
 
   changeRateCount(isChange: boolean) {
