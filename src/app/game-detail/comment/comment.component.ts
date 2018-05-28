@@ -59,7 +59,11 @@ export class CommentComponent implements OnInit {
         comment: formGroup.controls.comment.value
       }).subscribe((res: any) => {
         if (res.result === 'success') { // 성공시
-          // 페이지 리로드(?)
+          // form reset
+          formGroup.reset();
+          // star-rate-bar reset
+
+          // 페이지 리로드
           this.comments$ = this.commentService.getComments(this.game_id);
         }
       });
