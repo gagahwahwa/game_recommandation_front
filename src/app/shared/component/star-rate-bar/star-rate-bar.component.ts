@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-star-rate-bar',
@@ -7,7 +7,7 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output
   changeDetection: ChangeDetectionStrategy.Default
 })
 
-export class StarRateBarComponent implements OnInit {
+export class StarRateBarComponent implements OnChanges, OnInit {
   @Input() rate: number;
   @Input() readOnly? = false;
   @Output() rateChange = new EventEmitter<number>();
@@ -21,19 +21,12 @@ export class StarRateBarComponent implements OnInit {
   constructor() {
   }
 
+  ngOnChanges() {
+    this.init();
+  }
+
   ngOnInit() {
-    this.starArray = new Array(5);
-    this.starTypeArray = new Array(5).fill('star_border');
-    this.savedStarTypeArray = new Array(5).fill('star_border');
-    if (this.rate) {
-      const half = this.rate % 1;
-      this.starTypeArray.fill('star', 0, (this.rate - half));
-      this.savedStarTypeArray.fill('star', 0, (this.rate - half));
-      if (half === 0.5) {
-        this.starTypeArray.fill('star_half', (this.rate - half), (this.rate + 1));
-        this.savedStarTypeArray.fill('star_half', (this.rate - half), (this.rate + 1));
-      }
-    }
+    this.init();
   }
 
   onMouseMove(event) {
@@ -53,6 +46,21 @@ export class StarRateBarComponent implements OnInit {
         } else {
           this.starTypeArray[index] = 'star_border';
         }
+      }
+    }
+  }
+
+  init() {
+    this.starArray = new Array(5);
+    this.starTypeArray = new Array(5).fill('star_border');
+    this.savedStarTypeArray = new Array(5).fill('star_border');
+    if (this.rate) {
+      const half = this.rate % 1;
+      this.starTypeArray.fill('star', 0, (this.rate - half));
+      this.savedStarTypeArray.fill('star', 0, (this.rate - half));
+      if (half === 0.5) {
+        this.starTypeArray.fill('star_half', (this.rate - half), (this.rate + 1));
+        this.savedStarTypeArray.fill('star_half', (this.rate - half), (this.rate + 1));
       }
     }
   }
