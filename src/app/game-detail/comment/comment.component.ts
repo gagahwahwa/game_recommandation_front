@@ -15,7 +15,7 @@ export class CommentComponent implements OnInit {
   game_id: number;
   user_id: number;
   rate: number;
-
+  comment_page_number: number;
   starRateArray: Array<string>;
 
   basicComment: string[] = [
@@ -40,7 +40,7 @@ export class CommentComponent implements OnInit {
     this.user_id = +sessionStorage.getItem('id');
     this.comments$ = this.commentService.getComments(this.game_id);
     this.rate = 0;
-
+    this.comment_page_number = 1;
     // formGroup 선언
     this.commentFormGroup = this.fb.group({
       comment: [''] // 댓글 내용
@@ -63,6 +63,7 @@ export class CommentComponent implements OnInit {
           formGroup.reset();
           // star-rate-bar reset ??
           this.rate = 0 ;
+          this.comment_page_number = 1;
           // 페이지 리로드
           this.comments$ = this.commentService.getComments(this.game_id);
 
@@ -101,4 +102,14 @@ export class CommentComponent implements OnInit {
     return this.starRateArray;
   }
 
+  // 이전 댓글
+  prev_comment_page(page_number: number) {
+    page_number = page_number - 1;
+    this.comment_page_number = page_number ;
+  }
+  // 다음 댓글
+  next_comment_page(page_number: number) {
+    page_number = page_number + 1;
+    this.comment_page_number = page_number ;
+  }
 }
