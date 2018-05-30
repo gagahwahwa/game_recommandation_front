@@ -7,9 +7,11 @@ import { GlobalService } from '../store/global.service';
 @Injectable()
 export class GameDetailService {
   private url: string;
+  private algoUrl: string;
 
   constructor(private global: GlobalService, private http: HttpClient) {
     this.url = global.url;
+    this.algoUrl = global.algoUrl;
   }
 
   // user id
@@ -32,7 +34,7 @@ export class GameDetailService {
   }
 
   getGamePredictScore(game_id: number, userId: number): Observable<Array<any>> {
-    return this.http.get(this.url + `/predict-score?user_id=${userId}&game_id=${game_id}`)
+    return this.http.get(this.algoUrl + `/predict-score?user_id=${userId}&game_id=${game_id}`)
       .map((res: any) => res.result === 'success' ? res.data : -999);
   }
 }
