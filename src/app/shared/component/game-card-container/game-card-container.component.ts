@@ -16,12 +16,26 @@ export class GameCardContainerComponent implements OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    this.row = Math.floor(this.containerRef.nativeElement.clientWidth / 325);
-    this.flex = `1 1 calc(100% / ${this.row} - .5rem)`;
-    this.gameList = changes.gameList.currentValue;
-    this.rowMaker = new Array(this.row);
-    for (let i = 0; i < this.rowMaker.length; i++) {
-      this.rowMaker[i] = this.gameList.filter((value, j) => j % this.row === i);
+    if (changes.gameList.previousValue) {
+      if (changes.gameList.previousValue.length !== changes.gameList.currentValue.length) { // change page
+        this.rowMaker = new Array(this.row);
+        for (let i = 0; i < this.rowMaker.length; i++) {
+          this.rowMaker[i] = this.gameList.filter((value, j) => j % this.row === i);
+        }
+      }
+      if (JSON.stringify(changes.gameList.previousValue) !== JSON.stringify(changes.gameList.currentValue)) {
+        this.rowMaker = new Array(this.row);
+        for (let i = 0; i < this.rowMaker.length; i++) {
+          this.rowMaker[i] = this.gameList.filter((value, j) => j % this.row === i);
+        }
+      }
+    } else { // init
+      this.row = Math.floor(this.containerRef.nativeElement.clientWidth / 325);
+      this.flex = `1 1 calc(100% / ${this.row} - .5rem)`;
+      this.rowMaker = new Array(this.row);
+      for (let i = 0; i < this.rowMaker.length; i++) {
+        this.rowMaker[i] = this.gameList.filter((value, j) => j % this.row === i);
+      }
     }
   }
 }

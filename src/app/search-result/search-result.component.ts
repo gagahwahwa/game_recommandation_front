@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, HostListener, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import { map, mergeMap, shareReplay } from 'rxjs/operators';
@@ -8,7 +8,6 @@ import { GameService } from '../shared/service/game.service';
   selector: 'app-search-result',
   templateUrl: './search-result.component.html',
   styleUrls: ['./search-result.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SearchResultComponent implements OnInit {
   type: string;
@@ -21,16 +20,17 @@ export class SearchResultComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.currentPage = 1;
+    this.lastScrollHeight = 0;
+
     this.type = this.route.snapshot.url[0].path;
     this.keyword$ = this.route.params.pipe(
       map((param: any) => param.keyword),
       shareReplay()
     );
     this.searchedGames$ = this.keyword$.pipe(
-      mergeMap((keyword: string) => this.gameService.searchGame(this.type, keyword))
+      mergeMap((keyword: string) => this.gameService.searchGame(this.type, keyword)),
     );
-    this.currentPage = 1;
-    this.lastScrollHeight = 0;
   }
 
   @HostListener('window:scroll', ['$event'])
