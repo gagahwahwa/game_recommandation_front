@@ -27,13 +27,12 @@ export class CommentService {
     return this.http.post(this.url + '/enroll-game-rate', data);
   }
 
-  // url 수정
   deleteComment(data: {
-    game_id: number,
     user_id: number,
-    rate: number,
-    comment: string
+    game_id: number
   }) {
-    return this.http.post(this.url + '/enroll-game-rate', data);
+    return this.http.delete(this.url + `/delete-game-rate?user_id=${data.user_id}&game_id=${data.game_id}`).pipe(
+      map((res: any) => res.result === 'success' ? res.data : [])
+    );
   }
 }

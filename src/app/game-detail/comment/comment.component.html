@@ -27,7 +27,7 @@
             {{ starRateArray[j] }}
           </i>
         </div>
-        <button class="btn raise primary" *ngIf="user_id === comment.id">삭제</button>
+        <button class="btn raise primary" *ngIf="user_id === comment.id" (click)="deleteComment(commentFormGroup)">삭제</button>
       </div>
     </div>
     <div class="comment_paging_btn" fxLayoutAlign="start center"  fxLayoutGap="1rem">
