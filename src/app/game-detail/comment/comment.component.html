@@ -27,12 +27,12 @@
             {{ starRateArray[j] }}
           </i>
         </div>
-        <button class="btn raise primary" *ngIf="user_id === comment.id" (click)="deleteComment(commentFormGroup)">삭제</button>
+        <button class="btn raise primary" *ngIf="user_id === comment.id" (click)="deleteComment()">삭제</button>
       </div>
     </div>
     <div class="comment_paging_btn" fxLayoutAlign="start center"  fxLayoutGap="1rem">
-      <button class="btn raise primary" *ngIf="this.comment_page_number > 1" (click)="prev_comment_page(this.comment_page_number)">◀ PREV</button>
-      <button class="btn raise primary" (click)="next_comment_page(this.comment_page_number)">NEXT ▶</button>
+      <button class="btn raise primary" (click)="prev_comment_page()">◀ PREV</button>
+      <button class="btn raise primary" (click)="next_comment_page()">NEXT ▶</button>
     </div>
   </div>
 </div>

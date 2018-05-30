@@ -72,15 +72,13 @@ export class CommentComponent implements OnInit {
     }
   }
 
-  deleteComment(formGroup: FormGroup) {
+  deleteComment() {
     // DB로 삭제할 댓글 전송
     this.commentService.deleteComment({
       user_id: this.user_id,
       game_id: this.game_id
     }).subscribe((res: any) => {
       if (res.result === 'success') { // 성공시
-        // form reset
-        formGroup.reset();
         // 페이지 리로드
         this.comments$ = this.commentService.getComments(this.game_id);
       }
@@ -102,13 +100,13 @@ export class CommentComponent implements OnInit {
   }
 
   // 이전 댓글
-  prev_comment_page(page_number: number) {
-    page_number = page_number - 1;
-    this.comment_page_number = page_number ;
+  prev_comment_page() {
+    if (this.comment_page_number > 1) {
+      this.comment_page_number = this.comment_page_number - 1;
+    }
   }
   // 다음 댓글
-  next_comment_page(page_number: number) {
-    page_number = page_number + 1;
-    this.comment_page_number = page_number ;
+  next_comment_page() {
+    this.comment_page_number = this.comment_page_number + 1;
   }
 }
