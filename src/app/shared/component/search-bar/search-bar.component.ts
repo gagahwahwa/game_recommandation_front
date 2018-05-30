@@ -24,12 +24,11 @@ export class SearchBarComponent implements OnInit {
     if (value !== '') {
       if (value.search('#') !== -1) {
         const realValue = value.split('#');
-        this.router.navigate([`/search/tag/${realValue[1]}`]);
+        this.router.navigate([`/search/tag/${realValue[1].trim()}`]);
       } else {
         this.router.navigate([`/search/game/${value}`]);
       }
     }
-    // if value involve #, then split
   }
 
 }
