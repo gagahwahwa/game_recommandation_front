@@ -1,5 +1,5 @@
 <div fxLayout="row" fxLayoutAlign="space-between center" class="navbar shadow-bottom">
   <a class="title" routerLink="/main">Sour Grape</a>
-  <app-search-bar></app-search-bar>
+  <app-search-bar fxHide.lt-sm="true"></app-search-bar>
   <a class="nickname" [routerLink]="'/my-page/' + id">{{ nickname }}</a>
 </div>

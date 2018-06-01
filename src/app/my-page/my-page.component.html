@@ -1,7 +1,7 @@
 <app-navbar></app-navbar>
 <div class="container" fxLayout="column" fxLayoutGap=".5rem">
   <app-progress-bar [ratingCount]="rateCount$ | async"></app-progress-bar>
-  <div class="contents" fxLayout.gt-sm="row" fxLayout.lt-md="column" fxLayoutGap=".5rem">
+  <div class="contents" fxLayout.gt-sm="row" fxLayout.lt-md="column-reverse" fxLayoutGap=".5rem">
     <div class="left" fxLayout="column" fxFlex="1 1 75%">
       <div class="tabs" fxLayout="row" fxLayoutGap=".5rem">
         <div class="tab" [ngClass]="{'active': selected === 'rated'}" (click)="selected = 'rated'">

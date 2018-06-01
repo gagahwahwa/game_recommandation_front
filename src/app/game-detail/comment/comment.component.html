@@ -13,8 +13,24 @@
   </div>
   <div class="card">
     <div class="comments" fxLayout="column" *ngFor="let comment of comments$ | async; let i = index">
-      <div class="comment"  *ngIf="i < 10 * this.comment_page_number && i >= (this.comment_page_number - 1) * 10" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="1rem">
-        <div class="header" fxFlex="15%">
+      <div
+        class="comment"
+        *ngIf="i < 10 * this.comment_page_number && i >= (this.comment_page_number - 1) * 10"
+        fxLayout="row"
+        fxLayoutAlign="start center"
+        fxLayoutGap="1rem"
+        fxFlex="auto"
+
+        fxLayout.lt-sm="column"
+        fxLayoutAlign.lt-sm="center start"
+        fxFlex.lt-sm="calc(100% + 2rem)"
+      >
+        <div class="header" fxFlex="20%"
+             fxLayout="column"
+             fxLayout.lt-sm="row"
+             fxLayoutAlign.lt-sm="start center"
+             fxLayoutGap.lt-sm=".5rem"
+        >
           <p class="nickname">{{ comment.nickname }}</p>
           <p class="date">{{ comment.regi_date }}</p>
         </div>

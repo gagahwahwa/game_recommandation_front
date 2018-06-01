@@ -1,7 +1,7 @@
 <app-navbar></app-navbar>
 <div class="container" fxLayout="column" fxLayoutGap=".5rem">
   <div class="contents" *ngIf="gameInfo$ | async as game" fxLayout="column" fxLayoutGap=".5rem">
-    <div class="info" fxLayout="row" fxLayoutGap=".5rem">
+    <div class="info" fxLayout="row" fxLayout.lt-sm="column" fxLayoutGap=".5rem">
       <img src="assets/header.jpg" alt="" class="thumbnail">
       <div class="card" fxFlex="auto">
         <p class="title">{{ game.title }}</p>
@@ -9,7 +9,7 @@
         <p class="developer">개발사: {{ game.developer }}</p>
       </div>
     </div>
-    <div class="rates" fxLayout="row" fxLayoutGap=".5rem">
+    <div class="rates" fxLayout="row" fxLayout.lt-sm="column" fxLayoutGap=".5rem">
       <div class="card predict" fxFlex="1 1">
         <p class="title">예상 평점</p>
         <p class="rate" *ngIf="predictRate$ | async as predictedRate; else predictYet">

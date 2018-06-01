@@ -15,6 +15,12 @@
   border-radius: 3px 3px 0 0;
 }
 
+@media (max-width: 599px) {
+  .contents .left .tabs .tab {
+    padding: 1rem;
+  }
+}
+
 .contents .left .tabs .tab.active {
   background-color: $primary-light;
 }
@@ -37,4 +43,8 @@
     text-align: center;
     background-color: $primary-light;
   }
+}
+
+.contents .right {
+  margin-bottom: 1rem;
 }
