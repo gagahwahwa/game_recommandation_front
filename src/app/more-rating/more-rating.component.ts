@@ -16,7 +16,7 @@ export class MoreRatingComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.gameList$ = this.gameService.getGameList(200);
+    this.gameList$ = this.gameService.getMoreRatingList(+sessionStorage.getItem('id'));
     this.count$ = this.userSerivce.getUserRateCount(+sessionStorage.getItem('id'));
   }
 

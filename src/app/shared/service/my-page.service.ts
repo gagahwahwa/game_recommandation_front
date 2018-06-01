@@ -1,7 +1,7 @@
-import { Injectable } from '@angular/core';
-import { GlobalService } from '../store/global.service';
 import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
+import { GlobalService } from '../store/global.service';
 
 @Injectable()
 export class MyPageService {

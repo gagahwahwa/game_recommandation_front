@@ -44,7 +44,9 @@ export class MyPageComponent implements OnInit, OnChanges {
     this.ratedGameList$ = this.gameService.getGameListByUserId(this.userID).pipe(
       shareReplay()
     );
-    this.recommendGameList$ = this.gameService.getGameList(20);
+    this.recommendGameList$ = this.gameService.getRecommand(this.userID).pipe(
+      shareReplay()
+    );
 
     this.indicatedNumbers = new Array(11).fill(0); // 0 ~ 10
     this.ratedGameList$.subscribe((rates: any) => {

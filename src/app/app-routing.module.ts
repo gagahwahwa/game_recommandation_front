@@ -11,8 +11,8 @@ const routes: Routes = [
   {path: 'game-detail/:gameId', loadChildren: 'app/game-detail/game-detail.module#GameDetailModule', canActivate: [AuthGuard]},
   {path: 'my-page/:userId', loadChildren: 'app/my-page/my-page.module#MyPageModule', canActivate: [AuthGuard]},
   {path: 'game-detail/:gameId', loadChildren: 'app/game-detail/game-detail.module#GameDetailModule', canActivate: [AuthGuard]},
-  {path: 'search', loadChildren: 'app/search-result/search-result.module#SearchResultModule'},
-  {path: 'more-rating', loadChildren: 'app/more-rating/more-rating.module#MoreRatingModule'}
+  {path: 'search', loadChildren: 'app/search-result/search-result.module#SearchResultModule', canActivate: [AuthGuard]},
+  {path: 'more-rating', loadChildren: 'app/more-rating/more-rating.module#MoreRatingModule', canActivate: [AuthGuard]}
 ];
 
 @NgModule({
