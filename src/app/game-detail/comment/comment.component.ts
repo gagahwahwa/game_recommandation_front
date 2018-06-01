@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import { CommentService } from '../../shared/service/comment.service';
+import { async } from '@angular/core/testing';
 
 @Component({
   selector: 'app-comment',
@@ -74,15 +75,17 @@ export class CommentComponent implements OnInit {
 
   deleteComment() {
     // DB로 삭제할 댓글 전송
-    this.commentService.deleteComment({
-      user_id: this.user_id,
-      game_id: this.game_id
-    }).subscribe((res: any) => {
+    this.commentService.deleteComment(
+      this.user_id,
+      this.game_id
+    ).subscribe((res: any) => {
       if (res.result === 'success') { // 성공시
-        // 페이지 리로드
+        // star-rate-bar reset ??
+        this.rate = 0 ;
+        this.comment_page_number = 1;
+        // 페이지 리로드가 안되는데 왜 안되는걸까오?
         this.comments$ = this.commentService.getComments(this.game_id);
       }
-        console.log(res.result);
     });
   }
 

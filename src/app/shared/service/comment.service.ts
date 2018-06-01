@@ -27,12 +27,7 @@ export class CommentService {
     return this.http.post(this.url + '/enroll-game-rate', data);
   }
 
-  deleteComment(data: {
-    user_id: number,
-    game_id: number
-  }) {
-    return this.http.delete(this.url + `/delete-game-rate?user_id=${data.user_id}&game_id=${data.game_id}`).pipe(
-      map((res: any) => res.result === 'success' ? res.data : [])
-    );
+  deleteComment(user_id: number, game_id: number) {
+    return this.http.delete(this.url + `/delete-game-rate?user_id=${user_id}&game_id=${game_id}`);
   }
 }
