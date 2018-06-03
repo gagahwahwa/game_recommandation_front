@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, OnChanges } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import { map } from 'rxjs/operators';
 import { GameService } from '../shared/service/game.service';
@@ -24,7 +24,7 @@ export class MyPageComponent implements OnInit, OnChanges {
   start: number[];
   end: number[];
   indicatedNumbers: number[];
-  constructor(private myPageService: MyPageService, private gameService: GameService, private route: ActivatedRoute) {
+  constructor(private myPageService: MyPageService, private gameService: GameService, private route: ActivatedRoute, private router: Router) {
   }
 
   ngOnChanges() {
@@ -49,5 +49,10 @@ export class MyPageComponent implements OnInit, OnChanges {
         map((data: any) => data[0].count));
     }
   }
+  search(value: string) {
+    if (value !== '') {
+       this.router.navigate([`/search/tag/${value}`]);
+      }
+    }
 
 }
