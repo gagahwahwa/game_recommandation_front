@@ -13,8 +13,11 @@ export class UserService {
   }
 
   signUp(id: string, password: string, nickname: string): Observable<any> {
-    const encoded = btoa(`${id}:${password}:${nickname}`);
-    return this.http.post(this.url + '/sign-up', null, {headers: {Authorization: `Beare ${encoded}`}});
+    return this.http.post(this.url + '/sign-up', {
+      id: id,
+      password: password,
+      nickname: nickname
+    });
   }
 
   logIn(email: string, password: string): Observable<any> {
