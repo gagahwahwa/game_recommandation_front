@@ -20,8 +20,6 @@ export class MoreRatingComponent implements OnInit {
   ngOnInit() {
     this.currentPage = 1;
     this.lastScrollHeight = 0;
-
-
     this.gameList$ = this.gameService.getMoreRatingList(+sessionStorage.getItem('id'));
     this.count$ = this.userSerivce.getUserRateCount(+sessionStorage.getItem('id'));
   }

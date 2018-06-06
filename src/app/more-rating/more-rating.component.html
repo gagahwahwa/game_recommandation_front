@@ -1,6 +1,6 @@
 <app-navbar></app-navbar>
 <div class="container" fxLayout="column" fxLayoutGap=".5rem">
-  <app-progress-bar [ratingCount]="count$ | async"></app-progress-bar>
+  <app-progress-bar [ratingCount]="count$ | async" [fixed]="true"></app-progress-bar>
   <div class="content">
     <app-game-card-container
       *ngIf="gameList$ | async as gameList"
