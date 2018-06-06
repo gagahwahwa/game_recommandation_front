@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { DomSanitizer, SafeStyle } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { isNullOrUndefined } from 'util';
 import { RateService } from '../../../service/rate.service';
@@ -11,16 +12,17 @@ import { RateService } from '../../../service/rate.service';
 export class GameCardComponent implements OnInit {
   @Input() game: any;
   @Output() rateCountChange = new EventEmitter();
-  thumbnail: string;
+  thumbnail: SafeStyle;
   isStarRateBarShown: boolean;
   rate: number;
 
-  constructor(private rateService: RateService, private router: Router) {}
+  constructor(private rateService: RateService, private router: Router, private sanitizer: DomSanitizer) {
+  }
 
   ngOnInit() {
     this.isStarRateBarShown = false;
     this.rate = isNullOrUndefined(this.game.rate) ? null : this.game.rate;
-    this.thumbnail = `assets/thumbnail/${this.game.url}.jpg`;
+    this.thumbnail = this.sanitizer.bypassSecurityTrustStyle(`url(assets/thumbnail/${this.game.url}.jpg), url(assets/header.jpg)`);
   }
 
   rateChange(rate: number) {

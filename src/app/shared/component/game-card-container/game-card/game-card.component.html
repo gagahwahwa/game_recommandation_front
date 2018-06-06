@@ -1,7 +1,7 @@
 <div class="card" fxLayout="row" fxLayoutAlign="start end"
      (click)="isStarRateBarShown || navigateToGame(game.id)"
+     [style.background-image]="thumbnail"
 >
-<img [src]="thumbnail" class="thumbnail" (error)="$event.target.src = 'assets/header.jpg'">
   <div
     class="game-info"
     [ngClass]="{'rated': isStarRateBarShown || rate !== null}"
