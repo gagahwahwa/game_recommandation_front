@@ -2,7 +2,12 @@
 <div class="container" fxLayout="column" fxLayoutGap=".5rem">
   <app-progress-bar [ratingCount]="count$ | async"></app-progress-bar>
   <div class="content">
-    <app-game-card-container *ngIf="gameList$ | async as gameList" fxLayout="row" fxLayoutGap=".5rem" [gameList]="gameList"
-                             (rateCountChange)="changeRateCount($event)"></app-game-card-container>
+    <app-game-card-container
+      *ngIf="gameList$ | async as gameList"
+      fxLayout="row"
+      fxLayoutGap=".5rem"
+      [gameList]="gameList | slice:0:(currentPage * 28)"
+      (rateCountChange)="changeRateCount($event)"
+    ></app-game-card-container>
   </div>
 </div>
