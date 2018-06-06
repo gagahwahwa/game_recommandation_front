@@ -1,11 +1,19 @@
 @import '../../../../../styles';
 
 .card {
+  position: relative;
   height: 159px;
-  background-size: cover;
   border: 0;
   cursor: pointer;
+  .thumbnail {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
   .game-info {
+    position: relative;
     margin: 0 -1rem -.5rem -1rem;
     padding: .5rem 1rem;
     max-height: 100%;

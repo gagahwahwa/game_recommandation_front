@@ -10,10 +10,11 @@
         <div
           [id]="'rank' + (i + 1)"
           class="top-rank"
+          fxFlex="1 1"
           *ngFor="let topRank of rankList$ | async | slice:0:3; let i = index"
           (click)="navigateToGameDetail(topRank.id)"
         >
-          <img [src]="'assets/main/header'+ (i + 2) +'.jpg'" alt="thumbnail" class="thumbnail">
+          <img [src]="'assets/thumbnail/'+ topRank.url +'.jpg'" alt="thumbnail" class="thumbnail" (error)="$event.target.src = '../../assets/header.jpg'">
           <div class="info" fxLayout="row" fxLayoutAlign="start start" fxLayoutGap=".5rem">
             <p class="index" fxLayout="column" fxLayoutAlign="center center">{{ i + 1 }}</p>
             <div class="detail">

@@ -11,30 +11,33 @@ import { RateService } from '../../../service/rate.service';
 export class GameCardComponent implements OnInit {
   @Input() game: any;
   @Output() rateCountChange = new EventEmitter();
+  thumbnail: string;
   isStarRateBarShown: boolean;
   rate: number;
 
-  constructor(private rateService: RateService, private router: Router) {
-  }
+  constructor(private rateService: RateService, private router: Router) {}
 
   ngOnInit() {
     this.isStarRateBarShown = false;
     this.rate = isNullOrUndefined(this.game.rate) ? null : this.game.rate;
+    this.thumbnail = `assets/thumbnail/${this.game.url}.jpg`;
   }
 
   rateChange(rate: number) {
     this.rate = rate;
-    this.rateService.postRate({
-      game_id: this.game.id,
-      user_id: sessionStorage.getItem('id'),
-      rate: this.rate
-    }).subscribe((res: any) => {
-      if (res.result === 'success') {
-        this.rateCountChange.emit(true);
-      } else {
-        alert(res.msg);
-      }
-    });
+    this.rateService
+      .postRate({
+        game_id: this.game.id,
+        user_id: sessionStorage.getItem('id'),
+        rate: this.rate
+      })
+      .subscribe((res: any) => {
+        if (res.result === 'success') {
+          this.rateCountChange.emit(true);
+        } else {
+          alert(res.msg);
+        }
+      });
   }
 
   navigateToGame(gameId: number) {
