@@ -1,7 +1,7 @@
 <div class="search-bar">
   <form class="card" [formGroup]="keywordForm" (submit)="search(keywordForm)">
     <div class="form-group" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap=".5rem">
-      <input formControlName="keyword" type="text" class="form-control">
+      <input formControlName="keyword" type="text" class="form-control" placeholder="#으로 태그검색!">
       <button class="btn primary" type="submit"><i class="material-icons">search</i></button>
     </div>
   </form>
