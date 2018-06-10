@@ -13,8 +13,10 @@ export class SearchResultComponent implements OnInit {
   type: string;
   keyword$: Observable<any>;
   searchedGames$: Observable<Array<any>>;
+  searchedGamesCount$: Observable<number>;
   currentPage: number;
   lastScrollHeight: number;
+  count: number;
 
   constructor(private gameService: GameService, private route: ActivatedRoute) {
   }
@@ -30,7 +32,9 @@ export class SearchResultComponent implements OnInit {
     );
     this.searchedGames$ = this.keyword$.pipe(
       mergeMap((keyword: string) => this.gameService.searchGame(this.type, keyword)),
+      shareReplay()
     );
+    this.searchedGames$.subscribe(list => this.count = list.length);
   }
 
   @HostListener('window:scroll', ['$event'])
