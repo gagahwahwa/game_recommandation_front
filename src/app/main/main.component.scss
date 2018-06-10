@@ -1,7 +1,15 @@
 @import '../../styles';
 
-.slider-container {
-  height: 24rem;
+@media (min-width: 600px) {
+  .slider-container {
+    height: 24rem;
+  }
+}
+
+@media (max-width: 599px) {
+  .slider-container {
+    height: 12rem;
+  }
 }
 
 .rank-container {
