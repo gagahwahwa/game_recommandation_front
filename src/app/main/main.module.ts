@@ -7,12 +7,14 @@ import { NavbarModule } from '../shared/component/navbar/navbar.module';
 import { SearchBarModule } from '../shared/component/search-bar/search-bar.module';
 import { SliderModule } from '../shared/component/slider/slider.module';
 import { GameService } from '../shared/service/game.service';
+import { MainRoutingModule } from './main-routing.module';
 
 import { MainComponent } from './main.component';
 
 @NgModule({
   imports: [
     CommonModule,
+    MainRoutingModule,
     FlexLayoutModule,
     ReactiveFormsModule,
     GameCardContainerModule,

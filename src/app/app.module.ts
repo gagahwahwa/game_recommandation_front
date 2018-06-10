@@ -6,7 +6,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
-import { MainModule } from './main/main.module';
 import { NavbarModule } from './shared/component/navbar/navbar.module';
 import { GlobalService } from './shared/store/global.service';
 
@@ -19,8 +18,7 @@ import { GlobalService } from './shared/store/global.service';
     HttpClientModule,
     FlexLayoutModule,
     AppRoutingModule,
-    NavbarModule,
-    MainModule
+    NavbarModule
   ],
   providers: [GlobalService],
   bootstrap: [AppComponent]

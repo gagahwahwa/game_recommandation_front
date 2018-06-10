@@ -10,8 +10,8 @@
         <div class="tab" [ngClass]="{'active': selected === 'recommend'}" (click)="selected = 'recommend'">
           <p class="title">추천 게임</p>
         </div>
-        <div class="tab">
-          <p class="title" routerLink="/more-rating">평가 늘리기</p>
+        <div class="tab" routerLink="/more-rating">
+          <p class="title">평가 늘리기</p>
         </div>
       </div>
       <div *ngIf="selected === 'rated'">
