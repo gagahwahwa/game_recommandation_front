@@ -27,7 +27,7 @@
       <div class="card-tag" fxLayout="column" fxLayoutGap="1rem">
         <p>선호하는 장르</p>
         <div *ngIf="tags$ | async as tags">
-          <p class="label raise primary" *ngFor="let tag of tags">{{ tag.name }}</p>
+          <p class="label raise primary" *ngFor="let tag of tags" (click)="search(tag.name)">{{ tag.name }}</p>
         </div>
       </div>
       <div class="card-graph" fxLayoutGap=".5rem">

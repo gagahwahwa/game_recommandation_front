@@ -1,7 +1,7 @@
-import { Component, Input, OnChanges, OnInit } from '@angular/core';
+import { Component, OnInit, Input, OnChanges } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
-import { map, shareReplay } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 import { GameService } from '../shared/service/game.service';
 import { MyPageService } from '../shared/service/my-page.service';
 
@@ -61,5 +61,10 @@ export class MyPageComponent implements OnInit, OnChanges {
         map((data: any) => data[0].count));
     }
   }
+  search(value: string) {
+    if (value !== '') {
+       this.router.navigate([`/search/tag/${value}`]);
+      }
+    }
 
 }
