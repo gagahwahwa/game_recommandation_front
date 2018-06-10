@@ -34,7 +34,8 @@
         <p>평가 그래프</p>
         <br>
         <div class="graph-bar-container">
-          <p *ngFor="let indicatedNumber of indicatedNumbers; let i = index" class="graph-bar" [style.height.%]="indicatedNumber / max * 100">{{ i / 2 }}</p>
+          <p *ngFor="let indicatedNumber of indicatedNumbers | slice:1; let i = index" class="graph-bar" [style.height.%]="indicatedNumber / max * 100">{{ (i +
+            1) / 2 }}</p>
         </div>
       </div>
     </div>
