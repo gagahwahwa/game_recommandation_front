@@ -33,7 +33,7 @@ export class ProgressBarComponent implements OnInit, OnChanges {
     const division = Math.floor(this.ratingCount / this.LIMIT);
     this.start = division * this.LIMIT;
     this.end = this.start + this.LIMIT;
-    this.indicatedNumber = this.ratingCount % this.LIMIT;
+    this.indicatedNumber = this.ratingCount % this.LIMIT / this.LIMIT * 100;
   }
 
   @HostListener('window:scroll')

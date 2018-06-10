@@ -1,7 +1,7 @@
 <div class="container" fxLayout="column" fxLayoutGap="1rem">
   <app-progress-bar [LIMIT]="15" [parent]="'init'" [fixed]="true" [ratingCount]="(count$ | async) || 0"></app-progress-bar>
   <app-game-card-container
-    *ngIf="gameList$ | async as gameList"
+    *ngIf="gameList"
     fxLayout="row"
     fxLayoutGap=".5rem"
     [gameList]="gameList | slice:0:(currentPage * 28)"

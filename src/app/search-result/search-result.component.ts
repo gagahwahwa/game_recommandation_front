@@ -12,8 +12,8 @@ import { GameService } from '../shared/service/game.service';
 export class SearchResultComponent implements OnInit {
   type: string;
   keyword$: Observable<any>;
-  searchedGames$: Observable<Array<any>>;
-  searchedGamesCount$: Observable<number>;
+  searchedGames: any[];
+  searchedGamesCount: number;
   currentPage: number;
   lastScrollHeight: number;
   count: number;
@@ -30,11 +30,19 @@ export class SearchResultComponent implements OnInit {
       map((param: any) => param.keyword),
       shareReplay()
     );
-    this.searchedGames$ = this.keyword$.pipe(
+    this.keyword$.pipe(
       mergeMap((keyword: string) => this.gameService.searchGame(this.type, keyword)),
       shareReplay()
-    );
-    this.searchedGames$.subscribe(list => this.count = list.length);
+    ).subscribe((list: any) => {
+      this.searchedGames = list;
+      this.searchedGamesCount = list.count;
+    });
+  }
+
+  changeRateCount(info: any) {
+    if (info.rate) {
+      this.searchedGames[info.index] = {...this.searchedGames[info.index], rate: info.rate};
+    }
   }
 
   @HostListener('window:scroll', ['$event'])

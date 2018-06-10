@@ -11,7 +11,7 @@ import { RateService } from '../../../service/rate.service';
 })
 export class GameCardComponent implements OnInit {
   @Input() game: any;
-  @Output() rateCountChange = new EventEmitter();
+  @Output() rateCountChange = new EventEmitter<number>();
   thumbnail: SafeStyle;
   isStarRateBarShown: boolean;
   rate: number;
@@ -35,7 +35,7 @@ export class GameCardComponent implements OnInit {
       })
       .subscribe((res: any) => {
         if (res.result === 'success') {
-          this.rateCountChange.emit(true);
+          this.rateCountChange.emit(rate);
         } else {
           alert(res.msg);
         }

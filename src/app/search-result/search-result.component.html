@@ -7,8 +7,9 @@
     <app-game-card-container
       fxLayout="row"
       fxLayoutGap=".5rem"
-      *ngIf="searchedGames$ | async as searchedGames"
+      *ngIf="searchedGames"
       [gameList]="searchedGames | slice:0:(currentPage * 28)"
+      (rateCountChange)="changeRateCount($event)"
     >
     </app-game-card-container>
     <div *ngIf="count === 0">

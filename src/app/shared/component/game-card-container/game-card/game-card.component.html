@@ -15,7 +15,7 @@
     <div class="placeholder">
       <app-star-rate-bar
         *ngIf="isStarRateBarShown || rate !== null"
-        [rate]="rate || 0"
+        [rate]="game.rate || 0"
         (rateChange)="rateChange($event)"
         fxLayout="row"
         fxLayoutAlign="center"

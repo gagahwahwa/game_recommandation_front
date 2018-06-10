@@ -3,7 +3,7 @@
   <app-progress-bar [ratingCount]="count$ | async" [fixed]="true"></app-progress-bar>
   <div class="content">
     <app-game-card-container
-      *ngIf="gameList$ | async as gameList"
+      *ngIf="gameList"
       fxLayout="row"
       fxLayoutGap=".5rem"
       [gameList]="gameList | slice:0:(currentPage * 28)"

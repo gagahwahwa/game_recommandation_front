@@ -16,7 +16,7 @@ import { InitDataStoreService } from '../shared/store/init-data-store.service';
   styleUrls: ['./init-data-step-2.component.scss']
 })
 export class InitDataStep2Component implements OnInit {
-  gameList$: Observable<Array<any>>;
+  gameList: any[];
   count$: Observable<any>;
   currentPage: number;
   lastScrollHeight: number;
@@ -30,13 +30,16 @@ export class InitDataStep2Component implements OnInit {
     if (this.initDataStore.selectedTagList.length === 0) {
       this.router.navigateByUrl('/login');
     } else {
-      this.gameList$ = this.gameService.getGameListByTagList(this.initDataStore.selectedTagList);
+      this.gameService.getGameListByTagList(this.initDataStore.selectedTagList).subscribe((list: any) => {
+        this.gameList = list;
+      });
     }
   }
 
-  changeRateCount(isChange: boolean) {
-    if (isChange) {
+  changeRateCount(info: any) {
+    if (info.rate) {
       this.count$ = this.userService.getUserRateCount(+sessionStorage.getItem('id'));
+      this.gameList[info.index] = {...this.gameList[info.index], rate: info.rate};
     }
   }
 

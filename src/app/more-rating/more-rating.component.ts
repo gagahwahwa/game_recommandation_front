@@ -3,13 +3,14 @@ import { Observable } from 'rxjs/Observable';
 import { GameService } from '../shared/service/game.service';
 import { UserService } from '../shared/service/user.service';
 
+
 @Component({
   selector: 'app-more-rating',
   templateUrl: './more-rating.component.html',
   styleUrls: ['./more-rating.component.scss']
 })
 export class MoreRatingComponent implements OnInit {
-  gameList$: Observable<Array<any>>;
+  gameList: any[];
   count$: Observable<any>;
   currentPage: number;
   lastScrollHeight: number;
@@ -20,13 +21,14 @@ export class MoreRatingComponent implements OnInit {
   ngOnInit() {
     this.currentPage = 1;
     this.lastScrollHeight = 0;
-    this.gameList$ = this.gameService.getMoreRatingList(+sessionStorage.getItem('id'));
+    this.gameService.getMoreRatingList(+sessionStorage.getItem('id')).subscribe((list: any) => this.gameList = list);
     this.count$ = this.userSerivce.getUserRateCount(+sessionStorage.getItem('id'));
   }
 
-  changeRateCount(isChange: boolean) {
-    if (isChange) {
+  changeRateCount(info: any) {
+    if (info.rate) {
       this.count$ = this.userSerivce.getUserRateCount(+sessionStorage.getItem('id'));
+      this.gameList[info.index] = {...this.gameList[info.index], rate: info.rate};
     }
   }
 
