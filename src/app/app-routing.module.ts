@@ -1,11 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { LoginComponent } from './login/login.component';
 import { AuthGuard } from './shared/guard/canActive/auth.guard';
 
 const routes: Routes = [
   {path: '', pathMatch: 'full', redirectTo: 'login'},
   {path: 'main', loadChildren: './main/main.module#MainModule', canActivate: [AuthGuard]},
-  {path: 'login', loadChildren: './login/login.module#LoginModule'},
+  {path: 'login', component: LoginComponent},
   {path: 'sign-up', loadChildren: './sign-up/sign-up.module#SignUpModule'},
   {path: 'game-detail/:gameId', loadChildren: './game-detail/game-detail.module#GameDetailModule', canActivate: [AuthGuard]},
   {path: 'my-page/:userId', loadChildren: './my-page/my-page.module#MyPageModule', canActivate: [AuthGuard]},

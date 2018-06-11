@@ -1,4 +1,4 @@
 <div *ngFor="let gameList of rowMaker; let row = index" [fxFlex]="flex" fxLayout="column" fxLayoutGap=".5rem">
   <app-game-card *ngFor="let game of gameList; let i = index" [game]="game"
-                 (rateCountChange)="rateCountChange.emit({ rate: $event, index: (row + i * 4) });"></app-game-card>
+                 (rateCountChange)="rateCountChange.emit({ rate: $event, index: (row + i * rowMaker.length) });"></app-game-card>
 </div>
