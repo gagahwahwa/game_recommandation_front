@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import { CommentService } from '../../shared/service/comment.service';
+import { async } from '@angular/core/testing';
 
 @Component({
   selector: 'app-comment',
@@ -15,7 +16,8 @@ export class CommentComponent implements OnInit {
   game_id: number;
   user_id: number;
   rate: number;
-
+  comment_page_number: number;
+  comment_index: number;
   starRateArray: Array<string>;
 
   basicComment: string[] = [
@@ -40,7 +42,8 @@ export class CommentComponent implements OnInit {
     this.user_id = +sessionStorage.getItem('id');
     this.comments$ = this.commentService.getComments(this.game_id);
     this.rate = 0;
-
+    this.comments$.subscribe(result => { this.comment_index = result.length; } );
+    this.comment_page_number = 1;
     // formGroup 선언
     this.commentFormGroup = this.fb.group({
       comment: [''] // 댓글 내용
@@ -61,18 +64,30 @@ export class CommentComponent implements OnInit {
         if (res.result === 'success') { // 성공시
           // form reset
           formGroup.reset();
-          // star-rate-bar reset
-
+          this.rate = 0 ;
+          this.comment_page_number = 1;
           // 페이지 리로드
           this.comments$ = this.commentService.getComments(this.game_id);
+
         }
       });
     }
   }
 
-  // 인자 수정 요망
-  deleteComment(formGroup: FormGroup) {
+  deleteComment() {
     // DB로 삭제할 댓글 전송
+    this.commentService.deleteComment(
+      this.user_id,
+      this.game_id
+    ).subscribe((res: any) => {
+      if (res.result === 'success') { // 성공시
+        // star-rate-bar reset ??
+        this.rate = 0 ;
+        this.comment_page_number = 1;
+        // 페이지 리로드가 안되는데 왜 안되는걸까오?
+        this.comments$ = this.commentService.getComments(this.game_id);
+      }
+    });
   }
 
   // 평점 -> 별점 계산
@@ -88,4 +103,16 @@ export class CommentComponent implements OnInit {
     return this.starRateArray;
   }
 
+  // 이전 댓글
+  prev_comment_page() {
+    if (this.comment_page_number > 1) {
+      this.comment_page_number = this.comment_page_number - 1;
+    }
+  }
+  // 다음 댓글
+  next_comment_page() {
+    if (this.comment_index > this.comment_page_number * 10) {
+      this.comment_page_number = this.comment_page_number + 1;
+    }
+  }
 }

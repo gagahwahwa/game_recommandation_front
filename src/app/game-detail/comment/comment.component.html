@@ -6,14 +6,14 @@
         <textarea formControlName="comment" id="comment" class="form-control"></textarea>
       </div>
       <div class="bottom" fxLayout="row" fxLayoutAlign="space-between center">
-        <app-star-rate-bar (rateChange)="rate = $event"></app-star-rate-bar>
+        <app-star-rate-bar [rate]="this.rate" (rateChange)="rate = $event"></app-star-rate-bar>
         <button type="submit" class="btn raise primary">등록</button>
       </div>
     </form>
   </div>
   <div class="card">
-    <div class="comments" fxLayout="column">
-      <div class="comment" *ngFor="let comment of comments$ | async" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="1rem">
+    <div class="comments" fxLayout="column" *ngFor="let comment of comments$ | async; let i = index">
+      <div class="comment"  *ngIf="i < 10 * this.comment_page_number && i >= (this.comment_page_number - 1) * 10" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="1rem">
         <div class="header" fxFlex="15%">
           <p class="nickname">{{ comment.nickname }}</p>
           <p class="date">{{ comment.regi_date }}</p>
@@ -22,13 +22,17 @@
           <p class="comment">{{ comment.comment || basicComment[comment.rate * 2] }}</p>
           <i class="material-icons"
              *ngFor="let empty of cal_star_rate(comment.rate);
-             let i = index"
+             let j = index"
           >
-            {{ starRateArray[i] }}
+            {{ starRateArray[j] }}
           </i>
         </div>
-        <button class="btn raise primary" *ngIf="user_id === comment.id">삭제</button>
+        <button class="btn raise primary" *ngIf="user_id === comment.id" (click)="deleteComment()">삭제</button>
       </div>
+    </div>
+    <div class="comment_paging_btn" fxLayoutAlign="start center"  fxLayoutGap="1rem">
+      <button class="btn raise primary" (click)="prev_comment_page()">◀ PREV</button>
+      <button class="btn raise primary" (click)="next_comment_page()">NEXT ▶</button>
     </div>
   </div>
 </div>
